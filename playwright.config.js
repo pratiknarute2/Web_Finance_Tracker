@@ -24,7 +24,7 @@ module.exports = defineConfig({
   //   { name: 'chromium', use: { browserName: 'chromium' }, testMatch: ['Tests/Kolonizer.test.js'] },
   //   { name: 'firefox', use: { browserName: 'firefox' }, testMatch: ['Tests/Lyca.test.js'] }, // Runs test2 only on Firefox
   // ],
-  
+
   fullyParallel: true,
   workers: 2, // Set to 1 for debugging; increase for parallel execution
 

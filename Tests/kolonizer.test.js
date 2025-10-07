@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const fs = require('fs/promises');
 const LoginPage = require('../Pages/LoginPage.js');
-const LeadPage = require('../Pages/LeadPage.js');
+
 
 // ✅ Function to read JSON payload properly
 async function getPayload() {
@@ -15,7 +15,7 @@ async function getPayload() {
 }
 
 test.describe('Login', () => {
-    
+
     test('Login with valid credentials in Kolonizer', async ({ page }) => {
         const login = new LoginPage(page);
         await login.openLogin();
@@ -79,7 +79,7 @@ test.describe('Lead', () => {
             await loginPage.openDashboard();
             await page.evaluate((authToken) => localStorage.setItem('token', authToken), token);
             await page.reload();
-            
+
             console.log("🌍 Current URL in Window:", await page.url());
             await expect(page).toHaveURL('https://uatdreamcity.kolonizer.in/dashboard/sales-dashboard');
 
@@ -88,7 +88,7 @@ test.describe('Lead', () => {
 
             // ✅ Fetch expected count from API
             const expectedCount = await lead.getAllLeadAPI(request, token);
-            
+
             // ✅ Verify the count in UI
             await lead.verifyTotalLeadCount(expectedCount);
 

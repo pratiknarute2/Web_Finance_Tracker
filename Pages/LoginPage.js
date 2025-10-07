@@ -1,74 +1,49 @@
 const { expect } = require('@playwright/test');
-const fs = require('fs'); // File System module
-const UIAction = require('../Base/UIAction');
+const Utility = require('../Base/Utility');
+const fs = require('fs/promises');
 
-class LoginPage extends UIAction {
+
+
+class LoginPage extends Utility {
     constructor(page) {
         super(page);  // Pass page to parent class
         this.page = page;
 
-        this.username = page.getByRole('textbox', { name: 'Enter Username' });
-        this.password = page.getByRole('textbox', { name: 'Enter Password' });
-        this.loginButton = page.getByRole('button', { name: 'login' });
-        this.addLeadButton = page.getByRole('button', { name: 'ADD LEAD' });
+        this.emailInput = page.getByRole('textbox', { name: 'Email address' });
+        this.passwordInput = page.getByRole('textbox', { name: 'Password' });
+        this.loginButton = page.getByRole('button', { name: 'Login' });
+        this.loginSuccessMessage = page.getByText('Login successful! Redirecting');
+
     }
 
-    async openLogin() {
-        await this.navigateOnURL(this.page,'https://uatdreamcity.kolonizer.in/login')
-    }
+    async login_through_post_API(request) {
 
-    async openDashboard() {
-        await this.navigateOnURL(this.page,'https://uatdreamcity.kolonizer.in/dashboard/sales-dashboard')
-    }
+        const loginResponse = await this.postRequest(request, 'https://expense-tracker-backend-y788.onrender.com/api/auth/login', 'Login', 'Post Login API')
+        await this.expectToBe(loginResponse.message, 'Logged in successfully', 'Unexpected Post Login Message')
 
-    async enterUsername() {
-        await this.fillInputField(this.username, 'nikhil@kolonizer.com', 'Username field');
-    }
+        const token = loginResponse.token;
+        await this.page.goto('https://beutiful-expense-tracker-app.netlify.app/expense-tracker');
+        await this.page.evaluate((authToken) => localStorage.setItem('token', authToken), token);
+        await this.navigateOnURL(this.page, 'https://beutiful-expense-tracker-app.netlify.app/expense-tracker')
 
-    async enterPassword() {
-        await this.fillInputField(this.password, '123', 'Password field');
     }
+    async login_with_valid_credentials(email = 'pratiknarute2@gmail.com', password = 'Pratik@1234') {
+        // Navigate to login page
+        await this.navigateOnURL(this.page, 'https://beutiful-expense-tracker-app.netlify.app/login');
 
-    async clickOnLogin() {
+        // Fill email & password using utility methods
+        await this.fillInputField(this.emailInput, 'pratiknarute2@gmail.com', 'Email Input');
+        await this.fillInputField(this.passwordInput, 'Pratik@1234', 'Password Input');
+
+        // Click login button
         await this.clickElement(this.loginButton, 'Login Button');
-        await this.page.waitForTimeout(6000);
-        await this.isDisplayed(this.addLeadButton, 'Add lead button');
+
+        // Wait & verify success message
+        const isVisible = await this.isDisplay(this.loginSuccessMessage, 5000, 'Login Success Message');
+        await this.expectToBe(isVisible, true, 'Login Success Message');
     }
 
-    async postLoginAPI(request) {
-        // Read JSON file
-        const loginPayload = JSON.parse(fs.readFileSync('API/Payloads/Login.json', 'utf-8'));
-        const loginResponse = await request.post('https://uatnode.kolonizer.in/master/api/signIn', {
-            data: loginPayload,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
 
-        expect(loginResponse.ok()).toBeTruthy();
-
-        const responseData = await loginResponse.json();
-        console.log("Response of Post Login API:", JSON.stringify(responseData, null, 1));
-
-        this.token = responseData.token;
-        console.log("Token:", this.token);
-
-        return this.token;
-    }
-
-    async getProjectAPI(request, token) {
-        const getProjectResponse = await request.get('https://uatnode.kolonizer.in/master/api/projectOrgwise', {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        expect(getProjectResponse.ok()).toBeTruthy();
-
-        const responseData = await getProjectResponse.json();
-        console.log("Response of Get Project API:", JSON.stringify(responseData, null, 2));
-    }
 }
 
 module.exports = LoginPage;
