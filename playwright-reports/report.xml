@@ -1,32 +1,56 @@
-<testsuites id="" name="" tests="8" failures="0" skipped="0" errors="0" time="7.910226">
-<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-07T20:19:02.017Z" hostname="" tests="8" failures="0" skipped="0" time="14.272" errors="0">
-<testcase name="API Testing › 1️⃣ Post Login API" classname="Tests/FinanceTracker.test.js" time="2.166">
+<testsuites id="" name="" tests="12" failures="0" skipped="0" errors="0" time="11.750176">
+<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-07T22:04:41.872Z" hostname="" tests="12" failures="0" skipped="0" time="19.347" errors="0">
+<testcase name="API Testing › 1️⃣ Post Login API" classname="Tests/FinanceTracker.test.js" time="1.176">
 <system-out>
 <![CDATA[🔄 Verifying: Post Login API...
 ✅ Payload: {
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 2150 ms
+⏱️ Response Time: 1157 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg2ODM0NCwiZXhwIjoxNzYyNDYwMzQ0fQ.c8FTeuzjDzfpeQa-D7Cf_-Ny9s3Ys37LUatCkkguKJs'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4MywiZXhwIjoxNzYyNDY2NjgzfQ.i27UWEhRpqem_hfmI7opm5yRnS5qx-2dr_1klxrTrds'[39m
 }
 ----------------------------------------------------------------------------------------------------
-Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg2ODM0NCwiZXhwIjoxNzYyNDYwMzQ0fQ.c8FTeuzjDzfpeQa-D7Cf_-Ny9s3Ys37LUatCkkguKJs
+🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4MywiZXhwIjoxNzYyNDY2NjgzfQ.i27UWEhRpqem_hfmI7opm5yRnS5qx-2dr_1klxrTrds
 ]]>
 </system-out>
 </testcase>
-<testcase name="API Testing › 2️⃣ Get Transaction API" classname="Tests/FinanceTracker.test.js" time="1.411">
+<testcase name="API Testing › 2️⃣ Get Transaction API" classname="Tests/FinanceTracker.test.js" time="1.935">
 <system-out>
 <![CDATA[🔄 Verifying: Get Transaction API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1408 ms
-📦 Response Size: 49.68 KB
+⏱️ Response Time: 1931 ms
+📦 Response Size: 50.13 KB
 🧾 GET Response: [
+  {
+    id: [32m'68e57e9ea07faf4f116aace2'[39m,
+    date: [32m'2025-10-07'[39m,
+    time: [32m'20:57:02.893'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Food'[39m,
+    amount: [33m65[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Lunch'[39m,
+    runningBalance: [33m1618631.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e57e7ca07faf4f116aace1'[39m,
+    date: [32m'2025-10-07'[39m,
+    time: [32m'20:56:28.599'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Food'[39m,
+    amount: [33m70[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Lunch'[39m,
+    runningBalance: [33m1618696.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
   {
     id: [32m'68e3d91da07faf4f116aace0'[39m,
     date: [32m'2025-10-06'[39m,
@@ -1203,45 +1227,21 @@ Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6
     runningBalance: [33m2964400.96[39m,
     labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
   },
-  {
-    id: [32m'68bd7b9df115e8a75b9bc4fb'[39m,
-    date: [32m'2025-09-06'[39m,
-    time: [32m'12:33:33.989'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Food'[39m,
-    amount: [33m665[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Dinner+Lunch '[39m,
-    runningBalance: [33m2965065.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  {
-    id: [32m'68bd7afef115e8a75b9bc4fa'[39m,
-    date: [32m'2025-09-06'[39m,
-    time: [32m'12:30:54.953'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Transport'[39m,
-    amount: [33m21[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'SNDT to Deccan Gymkhana '[39m,
-    runningBalance: [33m2965730.96[39m,
-    labelIds: [ [32m'68bc24faf115e8a75b9bc4f7'[39m ]
-  },
-  ... 118 more items
+  ... 120 more items
 ]
 ----------------------------------------------------------------------------------------------------
-Total Transaction Entries: 218
-Food Category: 101
+Total Transaction Entries: 220
+Food Category: 103
 Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="API Testing › 3️⃣ Get Category API" classname="Tests/FinanceTracker.test.js" time="0.933">
+<testcase name="API Testing › 3️⃣ Get Category API" classname="Tests/FinanceTracker.test.js" time="0.957">
 <system-out>
 <![CDATA[🔄 Verifying: Get Categories API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/categories
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 929 ms
+⏱️ Response Time: 953 ms
 📦 Response Size: 1.54 KB
 🧾 GET Response: [
   {
@@ -1308,12 +1308,12 @@ Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="API Testing › 4️⃣ Get Label API" classname="Tests/FinanceTracker.test.js" time="0.952">
+<testcase name="API Testing › 4️⃣ Get Label API" classname="Tests/FinanceTracker.test.js" time="1.021">
 <system-out>
 <![CDATA[🔄 Verifying: Get Labels API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 950 ms
+⏱️ Response Time: 1018 ms
 📦 Response Size: 0.26 KB
 🧾 GET Response: [
   {
@@ -1339,15 +1339,15 @@ Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="API Testing › 5️⃣ Get Label Usage API" classname="Tests/FinanceTracker.test.js" time="1.418">
+<testcase name="API Testing › 5️⃣ Get Label Usage API" classname="Tests/FinanceTracker.test.js" time="1.358">
 <system-out>
 <![CDATA[🔄 Verifying: Get Label Usage API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels/usage
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1416 ms
+⏱️ Response Time: 1357 ms
 📦 Response Size: 0.13 KB
 🧾 GET Response: [
-  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m101[39m },
+  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m103[39m },
   { id: [32m'68bc24faf115e8a75b9bc4f8'[39m, count: [33m5[39m },
   { id: [32m'68bc24faf115e8a75b9bc4f7'[39m, count: [33m29[39m }
 ]
@@ -1355,31 +1355,87 @@ Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="API Testing › 6️⃣ Get Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.728">
+<testcase name="API Testing › 6️⃣ Get Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.702">
 <system-out>
 <![CDATA[🔄 Verifying: Get Opening Balance API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 726 ms
+⏱️ Response Time: 700 ms
 📦 Response Size: 0.01 KB
 🧾 GET Response: [33m50000[39m
 ----------------------------------------------------------------------------------------------------
 ]]>
 </system-out>
 </testcase>
-<testcase name="Login Scenarios › 1️⃣ Login through post API" classname="Tests/FinanceTracker.test.js" time="3.391">
+<testcase name="API Testing › 7️⃣ Post Categories API for Debit transaction" classname="Tests/FinanceTracker.test.js" time="0.967">
+<system-out>
+<![CDATA[🔄 Verifying: Post Categories API for debit...
+✅ Payload: {
+  "name": "Testing",
+  "type": "debit"
+}
+⏱️ Response Time: 963 ms
+🔁 Status Code: [33m200[39m
+📦 Response Size: 0.06 KB
+🧾 JSON Response: { id: [32m'68e58e81a07faf4f116aacf2'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m }
+----------------------------------------------------------------------------------------------------
+🔑 Global category ID set: 68e58e81a07faf4f116aacf2
+]]>
+</system-out>
+</testcase>
+<testcase name="API Testing › 8️⃣ Delete Categories API for Debit transaction" classname="Tests/FinanceTracker.test.js" time="1.215">
+<system-out>
+<![CDATA[🔄 Verifying: Delete Categories API for debit...
+🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e58e81a07faf4f116aacf2
+🔁 Status Code: [33m204[39m
+⏱️ Response Time: 1203 ms
+📦 Response Size: 0.00 KB
+🧾 DELETE Response: <empty>
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="API Testing › 9️⃣ Post Categories API for Credit transaction" classname="Tests/FinanceTracker.test.js" time="0.942">
+<system-out>
+<![CDATA[🔄 Verifying: Post Categories API for credit...
+✅ Payload: {
+  "name": "Testing",
+  "type": "credit"
+}
+⏱️ Response Time: 932 ms
+🔁 Status Code: [33m200[39m
+📦 Response Size: 0.06 KB
+🧾 JSON Response: { id: [32m'68e58e84a07faf4f116aacf3'[39m, name: [32m'Testing'[39m, type: [32m'credit'[39m }
+----------------------------------------------------------------------------------------------------
+🔑 Global category ID set: 68e58e84a07faf4f116aacf3
+]]>
+</system-out>
+</testcase>
+<testcase name="API Testing › 1️⃣0️⃣ Delete Categories API for credit transaction" classname="Tests/FinanceTracker.test.js" time="1.139">
+<system-out>
+<![CDATA[🔄 Verifying: Delete Categories API for credit...
+🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e58e84a07faf4f116aacf3
+🔁 Status Code: [33m204[39m
+⏱️ Response Time: 1134 ms
+📦 Response Size: 0.00 KB
+🧾 DELETE Response: <empty>
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="Login Scenarios › 1️⃣ Login through post API" classname="Tests/FinanceTracker.test.js" time="4.327">
 <system-out>
 <![CDATA[🔄 Verifying: Post Login API...
 ✅ Payload: {
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 1609 ms
+⏱️ Response Time: 1169 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg2ODM0NCwiZXhwIjoxNzYyNDYwMzQ0fQ.c8FTeuzjDzfpeQa-D7Cf_-Ny9s3Ys37LUatCkkguKJs'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4NCwiZXhwIjoxNzYyNDY2Njg0fQ.cQ_eRIDSqEHaC7xguydWsMk7CMND-musNmCy3kJtTlM'[39m
 }
 ----------------------------------------------------------------------------------------------------
 🔍 Verifying: Unexpected Post Login Message
@@ -1392,21 +1448,21 @@ Actual: Logged in successfully | Expected: Logged in successfully
 ]]>
 </system-out>
 </testcase>
-<testcase name="Login Scenarios › 1️⃣ Login with valid credentials" classname="Tests/FinanceTracker.test.js" time="3.273">
+<testcase name="Login Scenarios › 2️⃣ Login with valid credentials" classname="Tests/FinanceTracker.test.js" time="3.608">
 <system-out>
 <![CDATA[✅ Navigate On URL: [https://beutiful-expense-tracker-app.netlify.app/login]
 ----------------------------------------------------------------------------------------------------
 🔄 Filling: Email Input...
 ✅ Filled [Email Input] with value: pratiknarute2@gmail.com
-⏳ Time taken: 0.02 sec
+⏳ Time taken: 0.07 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Filling: Password Input...
 ✅ Filled [Password Input] with value: Pratik@1234
-⏳ Time taken: 0.06 sec
+⏳ Time taken: 0.07 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Clicking: Login Button...
 ✅ Clicked [Login Button]
-⏳ Time taken: 0.02 sec
+⏳ Time taken: 0.06 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Verifying: Login Success Message...
 ✅ Found [Login Success Message]
@@ -1416,7 +1472,7 @@ Actual: Logged in successfully | Expected: Logged in successfully
 Actual: true | Expected: true
 ----------------------------------------------------------------------------------------------------
 
-[[ATTACHMENT|../test-results/Tests-FinanceTracker-Login-88633-ogin-with-valid-credentials/video.webm]]
+[[ATTACHMENT|../test-results/Tests-FinanceTracker-Login-2ceb0-ogin-with-valid-credentials/video.webm]]
 ]]>
 </system-out>
 </testcase>

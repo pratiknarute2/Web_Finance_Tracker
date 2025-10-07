@@ -3,7 +3,12 @@
     "email": "pratiknarute2@gmail.com",
     "password": "Pratik@1234"
   },
-  "Transaction": {
-    "": ""
+  "Categories_debit": {
+    "name": "Testing",
+    "type": "debit"
+  },
+  "Categories_credit": {
+    "name": "Testing",
+    "type": "credit"
   }
 }

@@ -7,11 +7,10 @@ class Get extends Utility {
         this.request = request;
     }
 
-    async getTransactionAPI(token) {
+    async getTransactionAPI() {
         let getTransactionAPIResponse = await this.getRequest(   // ✅ Removed this.utility (because getRequest() is from Utility)
             this.request,        // ✅ Changed request → this.request (class property)
             'https://expense-tracker-backend-y788.onrender.com/api/transactions',
-            token,
             'Get Transaction API'
         );
 
@@ -31,17 +30,17 @@ class Get extends Utility {
 
     }
 
-    async getCategoryAPI(token) {
-        let getCategoryAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/categories', token, 'Get Categories API')
+    async getCategoryAPI() {
+        let getCategoryAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/categories', 'Get Categories API')
     }
-    async getLabelAPI(token) {
-        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels', token, 'Get Labels API')
+    async getLabelAPI() {
+        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels', 'Get Labels API')
     }
-    async getLabelUsageeAPI(token) {
-        let getLabelUsageAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels/usage', token, 'Get Label Usage API')
+    async getLabelUsageeAPI() {
+        let getLabelUsageAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels/usage', 'Get Label Usage API')
     }
-    async getOpeningBalanceAPI(token) {
-        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance', token, 'Get Opening Balance API')
+    async getOpeningBalanceAPI() {
+        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance', 'Get Opening Balance API')
     }
 
 

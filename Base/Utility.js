@@ -139,7 +139,7 @@ class Utility {
     }
 
 
-    async getRequest(request, URI, token, testName) {
+    async getRequest(request, URI, testName) {
         process.stdout.write(`🔄 Verifying: ${testName}...\n`);
         try {
             console.log(`🌐 Sending GET request to: ${URI}`);
@@ -152,7 +152,7 @@ class Utility {
                     baseURL: URI,
                     extraHTTPHeaders: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
+                        ...(global.token && { authorization: 'Bearer ' + global.token }) // optional auth header
                     }
                 });
                 console.log('⚠️ Created new APIRequestContext because old one was closed');
@@ -195,59 +195,142 @@ class Utility {
 
 
 
-    async putRequest(payloadKey, endPoint, requiredKey, request) {
+    async putRequest(request, URI, payloadKey, testName) {
+        process.stdout.write(`🔄 Verifying: ${testName}...\n`);
         try {
-            const data = JSON.parse(fs.readFileSync('API/Payloads.json', 'utf-8'));
+            console.log(`🛠️ Sending PUT request to: ${URI}`);
+
+            // Read payload from file
+            const data = JSON.parse(await fs.readFile('TestData/API/Payloads.json', 'utf-8'));
             const payloadBody = data[payloadKey];
 
             if (!payloadBody) {
                 throw new Error(`❌ Payload key '${payloadKey}' not found in Payloads.json`);
             }
 
-            console.log(`🛠️ Sending PUT request to: /api/${endPoint}`);
             console.log("✅ Payload:", JSON.stringify(payloadBody, null, 2));
 
-            const response = await request.put(`https://foods-restapi-production.up.railway.app/api/${endPoint}`, {
+            // ✅ Create a new request context if old one is closed or undefined
+            let apiRequest = request;
+            if (!request || request._closed) {
+                const playwright = require('@playwright/test').playwright;
+                apiRequest = await playwright.request.newContext({
+                    baseURL: URI,
+                    extraHTTPHeaders: {
+                        'Content-Type': 'application/json',
+                        ...(global.token && { authorization: 'Bearer ' + global.token })
+                    }
+                });
+                console.log('⚠️ Created new APIRequestContext because old one was closed');
+            }
+
+            const startTime = Date.now();
+            const response = await apiRequest.put(URI, {
                 data: payloadBody,
-                headers: { 'Content-Type': 'application/json' }
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(global.token && { authorization: 'Bearer ' + global.token })
+                }
             });
+            const endTime = Date.now();
+
+            const responseTime = endTime - startTime;
+            const rawText = await response.text();
+            const responseSizeKB = (Buffer.byteLength(rawText, 'utf8') / 1024).toFixed(2);
 
             console.log("🔁 Status Code:", response.status());
+            console.log(`⏱️ Response Time: ${responseTime} ms`);
+            console.log(`📦 Response Size: ${responseSizeKB} KB`);
+
             if (!response.ok()) {
                 throw new Error(`❌ PUT request failed with status ${response.status()}`);
             }
 
-            const responseData = await response.json();
-            console.log("🧾 PUT Response:", responseData);
+            let responseData = {};
+            if (rawText) {
+                responseData = JSON.parse(rawText);
+                console.log("🧾 PUT Response:", responseData);
+            } else {
+                console.log("🧾 PUT Response: <empty>");
+            }
+
             console.log('-'.repeat(100));
+
+            // ✅ Fail if update did not succeed
+            if (responseData.success === false || responseData.requiredKey === undefined) {
+                throw new Error(`❌ PUT request did not update the content! Response: ${JSON.stringify(responseData)}`);
+            }
+
             return responseData.requiredKey;
+
         } catch (error) {
             console.error("❌ Error in putRequest():", error.message);
             console.log('-'.repeat(100));
-            return null;
+            throw error; // RE-THROW to fail the test
         }
     }
 
-    async deleteRequest(endPoint, request) {
-        try {
-            console.log(`🗑️ Sending DELETE request to: /api/${endPoint}`);
-            const response = await request.delete(`https://foods-restapi-production.up.railway.app/api/${endPoint}`);
 
-            console.log("🔁 Status Code:", response.status());
-            if (!response.ok()) {
-                throw new Error(`❌ DELETE request failed with status ${response.status()}`);
+    async deleteRequest(request, URI, testName) {
+        process.stdout.write(`🔄 Verifying: ${testName}...\n`);
+        try {
+            console.log(`🗑️ Sending DELETE request to: ${URI}`);
+
+            let apiRequest = request;
+            if (!request || request._closed) {
+                const playwright = require('@playwright/test').playwright;
+                apiRequest = await playwright.request.newContext({
+                    baseURL: URI,
+                    extraHTTPHeaders: {
+                        'Content-Type': 'application/json',
+                        ...(global.token && { authorization: 'Bearer ' + global.token })
+                    }
+                });
+                console.log('⚠️ Created new APIRequestContext because old one was closed');
             }
 
-            const responseData = await response.json();
-            console.log("🧾 DELETE Response:", responseData);
+            const startTime = Date.now();
+            const response = await apiRequest.delete(URI, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(global.token && { authorization: 'Bearer ' + global.token })
+                }
+            });
+            const endTime = Date.now();
+
+            const responseTime = endTime - startTime;
+            const rawText = await response.text();
+            const responseSizeKB = (Buffer.byteLength(rawText, 'utf8') / 1024).toFixed(2);
+
+            console.log("🔁 Status Code:", response.status());
+            console.log(`⏱️ Response Time: ${responseTime} ms`);
+            console.log(`📦 Response Size: ${responseSizeKB} KB`);
+
+            let responseData = {};
+            if (rawText) {
+                responseData = JSON.parse(rawText);
+                console.log("🧾 DELETE Response:", responseData);
+            } else {
+                console.log("🧾 DELETE Response: <empty>");
+            }
             console.log('-'.repeat(100));
-            return responseData.requiredKey;
+
+            // ✅ Check DELETE success using status code 204 or success flag in response
+            if (!(response.ok() || response.status() === 204)) {
+                throw new Error(`❌ DELETE request did not delete the content! Response: ${JSON.stringify(responseData)}`);
+            }
+
+            return responseData.requiredKey || null;
+
         } catch (error) {
             console.error("❌ Error in deleteRequest():", error.message);
             console.log('-'.repeat(100));
-            return null;
+            throw error; // RE-THROW to fail the test
         }
     }
+
+
+
 }
 
 module.exports = Utility;
