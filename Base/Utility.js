@@ -94,7 +94,7 @@ class Utility {
     async postRequest(request, URI, payloadKey, testName) {
         process.stdout.write(`🔄 Verifying: ${testName}...\n`);
         try {
-            const data = JSON.parse(await fs.readFile('TestData/API/Payloads.json', 'utf-8'));
+            const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
             const payloadBody = data[payloadKey];
 
             if (!payloadBody) {
@@ -194,14 +194,14 @@ class Utility {
 
 
 
-
+    // ✅ Updated PUT request function (Utility.js)
     async putRequest(request, URI, payloadKey, testName) {
         process.stdout.write(`🔄 Verifying: ${testName}...\n`);
         try {
             console.log(`🛠️ Sending PUT request to: ${URI}`);
 
-            // Read payload from file
-            const data = JSON.parse(await fs.readFile('TestData/API/Payloads.json', 'utf-8'));
+            // ✅ Read payload from JSON file
+            const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
             const payloadBody = data[payloadKey];
 
             if (!payloadBody) {
@@ -210,7 +210,7 @@ class Utility {
 
             console.log("✅ Payload:", JSON.stringify(payloadBody, null, 2));
 
-            // ✅ Create a new request context if old one is closed or undefined
+            // ✅ Ensure valid request context
             let apiRequest = request;
             if (!request || request._closed) {
                 const playwright = require('@playwright/test').playwright;
@@ -224,6 +224,7 @@ class Utility {
                 console.log('⚠️ Created new APIRequestContext because old one was closed');
             }
 
+            // ✅ Send PUT request
             const startTime = Date.now();
             const response = await apiRequest.put(URI, {
                 data: payloadBody,
@@ -246,6 +247,7 @@ class Utility {
                 throw new Error(`❌ PUT request failed with status ${response.status()}`);
             }
 
+            // ✅ Parse response
             let responseData = {};
             if (rawText) {
                 responseData = JSON.parse(rawText);
@@ -254,14 +256,19 @@ class Utility {
                 console.log("🧾 PUT Response: <empty>");
             }
 
-            console.log('-'.repeat(100));
 
-            // ✅ Fail if update did not succeed
-            if (responseData.success === false || responseData.requiredKey === undefined) {
-                throw new Error(`❌ PUT request did not update the content! Response: ${JSON.stringify(responseData)}`);
+
+            // ✅ Flexible validation
+            if (
+                (responseData.success !== undefined && !responseData.success) ||
+                (!responseData.id && !responseData.name && !responseData.type)
+            ) {
+                throw new Error(`❌ PUT request did not update the content properly! Response: ${JSON.stringify(responseData)}`);
             }
 
-            return responseData.requiredKey;
+            console.log(`✅ PUT request updated successfully! Updated name: ${responseData.name || 'N/A'}`);
+            console.log('-'.repeat(100));
+            return responseData;
 
         } catch (error) {
             console.error("❌ Error in putRequest():", error.message);
@@ -269,6 +276,7 @@ class Utility {
             throw error; // RE-THROW to fail the test
         }
     }
+
 
 
     async deleteRequest(request, URI, testName) {

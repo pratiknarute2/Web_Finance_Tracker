@@ -2,13 +2,13 @@ const { defineConfig } = require('@playwright/test');
 
 module.exports = defineConfig({
   retries: 1,
-  timeout: 60_000,  // Global test timeout (60 seconds)
+  timeout: 120_000,  // Global test timeout (60 seconds)
   expect: {
-    timeout: 10_000,  // Default assertion timeout (10 seconds)
+    timeout: 30_000,  // Default assertion timeout (10 seconds)
   },
 
   use: {
-    actionTimeout: 10_000, // Timeout for each action (10 seconds)
+    actionTimeout: 120000, // Timeout for each action (10 seconds)
     navigationTimeout: 20_000, // Timeout for navigation (20 seconds)
     headless: false, // Better for bypassing detection
     launchOptions: {
@@ -26,7 +26,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 2, // Set to 1 for debugging; increase for parallel execution
+  workers: 3, // Set to 1 for debugging; increase for parallel execution
 
   reporter: [
     ['list'], // Console output

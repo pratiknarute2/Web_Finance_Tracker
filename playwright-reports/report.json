@@ -11,7 +11,7 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
-      "actualWorkers": 2
+      "actualWorkers": 3
     },
     "preserveOutput": "always",
     "reporter": [
@@ -50,7 +50,7 @@
         "repeatEach": 1,
         "retries": 1,
         "metadata": {
-          "actualWorkers": 2
+          "actualWorkers": 3
         },
         "id": "",
         "name": "",
@@ -59,14 +59,14 @@
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
         ],
-        "timeout": 60000
+        "timeout": 120000
       }
     ],
     "shard": null,
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.52.0",
-    "workers": 2,
+    "workers": 3,
     "webServer": null
   },
   "suites": [
@@ -78,7 +78,7 @@
       "specs": [],
       "suites": [
         {
-          "title": "API Testing",
+          "title": "🌐 API Testing Suite",
           "file": "Tests/FinanceTracker.test.js",
           "line": 12,
           "column": 15,
@@ -89,7 +89,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -99,7 +99,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1176,
+                      "duration": 1205,
                       "errors": [],
                       "stdout": [
                         {
@@ -109,7 +109,7 @@
                           "text": "✅ Payload: {\n  \"email\": \"pratiknarute2@gmail.com\",\n  \"password\": \"Pratik@1234\"\n}\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1157 ms\n"
+                          "text": "⏱️ Response Time: 1179 ms\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
@@ -118,18 +118,18 @@
                           "text": "📦 Response Size: 0.20 KB\n"
                         },
                         {
-                          "text": "🧾 JSON Response: {\n  message: \u001b[32m'Logged in successfully'\u001b[39m,\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4MywiZXhwIjoxNzYyNDY2NjgzfQ.i27UWEhRpqem_hfmI7opm5yRnS5qx-2dr_1klxrTrds'\u001b[39m\n}\n"
+                          "text": "🧾 JSON Response: {\n  message: \u001b[32m'Logged in successfully'\u001b[39m,\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OCwiZXhwIjoxNzYyNjMwOTc4fQ.bX4IXdLNyRlpOe_cXZJ8gH61WPVUPgm8tKgcHI6-_Gw'\u001b[39m\n}\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
                         },
                         {
-                          "text": "🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4MywiZXhwIjoxNzYyNDY2NjgzfQ.i27UWEhRpqem_hfmI7opm5yRnS5qx-2dr_1klxrTrds\n"
+                          "text": "🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OCwiZXhwIjoxNzYyNjMwOTc4fQ.bX4IXdLNyRlpOe_cXZJ8gH61WPVUPgm8tKgcHI6-_Gw\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:42.144Z",
+                      "startTime": "2025-10-09T19:42:57.029Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -137,9 +137,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-5c141afb63213f9d42f0",
+              "id": "22600f81cd952af39019-0f51e6993f3e47d9833c",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 14,
+              "line": 15,
               "column": 5
             },
             {
@@ -148,7 +148,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -158,7 +158,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1935,
+                      "duration": 1624,
                       "errors": [],
                       "stdout": [
                         {
@@ -171,22 +171,22 @@
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1931 ms\n"
+                          "text": "⏱️ Response Time: 1615 ms\n"
                         },
                         {
-                          "text": "📦 Response Size: 50.13 KB\n"
+                          "text": "📦 Response Size: 51.32 KB\n"
                         },
                         {
-                          "text": "🧾 GET Response: [\n  {\n    id: \u001b[32m'68e57e9ea07faf4f116aace2'\u001b[39m,\n    date: \u001b[32m'2025-10-07'\u001b[39m,\n    time: \u001b[32m'20:57:02.893'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m65\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m1618631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e57e7ca07faf4f116aace1'\u001b[39m,\n    date: \u001b[32m'2025-10-07'\u001b[39m,\n    time: \u001b[32m'20:56:28.599'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m1618696.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3d91da07faf4f116aace0'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'14:58:37.342'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m30\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lansi drink '\u001b[39m,\n    runningBalance: \u001b[33m1618766.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3b3a4a07faf4f116aacdf'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'12:18:44.047'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1618796.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3b2c9a07faf4f116aacde'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'12:15:05.913'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Entertainment'\u001b[39m,\n    amount: \u001b[33m4300\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar '\u001b[39m,\n    runningBalance: \u001b[33m1618846.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e2b513a07faf4f116aacdd'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'18:12:35.743'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1623146.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e2b49ba07faf4f116aacdc'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'18:10:35.095'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m280\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai'\u001b[39m,\n    runningBalance: \u001b[33m1623216.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e24ff0a07faf4f116aacdb'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'11:01:04.624'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m4360\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electricity Bill for Goregaon room'\u001b[39m,\n    runningBalance: \u001b[33m1623496.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e23d0aa07faf4f116aacda'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'09:40:26.034'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m190\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1627856.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e23cdda07faf4f116aacd9'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'09:39:41.233'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Breakfast '\u001b[39m,\n    runningBalance: \u001b[33m1628046.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e14ae86f459a2eb96acef9'\u001b[39m,\n    date: \u001b[32m'2025-10-04'\u001b[39m,\n    time: \u001b[32m'16:27:20.409'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m130\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1628091.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e1243d6f459a2eb96acef7'\u001b[39m,\n    date: \u001b[32m'2025-10-04'\u001b[39m,\n    time: \u001b[32m'13:42:21.709'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Salary'\u001b[39m,\n    amount: \u001b[33m122292\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Salary for SEP 2025 month from Ampcus '\u001b[39m,\n    runningBalance: \u001b[33m1628221.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dff7c26f459a2eb96acef6'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'16:20:18.852'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m275\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1505929.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88a16f459a2eb96acef5'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:26:09.314'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m90\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Breakfast '\u001b[39m,\n    runningBalance: \u001b[33m1506204.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88866f459a2eb96acef4'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:25:42.651'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1305\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Petrol in my bike (11.75 ltr)'\u001b[39m,\n    runningBalance: \u001b[33m1506294.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88216f459a2eb96acef3'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:24:01.917'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m22\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Recharge of laxmi mobile 1 day top up'\u001b[39m,\n    runningBalance: \u001b[33m1507599.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e124ae6f459a2eb96acef8'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'13:44:14.307'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Bank Charges'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Trial with IMPS payment option'\u001b[39m,\n    runningBalance: \u001b[33m1507621.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec4ad6f459a2eb96acef2'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:30:05.055'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m13000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rent for Goregaon room Oct 2025'\u001b[39m,\n    runningBalance: \u001b[33m1507631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec4176f459a2eb96acef1'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:27:35.985'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m350\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1520631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec3fd6f459a2eb96acef0'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:27:09.685'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m200000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar covert into cash given to Ajit Dhumal '\u001b[39m,\n    runningBalance: \u001b[33m1520981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec37d6f459a2eb96aceef'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:25:01.109'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m399000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar covert into cash given to Ajit Dhumal '\u001b[39m,\n    runningBalance: \u001b[33m1720981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de0b0697884c8960efbfe1'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:17:58.599'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m1000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To dnyaneshwar for convert into cash given to Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2119981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de0ad097884c8960efbfe0'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:17:04.544'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m200000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To dnyaneshwar for convert into cash given to Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2120981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de09ea97884c8960efbfdf'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:13:14.313'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m250\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2320981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de09ae97884c8960efbfde'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:12:14.555'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Shinde Pool to PCMC'\u001b[39m,\n    runningBalance: \u001b[33m2321231.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dd404897884c8960efbfdd'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'14:52:56.461'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m650\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'2nd Bike servicing '\u001b[39m,\n    runningBalance: \u001b[33m2321291.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc3e6897884c8960efbfdb'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'20:32:40.81'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m125\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Sweet - Sonpapadi '\u001b[39m,\n    runningBalance: \u001b[33m2321941.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dd3bc497884c8960efbfdc'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'14:33:40.344'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai '\u001b[39m,\n    runningBalance: \u001b[33m2322066.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc3db097884c8960efbfda'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'20:29:36.726'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m150\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'FARSAN'\u001b[39m,\n    runningBalance: \u001b[33m2322266.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc1c4497884c8960efbfd9'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'18:07:00.951'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To Gopi Sawant'\u001b[39m,\n    runningBalance: \u001b[33m2322416.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6d7f97884c8960efbfd5'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'05:41:19.303'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Prajwal for survival '\u001b[39m,\n    runningBalance: \u001b[33m2322616.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6cfc97884c8960efbfd4'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'05:39:08.813'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m300000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for covert into cash for given to Ajit Dhumal'\u001b[39m,\n    runningBalance: \u001b[33m2324116.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6cbc97884c8960efbfd3'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'05:38:04.185'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2624116.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6ca997884c8960efbfd2'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'05:37:45.848'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2624216.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9823297884c8960efbfd1'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'18:45:06.671'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Bank Charges'\u001b[39m,\n    amount: \u001b[33m18\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'While doing payment through Axis Bank app (Payee)'\u001b[39m,\n    runningBalance: \u001b[33m2624266.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9801b97884c8960efbfcf'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'18:36:11.713'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m160000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for converting into cash to give Ajit Dhumal.'\u001b[39m,\n    runningBalance: \u001b[33m2624284.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9574197884c8960efbfce'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:41:53.07'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2784284.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9572997884c8960efbfcd'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:41:29.76'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai'\u001b[39m,\n    runningBalance: \u001b[33m2784484.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d956f197884c8960efbfcc'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:40:33.893'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Juice'\u001b[39m,\n    runningBalance: \u001b[33m2784584.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d8f13a97884c8960efbfcb'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'08:26:34.841'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Gift/Donation'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To naam foundation for crisis of heavy rainfall in Marathwada'\u001b[39m,\n    runningBalance: \u001b[33m2784644.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d8f0c597884c8960efbfca'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'08:24:37.779'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Milk'\u001b[39m,\n    runningBalance: \u001b[33m2784744.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7c0a997884c8960efbfc9'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'10:47:05.527'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m8000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From shubham '\u001b[39m,\n    runningBalance: \u001b[33m2784804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7c08597884c8960efbfc8'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'10:46:29.099'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m40000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for converting into cash to give Ajit Dhumal.'\u001b[39m,\n    runningBalance: \u001b[33m2776804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7688a97884c8960efbfc7'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'04:31:06.046'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m15000\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To Laxmi for new mobile '\u001b[39m,\n    runningBalance: \u001b[33m2816804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d767f797884c8960efbfc6'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'04:28:39.041'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Gift/Donation'\u001b[39m,\n    amount: \u001b[33m15000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Gift realme 15 pro mobile to laxmi'\u001b[39m,\n    runningBalance: \u001b[33m2831804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d68c9397884c8960efbfc5'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'12:52:35.981'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Paju for mess SEP'\u001b[39m,\n    runningBalance: \u001b[33m2846804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d58b8e97884c8960efbfc4'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'18:35:58.033'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1600\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Bengaluru to Pune'\u001b[39m,\n    runningBalance: \u001b[33m2848004.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57497a603b14c06a1f878'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:57:59.362'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2849604.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d573c9a603b14c06a1f877'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:54:33.219'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Printing & Stationery'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Xerox of resume '\u001b[39m,\n    runningBalance: \u001b[33m2850104.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d572c5a603b14c06a1f875'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:50:13.255'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m183\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2850149.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57294a603b14c06a1f874'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:49:24.905'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m600\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Benglore pg'\u001b[39m,\n    runningBalance: \u001b[33m2850332.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57217a603b14c06a1f873'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:47:19.801'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m256\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Intercity bengalore (Majestic-KRPuram-MG road)'\u001b[39m,\n    runningBalance: \u001b[33m2850932.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41319a603b14c06a1f872'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:49:45.253'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m240\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2851188.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d412a1a603b14c06a1f871'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:47:45.734'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Laxmi '\u001b[39m,\n    runningBalance: \u001b[33m2851428.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41285a603b14c06a1f870'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:47:17.971'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m180\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2852428.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41252a603b14c06a1f86f'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:46:26.979'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1570\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Bengaluru '\u001b[39m,\n    runningBalance: \u001b[33m2852608.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41231a603b14c06a1f86e'\u001b[39m,\n    date: \u001b[32m'2025-09-23'\u001b[39m,\n    time: \u001b[32m'15:45:53.179'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m201\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune home'\u001b[39m,\n    runningBalance: \u001b[33m2854178.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d00a4ca603b14c06a1f862'\u001b[39m,\n    date: \u001b[32m'2025-09-21'\u001b[39m,\n    time: \u001b[32m'14:23:08.406'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Mosambi+Chinku'\u001b[39m,\n    runningBalance: \u001b[33m2854379.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ced242a603b14c06a1f861'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'16:11:46.411'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m120\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'dinner'\u001b[39m,\n    runningBalance: \u001b[33m2854479.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ced208a603b14c06a1f860'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'16:10:48.024'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Warje to shinde pool pune'\u001b[39m,\n    runningBalance: \u001b[33m2854599.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ce6997a603b14c06a1f85f'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'08:45:11.139'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Mumbai to warje pune'\u001b[39m,\n    runningBalance: \u001b[33m2854609.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cdae19a603b14c06a1f85e'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'19:25:13.754'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch refund from mayur via vijay'\u001b[39m,\n    runningBalance: \u001b[33m2854679.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cc2caca603b14c06a1f85d'\u001b[39m,\n    date: \u001b[32m'2025-09-18'\u001b[39m,\n    time: \u001b[32m'16:00:44.92'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m240\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2854629.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb9b8ba603b14c06a1f85c'\u001b[39m,\n    date: \u001b[32m'2025-09-18'\u001b[39m,\n    time: \u001b[32m'05:41:31.67'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m2000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To paju for licence '\u001b[39m,\n    runningBalance: \u001b[33m2854869.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb04f1a603b14c06a1f85b'\u001b[39m,\n    date: \u001b[32m'2025-09-17'\u001b[39m,\n    time: \u001b[32m'18:58:57.941'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2856869.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb04d8a603b14c06a1f85a'\u001b[39m,\n    date: \u001b[32m'2025-09-17'\u001b[39m,\n    time: \u001b[32m'18:58:32.674'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2856929.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c994dca603b14c06a1f859'\u001b[39m,\n    date: \u001b[32m'2025-09-16'\u001b[39m,\n    time: \u001b[32m'16:48:28.735'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m140\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2856974.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c99434a603b14c06a1f858'\u001b[39m,\n    date: \u001b[32m'2025-09-16'\u001b[39m,\n    time: \u001b[32m'16:45:40.114'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m130\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch bowl'\u001b[39m,\n    runningBalance: \u001b[33m2857114.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c84947a603b14c06a1f854'\u001b[39m,\n    date: \u001b[32m'2025-09-15'\u001b[39m,\n    time: \u001b[32m'17:13:43.324'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m185\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner(chinese+lanssi)'\u001b[39m,\n    runningBalance: \u001b[33m2857244.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c84902a603b14c06a1f853'\u001b[39m,\n    date: \u001b[32m'2025-09-15'\u001b[39m,\n    time: \u001b[32m'17:12:34.371'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m80\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2857429.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c7063aa603b14c06a1f84f'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'18:15:22.262'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m2500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rent for SEP 2025 month (Pune)'\u001b[39m,\n    runningBalance: \u001b[33m2857509.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c705efa603b14c06a1f84e'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'18:14:07.28'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m10000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Laxmi for Advance Testing classes.'\u001b[39m,\n    runningBalance: \u001b[33m2860009.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c67fe5a603b14c06a1f84b'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'08:42:13.617'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m35\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Vegetables'\u001b[39m,\n    runningBalance: \u001b[33m2850009.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c65b13a603b14c06a1f84a'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'06:05:07.974'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m20\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To lax for Tea'\u001b[39m,\n    runningBalance: \u001b[33m2850044.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c58ff0a603b14c06a1f849'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'15:38:24.228'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m224\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rice+Dal+Eggs'\u001b[39m,\n    runningBalance: \u001b[33m2850064.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c57e57a603b14c06a1f848'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'14:23:19.863'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m55\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Biscuits'\u001b[39m,\n    runningBalance: \u001b[33m2850288.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c52ebda603b14c06a1f846'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'08:43:41.294'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m36\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Vada Pav'\u001b[39m,\n    runningBalance: \u001b[33m2850343.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c9374aa603b14c06a1f857'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'10:09:14.025'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m145\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pawai to Goregaon cab'\u001b[39m,\n    runningBalance: \u001b[33m2850379.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c45872a603b14c06a1f844'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:29:22.153'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m850\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2850524.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c45348a603b14c06a1f843'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:07:20.527'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m50000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Ajit Dhumal for Plot'\u001b[39m,\n    runningBalance: \u001b[33m2851374.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c452dfa603b14c06a1f842'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:05:35.131'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2901374.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30bcba603b14c06a1f83d'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:50:03.326'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m50000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2901424.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b7ea603b14c06a1f83c'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:48:46.15'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2951424.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b4ca603b14c06a1f83b'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:47:56.004'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2951469.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b2ba603b14c06a1f83a'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'17:47:23.109'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m243\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner (dal khichadi)'\u001b[39m,\n    runningBalance: \u001b[33m2951519.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c1873aa603b14c06a1f833'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'14:12:10.811'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m80\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch (Non veg Noodles)'\u001b[39m,\n    runningBalance: \u001b[33m2951762.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c10294a603b14c06a1f81b'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'04:46:12.621'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'EMI'\u001b[39m,\n    amount: \u001b[33m8961\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Axis Bank for month 1-10 Sep 2025 interest rate only.'\u001b[39m,\n    runningBalance: \u001b[33m2951842.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c0e744a603b14c06a1f816'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'02:49:40.672'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m5000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Akshay Badhe'\u001b[39m,\n    runningBalance: \u001b[33m2960803.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c05516a603b14c06a1f7fd'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'16:25:58.142'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Health'\u001b[39m,\n    amount: \u001b[33m84\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electrol powder and cofsil'\u001b[39m,\n    runningBalance: \u001b[33m2955803.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c0447ca603b14c06a1f7fa'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'15:15:08.025'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m8000\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To shubham for EMI'\u001b[39m,\n    runningBalance: \u001b[33m2955887.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bfea29f115e8a75b9bc539'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'08:49:45.632'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m258\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch and Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2963887.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bf3f9af115e8a75b9bc523'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'20:42:02.929'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Tea'\u001b[39m,\n    runningBalance: \u001b[33m2964145.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bf3dd9f115e8a75b9bc522'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'20:34:33.744'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2964155.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68be8a3ff115e8a75b9bc521'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'07:48:15.15'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2964200.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bdda38f115e8a75b9bc505'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'19:17:12.958'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Health'\u001b[39m,\n    amount: \u001b[33m46\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electrol powder '\u001b[39m,\n    runningBalance: \u001b[33m2964245.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bdb1d3f115e8a75b9bc500'\u001b[39m,\n    date: \u001b[32m'2025-09-07'\u001b[39m,\n    time: \u001b[32m'16:24:51.95'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m665\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Shubham Savne for dinner '\u001b[39m,\n    runningBalance: \u001b[33m2964291.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bd7df9f115e8a75b9bc4ff'\u001b[39m,\n    date: \u001b[32m'2025-09-07'\u001b[39m,\n    time: \u001b[32m'12:43:37.953'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m630\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai'\u001b[39m,\n    runningBalance: \u001b[33m2963626.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bd7db9f115e8a75b9bc4fe'\u001b[39m,\n    date: \u001b[32m'2025-09-07'\u001b[39m,\n    time: \u001b[32m'12:42:33.628'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m120\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Breakfast '\u001b[39m,\n    runningBalance: \u001b[33m2964256.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bd7d68f115e8a75b9bc4fd'\u001b[39m,\n    date: \u001b[32m'2025-09-07'\u001b[39m,\n    time: \u001b[32m'12:41:12.696'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m24\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Tea'\u001b[39m,\n    runningBalance: \u001b[33m2964376.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bd7bcdf115e8a75b9bc4fc'\u001b[39m,\n    date: \u001b[32m'2025-09-06'\u001b[39m,\n    time: \u001b[32m'12:34:21.35'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m665\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To shubham for lunch and Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2964400.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  ... 120 more items\n]\n"
+                          "text": "🧾 GET Response: [\n  {\n    id: \u001b[32m'68e80f02cce1cb176bb23db0'\u001b[39m,\n    date: \u001b[32m'2025-10-10'\u001b[39m,\n    time: \u001b[32m'19:37:38.174'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Bank Charges'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Testing update'\u001b[39m,\n    runningBalance: \u001b[33m1618156.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e7c062a07faf4f116aad12'\u001b[39m,\n    date: \u001b[32m'2025-10-09'\u001b[39m,\n    time: \u001b[32m'14:02:10.677'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m180\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Given refreshment to team'\u001b[39m,\n    runningBalance: \u001b[33m1618166.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e7c03ea07faf4f116aad11'\u001b[39m,\n    date: \u001b[32m'2025-10-09'\u001b[39m,\n    time: \u001b[32m'14:01:34.593'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m65\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch bowl'\u001b[39m,\n    runningBalance: \u001b[33m1618346.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e69fc3a07faf4f116aacf7'\u001b[39m,\n    date: \u001b[32m'2025-10-08'\u001b[39m,\n    time: \u001b[32m'17:30:43.074'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Vegetables '\u001b[39m,\n    runningBalance: \u001b[33m1618411.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e682d3a07faf4f116aacf6'\u001b[39m,\n    date: \u001b[32m'2025-10-08'\u001b[39m,\n    time: \u001b[32m'15:27:15.117'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m170\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1618461.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e57e9ea07faf4f116aace2'\u001b[39m,\n    date: \u001b[32m'2025-10-07'\u001b[39m,\n    time: \u001b[32m'20:57:02.893'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m65\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m1618631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e57e7ca07faf4f116aace1'\u001b[39m,\n    date: \u001b[32m'2025-10-07'\u001b[39m,\n    time: \u001b[32m'20:56:28.599'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m1618696.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3d91da07faf4f116aace0'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'14:58:37.342'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m30\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lansi drink '\u001b[39m,\n    runningBalance: \u001b[33m1618766.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3b3a4a07faf4f116aacdf'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'12:18:44.047'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1618796.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e3b2c9a07faf4f116aacde'\u001b[39m,\n    date: \u001b[32m'2025-10-06'\u001b[39m,\n    time: \u001b[32m'12:15:05.913'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Entertainment'\u001b[39m,\n    amount: \u001b[33m4300\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar '\u001b[39m,\n    runningBalance: \u001b[33m1618846.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e2b513a07faf4f116aacdd'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'18:12:35.743'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1623146.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e2b49ba07faf4f116aacdc'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'18:10:35.095'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m280\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai'\u001b[39m,\n    runningBalance: \u001b[33m1623216.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e24ff0a07faf4f116aacdb'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'11:01:04.624'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m4360\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electricity Bill for Goregaon room'\u001b[39m,\n    runningBalance: \u001b[33m1623496.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e23d0aa07faf4f116aacda'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'09:40:26.034'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m190\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1627856.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e23cdda07faf4f116aacd9'\u001b[39m,\n    date: \u001b[32m'2025-10-05'\u001b[39m,\n    time: \u001b[32m'09:39:41.233'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Breakfast '\u001b[39m,\n    runningBalance: \u001b[33m1628046.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e14ae86f459a2eb96acef9'\u001b[39m,\n    date: \u001b[32m'2025-10-04'\u001b[39m,\n    time: \u001b[32m'16:27:20.409'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m130\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1628091.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e1243d6f459a2eb96acef7'\u001b[39m,\n    date: \u001b[32m'2025-10-04'\u001b[39m,\n    time: \u001b[32m'13:42:21.709'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Salary'\u001b[39m,\n    amount: \u001b[33m122292\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Salary for SEP 2025 month from Ampcus '\u001b[39m,\n    runningBalance: \u001b[33m1628221.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dff7c26f459a2eb96acef6'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'16:20:18.852'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m275\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m1505929.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88a16f459a2eb96acef5'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:26:09.314'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m90\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Breakfast '\u001b[39m,\n    runningBalance: \u001b[33m1506204.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88866f459a2eb96acef4'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:25:42.651'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1305\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Petrol in my bike (11.75 ltr)'\u001b[39m,\n    runningBalance: \u001b[33m1506294.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68df88216f459a2eb96acef3'\u001b[39m,\n    date: \u001b[32m'2025-10-03'\u001b[39m,\n    time: \u001b[32m'08:24:01.917'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m22\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Recharge of laxmi mobile 1 day top up'\u001b[39m,\n    runningBalance: \u001b[33m1507599.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68e124ae6f459a2eb96acef8'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'13:44:14.307'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Bank Charges'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Trial with IMPS payment option'\u001b[39m,\n    runningBalance: \u001b[33m1507621.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec4ad6f459a2eb96acef2'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:30:05.055'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m13000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rent for Goregaon room Oct 2025'\u001b[39m,\n    runningBalance: \u001b[33m1507631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec4176f459a2eb96acef1'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:27:35.985'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m350\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m1520631.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec3fd6f459a2eb96acef0'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:27:09.685'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m200000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar covert into cash given to Ajit Dhumal '\u001b[39m,\n    runningBalance: \u001b[33m1520981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dec37d6f459a2eb96aceef'\u001b[39m,\n    date: \u001b[32m'2025-10-02'\u001b[39m,\n    time: \u001b[32m'18:25:01.109'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m399000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar covert into cash given to Ajit Dhumal '\u001b[39m,\n    runningBalance: \u001b[33m1720981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de0b0697884c8960efbfe1'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:17:58.599'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m1000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To dnyaneshwar for convert into cash given to Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2119981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de0ad097884c8960efbfe0'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:17:04.544'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m200000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To dnyaneshwar for convert into cash given to Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2120981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de09ea97884c8960efbfdf'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:13:14.313'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m250\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2320981.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68de09ae97884c8960efbfde'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'05:12:14.555'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Shinde Pool to PCMC'\u001b[39m,\n    runningBalance: \u001b[33m2321231.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dd404897884c8960efbfdd'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'14:52:56.461'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m650\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'2nd Bike servicing '\u001b[39m,\n    runningBalance: \u001b[33m2321291.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc3e6897884c8960efbfdb'\u001b[39m,\n    date: \u001b[32m'2025-10-01'\u001b[39m,\n    time: \u001b[32m'20:32:40.81'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m125\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Sweet - Sonpapadi '\u001b[39m,\n    runningBalance: \u001b[33m2321941.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dd3bc497884c8960efbfdc'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'14:33:40.344'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai '\u001b[39m,\n    runningBalance: \u001b[33m2322066.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc3db097884c8960efbfda'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'20:29:36.726'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m150\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'FARSAN'\u001b[39m,\n    runningBalance: \u001b[33m2322266.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68dc1c4497884c8960efbfd9'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'18:07:00.951'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To Gopi Sawant'\u001b[39m,\n    runningBalance: \u001b[33m2322416.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6d7f97884c8960efbfd5'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'05:41:19.303'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Prajwal for survival '\u001b[39m,\n    runningBalance: \u001b[33m2322616.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6cfc97884c8960efbfd4'\u001b[39m,\n    date: \u001b[32m'2025-09-30'\u001b[39m,\n    time: \u001b[32m'05:39:08.813'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m300000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for covert into cash for given to Ajit Dhumal'\u001b[39m,\n    runningBalance: \u001b[33m2324116.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6cbc97884c8960efbfd3'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'05:38:04.185'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2624116.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68db6ca997884c8960efbfd2'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'05:37:45.848'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2624216.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9823297884c8960efbfd1'\u001b[39m,\n    date: \u001b[32m'2025-09-29'\u001b[39m,\n    time: \u001b[32m'18:45:06.671'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Bank Charges'\u001b[39m,\n    amount: \u001b[33m18\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'While doing payment through Axis Bank app (Payee)'\u001b[39m,\n    runningBalance: \u001b[33m2624266.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9801b97884c8960efbfcf'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'18:36:11.713'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m160000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for converting into cash to give Ajit Dhumal.'\u001b[39m,\n    runningBalance: \u001b[33m2624284.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9574197884c8960efbfce'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:41:53.07'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2784284.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d9572997884c8960efbfcd'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:41:29.76'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Mumbai'\u001b[39m,\n    runningBalance: \u001b[33m2784484.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d956f197884c8960efbfcc'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'15:40:33.893'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Juice'\u001b[39m,\n    runningBalance: \u001b[33m2784584.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d8f13a97884c8960efbfcb'\u001b[39m,\n    date: \u001b[32m'2025-09-28'\u001b[39m,\n    time: \u001b[32m'08:26:34.841'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Gift/Donation'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To naam foundation for crisis of heavy rainfall in Marathwada'\u001b[39m,\n    runningBalance: \u001b[33m2784644.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d8f0c597884c8960efbfca'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'08:24:37.779'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Milk'\u001b[39m,\n    runningBalance: \u001b[33m2784744.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7c0a997884c8960efbfc9'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'10:47:05.527'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m8000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From shubham '\u001b[39m,\n    runningBalance: \u001b[33m2784804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7c08597884c8960efbfc8'\u001b[39m,\n    date: \u001b[32m'2025-09-27'\u001b[39m,\n    time: \u001b[32m'10:46:29.099'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m40000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Dnyaneshwar for converting into cash to give Ajit Dhumal.'\u001b[39m,\n    runningBalance: \u001b[33m2776804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d7688a97884c8960efbfc7'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'04:31:06.046'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m15000\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To Laxmi for new mobile '\u001b[39m,\n    runningBalance: \u001b[33m2816804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d767f797884c8960efbfc6'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'04:28:39.041'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Gift/Donation'\u001b[39m,\n    amount: \u001b[33m15000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Gift realme 15 pro mobile to laxmi'\u001b[39m,\n    runningBalance: \u001b[33m2831804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d68c9397884c8960efbfc5'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'12:52:35.981'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1200\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Paju for mess SEP'\u001b[39m,\n    runningBalance: \u001b[33m2846804.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d58b8e97884c8960efbfc4'\u001b[39m,\n    date: \u001b[32m'2025-09-26'\u001b[39m,\n    time: \u001b[32m'18:35:58.033'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1600\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Bengaluru to Pune'\u001b[39m,\n    runningBalance: \u001b[33m2848004.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57497a603b14c06a1f878'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:57:59.362'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2849604.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d573c9a603b14c06a1f877'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:54:33.219'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Printing & Stationery'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Xerox of resume '\u001b[39m,\n    runningBalance: \u001b[33m2850104.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d572c5a603b14c06a1f875'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:50:13.255'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m183\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2850149.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57294a603b14c06a1f874'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:49:24.905'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m600\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Benglore pg'\u001b[39m,\n    runningBalance: \u001b[33m2850332.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d57217a603b14c06a1f873'\u001b[39m,\n    date: \u001b[32m'2025-09-25'\u001b[39m,\n    time: \u001b[32m'16:47:19.801'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m256\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Intercity bengalore (Majestic-KRPuram-MG road)'\u001b[39m,\n    runningBalance: \u001b[33m2850932.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41319a603b14c06a1f872'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:49:45.253'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m240\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2851188.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d412a1a603b14c06a1f871'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:47:45.734'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Family support'\u001b[39m,\n    amount: \u001b[33m1000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Laxmi '\u001b[39m,\n    runningBalance: \u001b[33m2851428.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41285a603b14c06a1f870'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:47:17.971'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m180\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2852428.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41252a603b14c06a1f86f'\u001b[39m,\n    date: \u001b[32m'2025-09-24'\u001b[39m,\n    time: \u001b[32m'15:46:26.979'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m1570\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune to Bengaluru '\u001b[39m,\n    runningBalance: \u001b[33m2852608.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d41231a603b14c06a1f86e'\u001b[39m,\n    date: \u001b[32m'2025-09-23'\u001b[39m,\n    time: \u001b[32m'15:45:53.179'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m201\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pune home'\u001b[39m,\n    runningBalance: \u001b[33m2854178.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68d00a4ca603b14c06a1f862'\u001b[39m,\n    date: \u001b[32m'2025-09-21'\u001b[39m,\n    time: \u001b[32m'14:23:08.406'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m100\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Mosambi+Chinku'\u001b[39m,\n    runningBalance: \u001b[33m2854379.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ced242a603b14c06a1f861'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'16:11:46.411'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m120\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'dinner'\u001b[39m,\n    runningBalance: \u001b[33m2854479.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ced208a603b14c06a1f860'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'16:10:48.024'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Warje to shinde pool pune'\u001b[39m,\n    runningBalance: \u001b[33m2854599.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68ce6997a603b14c06a1f85f'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'08:45:11.139'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m70\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Mumbai to warje pune'\u001b[39m,\n    runningBalance: \u001b[33m2854609.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cdae19a603b14c06a1f85e'\u001b[39m,\n    date: \u001b[32m'2025-09-20'\u001b[39m,\n    time: \u001b[32m'19:25:13.754'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch refund from mayur via vijay'\u001b[39m,\n    runningBalance: \u001b[33m2854679.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cc2caca603b14c06a1f85d'\u001b[39m,\n    date: \u001b[32m'2025-09-18'\u001b[39m,\n    time: \u001b[32m'16:00:44.92'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m240\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2854629.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb9b8ba603b14c06a1f85c'\u001b[39m,\n    date: \u001b[32m'2025-09-18'\u001b[39m,\n    time: \u001b[32m'05:41:31.67'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Utilities'\u001b[39m,\n    amount: \u001b[33m2000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To paju for licence '\u001b[39m,\n    runningBalance: \u001b[33m2854869.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb04f1a603b14c06a1f85b'\u001b[39m,\n    date: \u001b[32m'2025-09-17'\u001b[39m,\n    time: \u001b[32m'18:58:57.941'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m60\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2856869.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68cb04d8a603b14c06a1f85a'\u001b[39m,\n    date: \u001b[32m'2025-09-17'\u001b[39m,\n    time: \u001b[32m'18:58:32.674'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2856929.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c994dca603b14c06a1f859'\u001b[39m,\n    date: \u001b[32m'2025-09-16'\u001b[39m,\n    time: \u001b[32m'16:48:28.735'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m140\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2856974.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c99434a603b14c06a1f858'\u001b[39m,\n    date: \u001b[32m'2025-09-16'\u001b[39m,\n    time: \u001b[32m'16:45:40.114'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m130\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch bowl'\u001b[39m,\n    runningBalance: \u001b[33m2857114.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c84947a603b14c06a1f854'\u001b[39m,\n    date: \u001b[32m'2025-09-15'\u001b[39m,\n    time: \u001b[32m'17:13:43.324'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m185\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner(chinese+lanssi)'\u001b[39m,\n    runningBalance: \u001b[33m2857244.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c84902a603b14c06a1f853'\u001b[39m,\n    date: \u001b[32m'2025-09-15'\u001b[39m,\n    time: \u001b[32m'17:12:34.371'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m80\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2857429.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c7063aa603b14c06a1f84f'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'18:15:22.262'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Rent'\u001b[39m,\n    amount: \u001b[33m2500\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rent for SEP 2025 month (Pune)'\u001b[39m,\n    runningBalance: \u001b[33m2857509.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c705efa603b14c06a1f84e'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'18:14:07.28'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m10000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Laxmi for Advance Testing classes.'\u001b[39m,\n    runningBalance: \u001b[33m2860009.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c67fe5a603b14c06a1f84b'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'08:42:13.617'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m35\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Vegetables'\u001b[39m,\n    runningBalance: \u001b[33m2850009.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c65b13a603b14c06a1f84a'\u001b[39m,\n    date: \u001b[32m'2025-09-14'\u001b[39m,\n    time: \u001b[32m'06:05:07.974'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m20\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To lax for Tea'\u001b[39m,\n    runningBalance: \u001b[33m2850044.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c58ff0a603b14c06a1f849'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'15:38:24.228'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Grocery'\u001b[39m,\n    amount: \u001b[33m224\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Rice+Dal+Eggs'\u001b[39m,\n    runningBalance: \u001b[33m2850064.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c57e57a603b14c06a1f848'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'14:23:19.863'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m55\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Biscuits'\u001b[39m,\n    runningBalance: \u001b[33m2850288.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c52ebda603b14c06a1f846'\u001b[39m,\n    date: \u001b[32m'2025-09-13'\u001b[39m,\n    time: \u001b[32m'08:43:41.294'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m36\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Vada Pav'\u001b[39m,\n    runningBalance: \u001b[33m2850343.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c9374aa603b14c06a1f857'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'10:09:14.025'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Transport'\u001b[39m,\n    amount: \u001b[33m145\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Pawai to Goregaon cab'\u001b[39m,\n    runningBalance: \u001b[33m2850379.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c45872a603b14c06a1f844'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:29:22.153'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m850\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2850524.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c45348a603b14c06a1f843'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:07:20.527'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m50000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Ajit Dhumal for Plot'\u001b[39m,\n    runningBalance: \u001b[33m2851374.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c452dfa603b14c06a1f842'\u001b[39m,\n    date: \u001b[32m'2025-09-12'\u001b[39m,\n    time: \u001b[32m'17:05:35.131'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch'\u001b[39m,\n    runningBalance: \u001b[33m2901374.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30bcba603b14c06a1f83d'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:50:03.326'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Investment'\u001b[39m,\n    amount: \u001b[33m50000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'To Ajit Dhumal for plot'\u001b[39m,\n    runningBalance: \u001b[33m2901424.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b7ea603b14c06a1f83c'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:48:46.15'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2951424.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b4ca603b14c06a1f83b'\u001b[39m,\n    date: \u001b[32m'2025-09-11'\u001b[39m,\n    time: \u001b[32m'17:47:56.004'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m50\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2951469.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c30b2ba603b14c06a1f83a'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'17:47:23.109'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m243\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner (dal khichadi)'\u001b[39m,\n    runningBalance: \u001b[33m2951519.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c1873aa603b14c06a1f833'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'14:12:10.811'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m80\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch (Non veg Noodles)'\u001b[39m,\n    runningBalance: \u001b[33m2951762.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c10294a603b14c06a1f81b'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'04:46:12.621'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'EMI'\u001b[39m,\n    amount: \u001b[33m8961\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Axis Bank for month 1-10 Sep 2025 interest rate only.'\u001b[39m,\n    runningBalance: \u001b[33m2951842.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c0e744a603b14c06a1f816'\u001b[39m,\n    date: \u001b[32m'2025-09-10'\u001b[39m,\n    time: \u001b[32m'02:49:40.672'\u001b[39m,\n    type: \u001b[32m'credit'\u001b[39m,\n    category: \u001b[32m'Refund'\u001b[39m,\n    amount: \u001b[33m5000\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'From Akshay Badhe'\u001b[39m,\n    runningBalance: \u001b[33m2960803.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c05516a603b14c06a1f7fd'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'16:25:58.142'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Health'\u001b[39m,\n    amount: \u001b[33m84\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electrol powder and cofsil'\u001b[39m,\n    runningBalance: \u001b[33m2955803.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68c0447ca603b14c06a1f7fa'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'15:15:08.025'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Lending'\u001b[39m,\n    amount: \u001b[33m8000\u001b[39m,\n    reimbursable: \u001b[33mtrue\u001b[39m,\n    comments: \u001b[32m'To shubham for EMI'\u001b[39m,\n    runningBalance: \u001b[33m2955887.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bfea29f115e8a75b9bc539'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'08:49:45.632'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m258\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch and Dinner '\u001b[39m,\n    runningBalance: \u001b[33m2963887.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bf3f9af115e8a75b9bc523'\u001b[39m,\n    date: \u001b[32m'2025-09-09'\u001b[39m,\n    time: \u001b[32m'20:42:02.929'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m10\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Tea'\u001b[39m,\n    runningBalance: \u001b[33m2964145.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bf3dd9f115e8a75b9bc522'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'20:34:33.744'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Dinner'\u001b[39m,\n    runningBalance: \u001b[33m2964155.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68be8a3ff115e8a75b9bc521'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'07:48:15.15'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Food'\u001b[39m,\n    amount: \u001b[33m45\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Lunch '\u001b[39m,\n    runningBalance: \u001b[33m2964200.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  {\n    id: \u001b[32m'68bdda38f115e8a75b9bc505'\u001b[39m,\n    date: \u001b[32m'2025-09-08'\u001b[39m,\n    time: \u001b[32m'19:17:12.958'\u001b[39m,\n    type: \u001b[32m'debit'\u001b[39m,\n    category: \u001b[32m'Health'\u001b[39m,\n    amount: \u001b[33m46\u001b[39m,\n    reimbursable: \u001b[33mfalse\u001b[39m,\n    comments: \u001b[32m'Electrol powder '\u001b[39m,\n    runningBalance: \u001b[33m2964245.96\u001b[39m,\n    labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n  },\n  ... 125 more items\n]\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
                         },
                         {
-                          "text": "Total Transaction Entries: 220\n"
+                          "text": "Total Transaction Entries: 225\n"
                         },
                         {
-                          "text": "Food Category: 103\n"
+                          "text": "Food Category: 106\n"
                         },
                         {
                           "text": "Transport Category: 18\n"
@@ -194,7 +194,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:43.327Z",
+                      "startTime": "2025-10-09T19:42:58.242Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -202,9 +202,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-494734279c5bedbcc20b",
+              "id": "22600f81cd952af39019-1e97c36dc156bfac6bfc",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 19,
+              "line": 22,
               "column": 5
             },
             {
@@ -213,7 +213,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -223,7 +223,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 957,
+                      "duration": 973,
                       "errors": [],
                       "stdout": [
                         {
@@ -236,7 +236,7 @@
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 953 ms\n"
+                          "text": "⏱️ Response Time: 970 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 1.54 KB\n"
@@ -250,7 +250,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:45.264Z",
+                      "startTime": "2025-10-09T19:42:59.869Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -258,9 +258,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-20ba6b248057f500ea7d",
+              "id": "22600f81cd952af39019-a9e51659e25f9db1f5e4",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 23,
+              "line": 27,
               "column": 5
             },
             {
@@ -269,7 +269,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -279,7 +279,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1021,
+                      "duration": 1017,
                       "errors": [],
                       "stdout": [
                         {
@@ -292,7 +292,7 @@
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1018 ms\n"
+                          "text": "⏱️ Response Time: 1015 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 0.26 KB\n"
@@ -306,7 +306,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:46.223Z",
+                      "startTime": "2025-10-09T19:43:00.844Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -314,9 +314,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-c60089f0506c2bc0a6ca",
+              "id": "22600f81cd952af39019-20277851563122f185aa",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 27,
+              "line": 32,
               "column": 5
             },
             {
@@ -325,7 +325,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -335,7 +335,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1358,
+                      "duration": 1418,
                       "errors": [],
                       "stdout": [
                         {
@@ -348,13 +348,13 @@
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1357 ms\n"
+                          "text": "⏱️ Response Time: 1412 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 0.13 KB\n"
                         },
                         {
-                          "text": "🧾 GET Response: [\n  { id: \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m, count: \u001b[33m103\u001b[39m },\n  { id: \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, count: \u001b[33m5\u001b[39m },\n  { id: \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m, count: \u001b[33m29\u001b[39m }\n]\n"
+                          "text": "🧾 GET Response: [\n  { id: \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m, count: \u001b[33m106\u001b[39m },\n  { id: \u001b[32m'68bc24faf115e8a75b9bc4f8'\u001b[39m, count: \u001b[33m5\u001b[39m },\n  { id: \u001b[32m'68bc24faf115e8a75b9bc4f7'\u001b[39m, count: \u001b[33m31\u001b[39m }\n]\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
@@ -362,7 +362,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:47.246Z",
+                      "startTime": "2025-10-09T19:43:01.862Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -370,9 +370,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-bdc05ee0564a7d26495d",
+              "id": "22600f81cd952af39019-7bd4ed8292cbbee4615f",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 31,
+              "line": 37,
               "column": 5
             },
             {
@@ -381,7 +381,7 @@
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -391,7 +391,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 702,
+                      "duration": 879,
                       "errors": [],
                       "stdout": [
                         {
@@ -404,7 +404,7 @@
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 700 ms\n"
+                          "text": "⏱️ Response Time: 873 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 0.01 KB\n"
@@ -418,7 +418,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:48.605Z",
+                      "startTime": "2025-10-09T19:43:03.283Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -426,18 +426,18 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-02461c16d3d18a6aac9a",
+              "id": "22600f81cd952af39019-a4e30386d48b5fb05b7c",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 35,
+              "line": 42,
               "column": 5
             },
             {
-              "title": "7️⃣ Post Categories API for Debit transaction",
+              "title": "7️⃣ Post Categories API (Debit)",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -447,7 +447,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 967,
+                      "duration": 1134,
                       "errors": [],
                       "stdout": [
                         {
@@ -457,7 +457,7 @@
                           "text": "✅ Payload: {\n  \"name\": \"Testing\",\n  \"type\": \"debit\"\n}\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 963 ms\n"
+                          "text": "⏱️ Response Time: 1127 ms\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
@@ -466,18 +466,18 @@
                           "text": "📦 Response Size: 0.06 KB\n"
                         },
                         {
-                          "text": "🧾 JSON Response: { id: \u001b[32m'68e58e81a07faf4f116aacf2'\u001b[39m, name: \u001b[32m'Testing'\u001b[39m, type: \u001b[32m'debit'\u001b[39m }\n"
+                          "text": "🧾 JSON Response: { id: \u001b[32m'68e81048cce1cb176bb23db5'\u001b[39m, name: \u001b[32m'Testing'\u001b[39m, type: \u001b[32m'debit'\u001b[39m }\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
                         },
                         {
-                          "text": "🔑 Global category ID set: 68e58e81a07faf4f116aacf2\n"
+                          "text": "🔑 Global category ID set: 68e81048cce1cb176bb23db5\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:49.309Z",
+                      "startTime": "2025-10-09T19:43:04.166Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -485,18 +485,18 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-3de760076e50be937e5e",
+              "id": "22600f81cd952af39019-bfc3f9e95fd42fbc6a4f",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 39,
+              "line": 48,
               "column": 5
             },
             {
-              "title": "8️⃣ Delete Categories API for Debit transaction",
+              "title": "8️⃣ Update Categories API (Debit)",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -506,20 +506,82 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1215,
+                      "duration": 1525,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Verifying: Update Categories API for debit...\n"
+                        },
+                        {
+                          "text": "🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e81048cce1cb176bb23db5\n"
+                        },
+                        {
+                          "text": "✅ Payload: {\n  \"newName\": \"Testing updated\"\n}\n"
+                        },
+                        {
+                          "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "⏱️ Response Time: 1518 ms\n"
+                        },
+                        {
+                          "text": "📦 Response Size: 0.07 KB\n"
+                        },
+                        {
+                          "text": "🧾 PUT Response: {\n  id: \u001b[32m'68e81048cce1cb176bb23db5'\u001b[39m,\n  name: \u001b[32m'Testing updated'\u001b[39m,\n  type: \u001b[32m'debit'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "✅ PUT request updated successfully! Updated name: Testing updated\n"
+                        },
+                        {
+                          "text": "----------------------------------------------------------------------------------------------------\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-09T19:43:05.302Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22600f81cd952af39019-3a9cd86e3e0284dcb3d7",
+              "file": "Tests/FinanceTracker.test.js",
+              "line": 53,
+              "column": 5
+            },
+            {
+              "title": "9️⃣ Delete Categories API (Debit)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1193,
                       "errors": [],
                       "stdout": [
                         {
                           "text": "🔄 Verifying: Delete Categories API for debit...\n"
                         },
                         {
-                          "text": "🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e58e81a07faf4f116aacf2\n"
+                          "text": "🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e81048cce1cb176bb23db5\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m204\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1203 ms\n"
+                          "text": "⏱️ Response Time: 1178 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 0.00 KB\n"
@@ -533,7 +595,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:50.277Z",
+                      "startTime": "2025-10-09T19:43:06.829Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -541,18 +603,18 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-d38a2dc9588eb3691569",
+              "id": "22600f81cd952af39019-f2ec42dad7b56c250734",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 44,
+              "line": 58,
               "column": 5
             },
             {
-              "title": "9️⃣ Post Categories API for Credit transaction",
+              "title": "🔟 Post Categories API (Credit)",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -562,7 +624,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 942,
+                      "duration": 1042,
                       "errors": [],
                       "stdout": [
                         {
@@ -572,7 +634,7 @@
                           "text": "✅ Payload: {\n  \"name\": \"Testing\",\n  \"type\": \"credit\"\n}\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 932 ms\n"
+                          "text": "⏱️ Response Time: 1036 ms\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
@@ -581,18 +643,18 @@
                           "text": "📦 Response Size: 0.06 KB\n"
                         },
                         {
-                          "text": "🧾 JSON Response: { id: \u001b[32m'68e58e84a07faf4f116aacf3'\u001b[39m, name: \u001b[32m'Testing'\u001b[39m, type: \u001b[32m'credit'\u001b[39m }\n"
+                          "text": "🧾 JSON Response: { id: \u001b[32m'68e8104ccce1cb176bb23db6'\u001b[39m, name: \u001b[32m'Testing'\u001b[39m, type: \u001b[32m'credit'\u001b[39m }\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
                         },
                         {
-                          "text": "🔑 Global category ID set: 68e58e84a07faf4f116aacf3\n"
+                          "text": "🔑 Global category ID set: 68e8104ccce1cb176bb23db6\n"
                         }
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:51.495Z",
+                      "startTime": "2025-10-09T19:43:08.026Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -600,18 +662,18 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-986feb76a1eb5a295acd",
+              "id": "22600f81cd952af39019-019801ac8c6b97e290f1",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 49,
+              "line": 64,
               "column": 5
             },
             {
-              "title": "1️⃣0️⃣ Delete Categories API for credit transaction",
+              "title": "1️⃣1️⃣ Update Categories API (Credit)",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -621,20 +683,82 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1139,
+                      "duration": 1442,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Verifying: Update Categories API for credit...\n"
+                        },
+                        {
+                          "text": "🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e8104ccce1cb176bb23db6\n"
+                        },
+                        {
+                          "text": "✅ Payload: {\n  \"newName\": \"Testing updated\"\n}\n"
+                        },
+                        {
+                          "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "⏱️ Response Time: 1435 ms\n"
+                        },
+                        {
+                          "text": "📦 Response Size: 0.07 KB\n"
+                        },
+                        {
+                          "text": "🧾 PUT Response: {\n  id: \u001b[32m'68e8104ccce1cb176bb23db6'\u001b[39m,\n  name: \u001b[32m'Testing updated'\u001b[39m,\n  type: \u001b[32m'credit'\u001b[39m\n}\n"
+                        },
+                        {
+                          "text": "✅ PUT request updated successfully! Updated name: Testing updated\n"
+                        },
+                        {
+                          "text": "----------------------------------------------------------------------------------------------------\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-09T19:43:09.071Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22600f81cd952af39019-fa82c7a4fcba722176d2",
+              "file": "Tests/FinanceTracker.test.js",
+              "line": 69,
+              "column": 5
+            },
+            {
+              "title": "1️⃣2️⃣ Delete Categories API (Credit)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1187,
                       "errors": [],
                       "stdout": [
                         {
                           "text": "🔄 Verifying: Delete Categories API for credit...\n"
                         },
                         {
-                          "text": "🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e58e84a07faf4f116aacf3\n"
+                          "text": "🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e8104ccce1cb176bb23db6\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m204\u001b[39m\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1134 ms\n"
+                          "text": "⏱️ Response Time: 1181 ms\n"
                         },
                         {
                           "text": "📦 Response Size: 0.00 KB\n"
@@ -648,7 +772,7 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:52.443Z",
+                      "startTime": "2025-10-09T19:43:10.516Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -656,9 +780,186 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-0c0b221db8e3c201da00",
+              "id": "22600f81cd952af39019-e61d7254d4e3edc1e29f",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 53,
+              "line": 74,
+              "column": 5
+            },
+            {
+              "title": "1️⃣3️⃣ Post Transaction API (Debit)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1621,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Verifying: Post Transaction API for debit...\n"
+                        },
+                        {
+                          "text": "✅ Payload: {\n  \"date\": \"2025-10-10\",\n  \"type\": \"debit\",\n  \"category\": \"Bank Charges\",\n  \"amount\": \"10\",\n  \"reimbursable\": \"N\",\n  \"comments\": \"Testing\",\n  \"labelIds\": [\n    \"68bc24f7f115e8a75b9bc4f6\"\n  ]\n}\n"
+                        },
+                        {
+                          "text": "⏱️ Response Time: 1615 ms\n"
+                        },
+                        {
+                          "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "📦 Response Size: 0.23 KB\n"
+                        },
+                        {
+                          "text": "🧾 JSON Response: {\n  id: \u001b[32m'68e81051cce1cb176bb23db7'\u001b[39m,\n  date: \u001b[32m'2025-10-10'\u001b[39m,\n  time: \u001b[32m'19:43:13.01055164'\u001b[39m,\n  type: \u001b[32m'debit'\u001b[39m,\n  category: \u001b[32m'Bank Charges'\u001b[39m,\n  amount: \u001b[33m10\u001b[39m,\n  reimbursable: \u001b[33mfalse\u001b[39m,\n  comments: \u001b[32m'Testing'\u001b[39m,\n  runningBalance: \u001b[33m-10\u001b[39m,\n  labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n}\n"
+                        },
+                        {
+                          "text": "----------------------------------------------------------------------------------------------------\n"
+                        },
+                        {
+                          "text": "🔑 Global Transaction ID set: 68e81051cce1cb176bb23db7\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-09T19:43:11.705Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22600f81cd952af39019-975857ef260aa93dc1dc",
+              "file": "Tests/FinanceTracker.test.js",
+              "line": 80,
+              "column": 5
+            },
+            {
+              "title": "1️⃣4️⃣ Update Transaction API (Debit)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 51895,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Verifying: Update Transaction API for debit...\n"
+                        },
+                        {
+                          "text": "🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e81051cce1cb176bb23db7\n"
+                        },
+                        {
+                          "text": "✅ Payload: {\n  \"date\": \"2025-10-10\",\n  \"type\": \"debit\",\n  \"category\": \"Bank Charges\",\n  \"amount\": \"10\",\n  \"reimbursable\": \"N\",\n  \"comments\": \"Testing update\",\n  \"labelIds\": [\n    \"68bc24f7f115e8a75b9bc4f6\"\n  ]\n}\n"
+                        },
+                        {
+                          "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
+                        },
+                        {
+                          "text": "⏱️ Response Time: 51888 ms\n"
+                        },
+                        {
+                          "text": "📦 Response Size: 0.24 KB\n"
+                        },
+                        {
+                          "text": "🧾 PUT Response: {\n  id: \u001b[32m'68e81051cce1cb176bb23db7'\u001b[39m,\n  date: \u001b[32m'2025-10-10'\u001b[39m,\n  time: \u001b[32m'19:43:13.01'\u001b[39m,\n  type: \u001b[32m'debit'\u001b[39m,\n  category: \u001b[32m'Bank Charges'\u001b[39m,\n  amount: \u001b[33m10\u001b[39m,\n  reimbursable: \u001b[33mfalse\u001b[39m,\n  comments: \u001b[32m'Testing update'\u001b[39m,\n  runningBalance: \u001b[33m1618156.96\u001b[39m,\n  labelIds: [ \u001b[32m'68bc24f7f115e8a75b9bc4f6'\u001b[39m ]\n}\n"
+                        },
+                        {
+                          "text": "✅ PUT request updated successfully! Updated name: N/A\n"
+                        },
+                        {
+                          "text": "----------------------------------------------------------------------------------------------------\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-09T19:43:13.329Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22600f81cd952af39019-5e0573d1121bffea0d75",
+              "file": "Tests/FinanceTracker.test.js",
+              "line": 85,
+              "column": 5
+            },
+            {
+              "title": "1️⃣5️⃣ Delete Transaction API (Debit)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "",
+                  "projectName": "",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 50941,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "🔄 Verifying: Delete Transaction API for debit...\n"
+                        },
+                        {
+                          "text": "🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e81051cce1cb176bb23db7\n"
+                        },
+                        {
+                          "text": "🔁 Status Code: \u001b[33m204\u001b[39m\n"
+                        },
+                        {
+                          "text": "⏱️ Response Time: 50926 ms\n"
+                        },
+                        {
+                          "text": "📦 Response Size: 0.00 KB\n"
+                        },
+                        {
+                          "text": "🧾 DELETE Response: <empty>\n"
+                        },
+                        {
+                          "text": "----------------------------------------------------------------------------------------------------\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-10-09T19:44:05.226Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "22600f81cd952af39019-aca6997c0fef10969db9",
+              "file": "Tests/FinanceTracker.test.js",
+              "line": 90,
               "column": 5
             }
           ]
@@ -666,16 +967,16 @@
         {
           "title": "Login Scenarios",
           "file": "Tests/FinanceTracker.test.js",
-          "line": 61,
+          "line": 113,
           "column": 6,
           "specs": [
             {
-              "title": "1️⃣ Login through post API",
+              "title": "1️⃣ Login through Post API",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
@@ -685,7 +986,7 @@
                       "workerIndex": 1,
                       "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 4327,
+                      "duration": 6138,
                       "errors": [],
                       "stdout": [
                         {
@@ -695,7 +996,7 @@
                           "text": "✅ Payload: {\n  \"email\": \"pratiknarute2@gmail.com\",\n  \"password\": \"Pratik@1234\"\n}\n"
                         },
                         {
-                          "text": "⏱️ Response Time: 1169 ms\n"
+                          "text": "⏱️ Response Time: 1697 ms\n"
                         },
                         {
                           "text": "🔁 Status Code: \u001b[33m200\u001b[39m\n"
@@ -704,7 +1005,7 @@
                           "text": "📦 Response Size: 0.20 KB\n"
                         },
                         {
-                          "text": "🧾 JSON Response: {\n  message: \u001b[32m'Logged in successfully'\u001b[39m,\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc1OTg3NDY4NCwiZXhwIjoxNzYyNDY2Njg0fQ.cQ_eRIDSqEHaC7xguydWsMk7CMND-musNmCy3kJtTlM'\u001b[39m\n}\n"
+                          "text": "🧾 JSON Response: {\n  message: \u001b[32m'Logged in successfully'\u001b[39m,\n  token: \u001b[32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OSwiZXhwIjoxNzYyNjMwOTc5fQ.k4dPgcoAQoLqiP_6vYbhl1tVIwBLkRCi-BLVw2hmFck'\u001b[39m\n}\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
@@ -727,13 +1028,13 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:42.141Z",
+                      "startTime": "2025-10-09T19:42:57.034Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "/Users/pratiknarute/Automation/Expense_Tracker_Project/Web_Finance_Tracker/test-results/Tests-FinanceTracker-Login-961ae--1️⃣-Login-through-post-API/video.webm"
+                          "path": "/Users/pratiknarute/Automation/Expense_Tracker_Project/Web_Finance_Tracker/test-results/Tests-FinanceTracker-Login-1b639--1️⃣-Login-through-Post-API/video.webm"
                         }
                       ]
                     }
@@ -741,28 +1042,28 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-07615fc36cc5cba7cf68",
+              "id": "22600f81cd952af39019-d6d547eac59f80f64d9e",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 62,
+              "line": 115,
               "column": 5
             },
             {
-              "title": "2️⃣ Login with valid credentials",
+              "title": "2️⃣ Login with Valid Credentials",
               "ok": true,
               "tags": [],
               "tests": [
                 {
-                  "timeout": 60000,
+                  "timeout": 120000,
                   "annotations": [],
                   "expectedStatus": "passed",
                   "projectId": "",
                   "projectName": "",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 3608,
+                      "duration": 4855,
                       "errors": [],
                       "stdout": [
                         {
@@ -778,7 +1079,7 @@
                           "text": "✅ Filled [Email Input] with value: pratiknarute2@gmail.com\n"
                         },
                         {
-                          "text": "⏳ Time taken: 0.07 sec\n"
+                          "text": "⏳ Time taken: 0.02 sec\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
@@ -790,7 +1091,7 @@
                           "text": "✅ Filled [Password Input] with value: Pratik@1234\n"
                         },
                         {
-                          "text": "⏳ Time taken: 0.07 sec\n"
+                          "text": "⏳ Time taken: 0.04 sec\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
@@ -814,7 +1115,7 @@
                           "text": "✅ Found [Login Success Message]\n"
                         },
                         {
-                          "text": "⏳ Time taken: 1.79 sec\n"
+                          "text": "⏳ Time taken: 2.80 sec\n"
                         },
                         {
                           "text": "----------------------------------------------------------------------------------------------------\n"
@@ -831,13 +1132,13 @@
                       ],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-10-07T22:04:46.785Z",
+                      "startTime": "2025-10-09T19:42:57.029Z",
                       "annotations": [],
                       "attachments": [
                         {
                           "name": "video",
                           "contentType": "video/webm",
-                          "path": "/Users/pratiknarute/Automation/Expense_Tracker_Project/Web_Finance_Tracker/test-results/Tests-FinanceTracker-Login-2ceb0-ogin-with-valid-credentials/video.webm"
+                          "path": "/Users/pratiknarute/Automation/Expense_Tracker_Project/Web_Finance_Tracker/test-results/Tests-FinanceTracker-Login-fa67a-ogin-with-Valid-Credentials/video.webm"
                         }
                       ]
                     }
@@ -845,9 +1146,9 @@
                   "status": "expected"
                 }
               ],
-              "id": "22600f81cd952af39019-16d03a9f1411c5bb9ef6",
+              "id": "22600f81cd952af39019-00f14802c7c7f3606ae9",
               "file": "Tests/FinanceTracker.test.js",
-              "line": 67,
+              "line": 120,
               "column": 5
             }
           ]
@@ -857,9 +1158,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-10-07T22:04:41.853Z",
-    "duration": 11750.176,
-    "expected": 12,
+    "startTime": "2025-10-09T19:42:56.723Z",
+    "duration": 119466.19,
+    "expected": 17,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0

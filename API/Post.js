@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const Utility = require('../../Base/Utility.js');
+const Utility = require('../Base/Utility.js');
 
 
 class Post extends Utility {
@@ -36,6 +36,18 @@ class Post extends Utility {
         console.log('🔑 Global category ID set:', global.categoryId);
 
         return categoryResponse;
+    }
+    async postTransactionAPI(transactionType) {
+        const transactionResponse = await this.postRequest(this.request,
+            'https://expense-tracker-backend-y788.onrender.com/api/transactions',
+            `Transaction_${transactionType}`,
+            `Post Transaction API for ${transactionType}`)
+
+        // ✅ Set category ID globally for later use (delete/update)
+        global.transactionId = transactionResponse.id;
+        console.log('🔑 Global Transaction ID set:', global.transactionId);
+        return transactionResponse;
+
     }
 
 }

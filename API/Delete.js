@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const Utility = require('../../Base/Utility.js');
+const Utility = require('../Base/Utility.js');
 
 class Delete extends Utility {
     constructor(request) {
@@ -16,6 +16,18 @@ class Delete extends Utility {
             this.request,
             `https://expense-tracker-backend-y788.onrender.com/api/categories/${global.categoryId}`,
             `Delete Categories API for ${transactionType}`
+        );
+        return deleteResponse;
+    }
+    async deleteTransactionAPI(transactionType) {
+        if (!global.transactionId) {
+            throw new Error('❌ transactionId is not set. Create a transaction first!');
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `https://expense-tracker-backend-y788.onrender.com/api/transactions/${global.transactionId}`,
+            `Delete Transaction API for ${transactionType}`
         );
         return deleteResponse;
     }

@@ -1,0 +1,51 @@
+{
+  "Login": {
+    "email": "pratiknarute2@gmail.com",
+    "password": "Pratik@1234"
+  },
+  "Categories_debit": {
+    "name": "Testing",
+    "type": "debit"
+  },
+  "Categories_credit": {
+    "name": "Testing",
+    "type": "credit"
+  },
+  "Categories_Update": {
+    "newName": "Testing updated"
+  },
+  "Transaction_debit": {
+    "date": "2025-10-10",
+    "type": "debit",
+    "category": "Bank Charges",
+    "amount": "10",
+    "reimbursable": "N",
+    "comments": "Testing",
+    "labelIds": [
+      "68bc24f7f115e8a75b9bc4f6"
+    ]
+  },
+  "Transaction_credit": {
+    "date": "2025-10-10",
+    "type": "credit",
+    "category": "Gift/Donation",
+    "amount": "10",
+    "reimbursable": "N",
+    "comments": "testing",
+    "labelIds": [
+      "68bc24faf115e8a75b9bc4f8",
+      "68bc24f7f115e8a75b9bc4f6"
+    ]
+  },
+  "Transaction_update": {
+    "date": "2025-10-10",
+    "type": "debit",
+    "category": "Bank Charges",
+    "amount": "10",
+    "reimbursable": "N",
+    "comments": "Testing update",
+    "labelIds": [
+      "68bc24f7f115e8a75b9bc4f6"
+    ]
+  }
+}

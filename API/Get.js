@@ -1,5 +1,5 @@
 const { expect } = require('@playwright/test');
-const Utility = require('../../Base/Utility.js');
+const Utility = require('../Base/Utility.js');
 
 class Get extends Utility {
     constructor(request) {
@@ -36,7 +36,7 @@ class Get extends Utility {
     async getLabelAPI() {
         let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels', 'Get Labels API')
     }
-    async getLabelUsageeAPI() {
+    async getLabelUsageAPI() {
         let getLabelUsageAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels/usage', 'Get Label Usage API')
     }
     async getOpeningBalanceAPI() {
