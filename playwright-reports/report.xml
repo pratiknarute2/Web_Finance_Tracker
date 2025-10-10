@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="17" failures="0" skipped="0" errors="0" time="118.737728">
-<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-10T03:34:51.361Z" hostname="" tests="17" failures="0" skipped="0" time="127.382" errors="0">
-<testcase name="🌐 API Testing Suite (Feature-wise) › 🔐 Authentication › POST | Login API" classname="Tests/FinanceTracker.test.js" time="1.724">
+<testsuites id="" name="" tests="17" failures="0" skipped="0" errors="0" time="6.521088">
+<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-10T17:30:39.001Z" hostname="" tests="17" failures="0" skipped="0" time="10.433" errors="0">
+<testcase name="🌐 API Testing Suite › 🔐 Authentication › POST | Login API" classname="Tests/FinanceTracker.test.js" time="0.144">
 <system-out>
 <![CDATA[
 🔹 Executing Login API...
@@ -9,24 +9,24 @@
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 1700 ms
+⏱️ Response Time: 127 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5MywiZXhwIjoxNzYyNjU5MjkzfQ.yGiRrRuLAskx5pyG90TTCPJl_73HJb0qxjfHTv3ZyCA'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDExNzQzOSwiZXhwIjoxNzYyNzA5NDM5fQ.zfQnYT4LJUY6R2SeQy8l-pl8G039gauvCf6Pyw-T9l0'[39m
 }
 ----------------------------------------------------------------------------------------------------
-🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5MywiZXhwIjoxNzYyNjU5MjkzfQ.yGiRrRuLAskx5pyG90TTCPJl_73HJb0qxjfHTv3ZyCA
+🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDExNzQzOSwiZXhwIjoxNzYyNzA5NDM5fQ.zfQnYT4LJUY6R2SeQy8l-pl8G039gauvCf6Pyw-T9l0
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 🏷️ Label Feature › GET | Fetch Label API" classname="Tests/FinanceTracker.test.js" time="1.008">
+<testcase name="🌐 API Testing Suite › 🏷️ Label Feature › GET | Fetch Label API" classname="Tests/FinanceTracker.test.js" time="0.034">
 <system-out>
 <![CDATA[🔄 Verifying: Get Labels API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels
+🌐 Sending GET request to: http://localhost:8080/api/labels
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1003 ms
+⏱️ Response Time: 32 ms
 📦 Response Size: 0.26 KB
 🧾 GET Response: [
   {
@@ -52,56 +52,56 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 🏷️ Label Feature › GET | Fetch Label Usage API" classname="Tests/FinanceTracker.test.js" time="1.408">
+<testcase name="🌐 API Testing Suite › 🏷️ Label Feature › GET | Fetch Label Usage API" classname="Tests/FinanceTracker.test.js" time="0.05">
 <system-out>
 <![CDATA[🔄 Verifying: Get Label Usage API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels/usage
+🌐 Sending GET request to: http://localhost:8080/api/labels/usage
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1403 ms
+⏱️ Response Time: 49 ms
 📦 Response Size: 0.13 KB
 🧾 GET Response: [
-  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m105[39m },
+  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m110[39m },
   { id: [32m'68bc24faf115e8a75b9bc4f8'[39m, count: [33m5[39m },
-  { id: [32m'68bc24faf115e8a75b9bc4f7'[39m, count: [33m31[39m }
+  { id: [32m'68bc24faf115e8a75b9bc4f7'[39m, count: [33m32[39m }
 ]
 ----------------------------------------------------------------------------------------------------
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💵 Opening Balance Feature › GET | Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.727">
+<testcase name="🌐 API Testing Suite › 💵 Opening Balance Feature › GET | Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.019">
 <system-out>
 <![CDATA[🔄 Verifying: Get Opening Balance API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance
+🌐 Sending GET request to: http://localhost:8080/api/transactions/opening-balance
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 724 ms
+⏱️ Response Time: 17 ms
 📦 Response Size: 0.01 KB
 🧾 GET Response: [33m50000[39m
 ----------------------------------------------------------------------------------------------------
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › POST | Create Debit Category" classname="Tests/FinanceTracker.test.js" time="0.982">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › POST | Create Debit Category" classname="Tests/FinanceTracker.test.js" time="0.03">
 <system-out>
 <![CDATA[🔄 Verifying: Post Categories API for debit...
 ✅ Payload: {
   "name": "Testing",
   "type": "debit"
 }
-⏱️ Response Time: 979 ms
+⏱️ Response Time: 28 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.06 KB
-🧾 JSON Response: { id: [32m'68e87ee1cce1cb176bb23dc1'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m }
+🧾 JSON Response: { id: [32m'68e942bfa8e543e9b282e4ff'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m }
 ----------------------------------------------------------------------------------------------------
-🔑 Global category ID set: 68e87ee1cce1cb176bb23dc1
+🔑 Global category ID set: 68e942bfa8e543e9b282e4ff
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › GET | Fetch Categories" classname="Tests/FinanceTracker.test.js" time="0.95">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › GET | Fetch Categories" classname="Tests/FinanceTracker.test.js" time="0.041">
 <system-out>
 <![CDATA[🔄 Verifying: Get Categories API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/categories
+🌐 Sending GET request to: http://localhost:8080/api/categories
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 945 ms
+⏱️ Response Time: 38 ms
 📦 Response Size: 1.61 KB
 🧾 GET Response: [
   {
@@ -161,7 +161,7 @@
     type: [32m'debit'[39m
   },
   { id: [32m'68bc201c1c428f12149f53c6'[39m, name: [32m'Rent'[39m, type: [32m'debit'[39m },
-  { id: [32m'68e87ee1cce1cb176bb23dc1'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m },
+  { id: [32m'68e942bfa8e543e9b282e4ff'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m },
   { id: [32m'68bc201b1c428f12149f53bf'[39m, name: [32m'Transport'[39m, type: [32m'debit'[39m },
   { id: [32m'68bc201d1c428f12149f53c7'[39m, name: [32m'Utilities'[39m, type: [32m'debit'[39m }
 ]
@@ -169,87 +169,91 @@
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › PUT | Update Debit Category" classname="Tests/FinanceTracker.test.js" time="1.414">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › PUT | Update Debit Category" classname="Tests/FinanceTracker.test.js" time="0.078">
 <system-out>
 <![CDATA[🔄 Verifying: Update Categories API for debit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee1cce1cb176bb23dc1
+🛠️ Sending PUT request to: http://localhost:8080/api/categories/68e942bfa8e543e9b282e4ff
 ✅ Payload: {
   "newName": "Testing updated"
 }
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1409 ms
+⏱️ Response Time: 74 ms
 📦 Response Size: 0.07 KB
 🧾 PUT Response: {
-  id: [32m'68e87ee1cce1cb176bb23dc1'[39m,
+  id: [32m'68e942bfa8e543e9b282e4ff'[39m,
   name: [32m'Testing updated'[39m,
   type: [32m'debit'[39m
 }
 ✅ PUT request updated successfully! Updated name: Testing updated
 ----------------------------------------------------------------------------------------------------
+✅ Updated category ID: 68e942bfa8e543e9b282e4ff with type: debit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › DELETE | Delete Debit Category" classname="Tests/FinanceTracker.test.js" time="1.244">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › DELETE | Delete Debit Category" classname="Tests/FinanceTracker.test.js" time="0.053">
 <system-out>
 <![CDATA[🔄 Verifying: Delete Categories API for debit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee1cce1cb176bb23dc1
+🗑️ Sending DELETE request to: http://localhost:8080/api/categories/68e942bfa8e543e9b282e4ff
 🔁 Status Code: [33m204[39m
-⏱️ Response Time: 1241 ms
+⏱️ Response Time: 47 ms
 📦 Response Size: 0.00 KB
 🧾 DELETE Response: <empty>
 ----------------------------------------------------------------------------------------------------
+✅ Deleted category ID: 68e942bfa8e543e9b282e4ff for type: debit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › POST | Create Credit Category" classname="Tests/FinanceTracker.test.js" time="1.035">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › POST | Create Credit Category" classname="Tests/FinanceTracker.test.js" time="0.042">
 <system-out>
 <![CDATA[🔄 Verifying: Post Categories API for credit...
 ✅ Payload: {
   "name": "Testing",
   "type": "credit"
 }
-⏱️ Response Time: 1030 ms
+⏱️ Response Time: 37 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.06 KB
-🧾 JSON Response: { id: [32m'68e87ee5cce1cb176bb23dc2'[39m, name: [32m'Testing'[39m, type: [32m'credit'[39m }
+🧾 JSON Response: { id: [32m'68e942bfa8e543e9b282e500'[39m, name: [32m'Testing'[39m, type: [32m'credit'[39m }
 ----------------------------------------------------------------------------------------------------
-🔑 Global category ID set: 68e87ee5cce1cb176bb23dc2
+🔑 Global category ID set: 68e942bfa8e543e9b282e500
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › PUT | Update Credit Category" classname="Tests/FinanceTracker.test.js" time="1.523">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › PUT | Update Credit Category" classname="Tests/FinanceTracker.test.js" time="0.065">
 <system-out>
 <![CDATA[🔄 Verifying: Update Categories API for credit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee5cce1cb176bb23dc2
+🛠️ Sending PUT request to: http://localhost:8080/api/categories/68e942bfa8e543e9b282e500
 ✅ Payload: {
   "newName": "Testing updated"
 }
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1517 ms
+⏱️ Response Time: 64 ms
 📦 Response Size: 0.07 KB
 🧾 PUT Response: {
-  id: [32m'68e87ee5cce1cb176bb23dc2'[39m,
+  id: [32m'68e942bfa8e543e9b282e500'[39m,
   name: [32m'Testing updated'[39m,
   type: [32m'credit'[39m
 }
 ✅ PUT request updated successfully! Updated name: Testing updated
 ----------------------------------------------------------------------------------------------------
+✅ Updated category ID: 68e942bfa8e543e9b282e500 with type: credit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › DELETE | Delete Credit Category" classname="Tests/FinanceTracker.test.js" time="1.226">
+<testcase name="🌐 API Testing Suite › 💰 Category Feature › DELETE | Delete Credit Category" classname="Tests/FinanceTracker.test.js" time="0.052">
 <system-out>
 <![CDATA[🔄 Verifying: Delete Categories API for credit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee5cce1cb176bb23dc2
+🗑️ Sending DELETE request to: http://localhost:8080/api/categories/68e942bfa8e543e9b282e500
 🔁 Status Code: [33m204[39m
-⏱️ Response Time: 1221 ms
+⏱️ Response Time: 50 ms
 📦 Response Size: 0.00 KB
 🧾 DELETE Response: <empty>
 ----------------------------------------------------------------------------------------------------
+✅ Deleted category ID: 68e942bfa8e543e9b282e500 for type: credit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › POST | Create Debit Transaction" classname="Tests/FinanceTracker.test.js" time="1.644">
+<testcase name="🌐 API Testing Suite › 💳 Transaction Feature › POST | Debit Transaction" classname="Tests/FinanceTracker.test.js" time="0.081">
 <system-out>
 <![CDATA[🔄 Verifying: Post Transaction API for debit...
 ✅ Payload: {
@@ -263,50 +267,122 @@
     "68bc24f7f115e8a75b9bc4f6"
   ]
 }
-⏱️ Response Time: 1638 ms
+⏱️ Response Time: 77 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.24 KB
 🧾 JSON Response: {
-  id: [32m'68e87eeacce1cb176bb23dc3'[39m,
+  id: [32m'68e942bfa8e543e9b282e501'[39m,
   date: [32m'2025-10-10'[39m,
-  time: [32m'03:35:06.189930167'[39m,
+  time: [32m'23:00:39.962434'[39m,
   type: [32m'debit'[39m,
   category: [32m'Bank Charges'[39m,
   amount: [33m10[39m,
   reimbursable: [33mfalse[39m,
   comments: [32m'Testing'[39m,
-  runningBalance: [33m-10[39m,
+  runningBalance: [33m1600220.96[39m,
   labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
 }
 ----------------------------------------------------------------------------------------------------
-🔑 Global Transaction ID set: 68e87eeacce1cb176bb23dc3
+🔑 Global Transaction ID set: 68e942bfa8e543e9b282e501
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › GET | Fetch Transaction" classname="Tests/FinanceTracker.test.js" time="1.184">
+<testcase name="🌐 API Testing Suite › 💳 Transaction Feature › GET | Fetch Transaction" classname="Tests/FinanceTracker.test.js" time="0.064">
 <system-out>
 <![CDATA[🔄 Verifying: Get Transaction API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions
+🌐 Sending GET request to: http://localhost:8080/api/transactions
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1176 ms
-📦 Response Size: 51.31 KB
+⏱️ Response Time: 58 ms
+📦 Response Size: 52.74 KB
 🧾 GET Response: [
   {
-    id: [32m'68e87eeacce1cb176bb23dc3'[39m,
+    id: [32m'68e942bfa8e543e9b282e501'[39m,
     date: [32m'2025-10-10'[39m,
-    time: [32m'03:35:06.189'[39m,
+    time: [32m'23:00:39.962'[39m,
     type: [32m'debit'[39m,
     category: [32m'Bank Charges'[39m,
     amount: [33m10[39m,
     reimbursable: [33mfalse[39m,
     comments: [32m'Testing'[39m,
-    runningBalance: [33m1618156.96[39m,
+    runningBalance: [33m1600220.96[39m,
     labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e91e12cd22bb963ac910b2'[39m,
+    date: [32m'2025-10-10'[39m,
+    time: [32m'20:24:10.345'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Bank Charges'[39m,
+    amount: [33m10[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Testing'[39m,
+    runningBalance: [33m1600230.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e91e03cd22bb963ac910af'[39m,
+    date: [32m'2025-10-10'[39m,
+    time: [32m'20:23:55.815'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Bank Charges'[39m,
+    amount: [33m10[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Testing'[39m,
+    runningBalance: [33m1600240.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e89953cce1cb176bb23dc7'[39m,
+    date: [32m'2025-10-10'[39m,
+    time: [32m'10:57:47.997'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Grocery'[39m,
+    amount: [33m166[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Rice, Groundnut, coffee '[39m,
+    runningBalance: [33m1600250.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e89923cce1cb176bb23dc6'[39m,
+    date: [32m'2025-10-10'[39m,
+    time: [32m'10:56:59.261'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Lending'[39m,
+    amount: [33m20000[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'To shabham savne'[39m,
+    runningBalance: [33m1600416.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e898f7cce1cb176bb23dc5'[39m,
+    date: [32m'2025-10-09'[39m,
+    time: [32m'10:56:15.556'[39m,
+    type: [32m'credit'[39m,
+    category: [32m'Refund'[39m,
+    amount: [33m2500[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'From Dada kolekar '[39m,
+    runningBalance: [33m1620416.96[39m,
+    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+  },
+  {
+    id: [32m'68e88e72cce1cb176bb23dc4'[39m,
+    date: [32m'2025-10-09'[39m,
+    time: [32m'10:11:22.243'[39m,
+    type: [32m'debit'[39m,
+    category: [32m'Food'[39m,
+    amount: [33m250[39m,
+    reimbursable: [33mfalse[39m,
+    comments: [32m'Dinner '[39m,
+    runningBalance: [33m1617916.96[39m,
+    labelIds: [ [32m'68bc24faf115e8a75b9bc4f7'[39m ]
   },
   {
     id: [32m'68e7c062a07faf4f116aad12'[39m,
     date: [32m'2025-10-09'[39m,
-    time: [32m'14:02:10.677'[39m,
+    time: [32m'19:32:10.677'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m180[39m,
@@ -318,7 +394,7 @@
   {
     id: [32m'68e7c03ea07faf4f116aad11'[39m,
     date: [32m'2025-10-09'[39m,
-    time: [32m'14:01:34.593'[39m,
+    time: [32m'19:31:34.593'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m65[39m,
@@ -330,7 +406,7 @@
   {
     id: [32m'68e69fc3a07faf4f116aacf7'[39m,
     date: [32m'2025-10-08'[39m,
-    time: [32m'17:30:43.074'[39m,
+    time: [32m'23:00:43.074'[39m,
     type: [32m'debit'[39m,
     category: [32m'Grocery'[39m,
     amount: [33m50[39m,
@@ -342,7 +418,7 @@
   {
     id: [32m'68e682d3a07faf4f116aacf6'[39m,
     date: [32m'2025-10-08'[39m,
-    time: [32m'15:27:15.117'[39m,
+    time: [32m'20:57:15.117'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m170[39m,
@@ -354,7 +430,7 @@
   {
     id: [32m'68e57e9ea07faf4f116aace2'[39m,
     date: [32m'2025-10-07'[39m,
-    time: [32m'20:57:02.893'[39m,
+    time: [32m'02:27:02.893'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m65[39m,
@@ -366,7 +442,7 @@
   {
     id: [32m'68e57e7ca07faf4f116aace1'[39m,
     date: [32m'2025-10-07'[39m,
-    time: [32m'20:56:28.599'[39m,
+    time: [32m'02:26:28.599'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m70[39m,
@@ -378,7 +454,7 @@
   {
     id: [32m'68e3d91da07faf4f116aace0'[39m,
     date: [32m'2025-10-06'[39m,
-    time: [32m'14:58:37.342'[39m,
+    time: [32m'20:28:37.342'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m30[39m,
@@ -390,7 +466,7 @@
   {
     id: [32m'68e3b3a4a07faf4f116aacdf'[39m,
     date: [32m'2025-10-06'[39m,
-    time: [32m'12:18:44.047'[39m,
+    time: [32m'17:48:44.047'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m50[39m,
@@ -402,7 +478,7 @@
   {
     id: [32m'68e3b2c9a07faf4f116aacde'[39m,
     date: [32m'2025-10-06'[39m,
-    time: [32m'12:15:05.913'[39m,
+    time: [32m'17:45:05.913'[39m,
     type: [32m'debit'[39m,
     category: [32m'Entertainment'[39m,
     amount: [33m4300[39m,
@@ -414,7 +490,7 @@
   {
     id: [32m'68e2b513a07faf4f116aacdd'[39m,
     date: [32m'2025-10-05'[39m,
-    time: [32m'18:12:35.743'[39m,
+    time: [32m'23:42:35.743'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m70[39m,
@@ -426,7 +502,7 @@
   {
     id: [32m'68e2b49ba07faf4f116aacdc'[39m,
     date: [32m'2025-10-05'[39m,
-    time: [32m'18:10:35.095'[39m,
+    time: [32m'23:40:35.095'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m280[39m,
@@ -438,7 +514,7 @@
   {
     id: [32m'68e24ff0a07faf4f116aacdb'[39m,
     date: [32m'2025-10-05'[39m,
-    time: [32m'11:01:04.624'[39m,
+    time: [32m'16:31:04.624'[39m,
     type: [32m'debit'[39m,
     category: [32m'Utilities'[39m,
     amount: [33m4360[39m,
@@ -450,7 +526,7 @@
   {
     id: [32m'68e23d0aa07faf4f116aacda'[39m,
     date: [32m'2025-10-05'[39m,
-    time: [32m'09:40:26.034'[39m,
+    time: [32m'15:10:26.034'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m190[39m,
@@ -462,7 +538,7 @@
   {
     id: [32m'68e23cdda07faf4f116aacd9'[39m,
     date: [32m'2025-10-05'[39m,
-    time: [32m'09:39:41.233'[39m,
+    time: [32m'15:09:41.233'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m45[39m,
@@ -474,7 +550,7 @@
   {
     id: [32m'68e14ae86f459a2eb96acef9'[39m,
     date: [32m'2025-10-04'[39m,
-    time: [32m'16:27:20.409'[39m,
+    time: [32m'21:57:20.409'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m130[39m,
@@ -486,7 +562,7 @@
   {
     id: [32m'68e1243d6f459a2eb96acef7'[39m,
     date: [32m'2025-10-04'[39m,
-    time: [32m'13:42:21.709'[39m,
+    time: [32m'19:12:21.709'[39m,
     type: [32m'credit'[39m,
     category: [32m'Salary'[39m,
     amount: [33m122292[39m,
@@ -498,7 +574,7 @@
   {
     id: [32m'68dff7c26f459a2eb96acef6'[39m,
     date: [32m'2025-10-03'[39m,
-    time: [32m'16:20:18.852'[39m,
+    time: [32m'21:50:18.852'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m275[39m,
@@ -510,7 +586,7 @@
   {
     id: [32m'68df88a16f459a2eb96acef5'[39m,
     date: [32m'2025-10-03'[39m,
-    time: [32m'08:26:09.314'[39m,
+    time: [32m'13:56:09.314'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m90[39m,
@@ -522,7 +598,7 @@
   {
     id: [32m'68df88866f459a2eb96acef4'[39m,
     date: [32m'2025-10-03'[39m,
-    time: [32m'08:25:42.651'[39m,
+    time: [32m'13:55:42.651'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m1305[39m,
@@ -534,7 +610,7 @@
   {
     id: [32m'68df88216f459a2eb96acef3'[39m,
     date: [32m'2025-10-03'[39m,
-    time: [32m'08:24:01.917'[39m,
+    time: [32m'13:54:01.917'[39m,
     type: [32m'debit'[39m,
     category: [32m'Utilities'[39m,
     amount: [33m22[39m,
@@ -546,7 +622,7 @@
   {
     id: [32m'68e124ae6f459a2eb96acef8'[39m,
     date: [32m'2025-10-02'[39m,
-    time: [32m'13:44:14.307'[39m,
+    time: [32m'19:14:14.307'[39m,
     type: [32m'debit'[39m,
     category: [32m'Bank Charges'[39m,
     amount: [33m10[39m,
@@ -558,7 +634,7 @@
   {
     id: [32m'68dec4ad6f459a2eb96acef2'[39m,
     date: [32m'2025-10-02'[39m,
-    time: [32m'18:30:05.055'[39m,
+    time: [32m'00:00:05.055'[39m,
     type: [32m'debit'[39m,
     category: [32m'Rent'[39m,
     amount: [33m13000[39m,
@@ -570,7 +646,7 @@
   {
     id: [32m'68dec4176f459a2eb96acef1'[39m,
     date: [32m'2025-10-02'[39m,
-    time: [32m'18:27:35.985'[39m,
+    time: [32m'23:57:35.985'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m350[39m,
@@ -582,7 +658,7 @@
   {
     id: [32m'68dec3fd6f459a2eb96acef0'[39m,
     date: [32m'2025-10-02'[39m,
-    time: [32m'18:27:09.685'[39m,
+    time: [32m'23:57:09.685'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m200000[39m,
@@ -594,7 +670,7 @@
   {
     id: [32m'68dec37d6f459a2eb96aceef'[39m,
     date: [32m'2025-10-02'[39m,
-    time: [32m'18:25:01.109'[39m,
+    time: [32m'23:55:01.109'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m399000[39m,
@@ -606,7 +682,7 @@
   {
     id: [32m'68de0b0697884c8960efbfe1'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'05:17:58.599'[39m,
+    time: [32m'10:47:58.599'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m1000[39m,
@@ -618,7 +694,7 @@
   {
     id: [32m'68de0ad097884c8960efbfe0'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'05:17:04.544'[39m,
+    time: [32m'10:47:04.544'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m200000[39m,
@@ -630,7 +706,7 @@
   {
     id: [32m'68de09ea97884c8960efbfdf'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'05:13:14.313'[39m,
+    time: [32m'10:43:14.313'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m250[39m,
@@ -642,7 +718,7 @@
   {
     id: [32m'68de09ae97884c8960efbfde'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'05:12:14.555'[39m,
+    time: [32m'10:42:14.555'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m60[39m,
@@ -654,7 +730,7 @@
   {
     id: [32m'68dd404897884c8960efbfdd'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'14:52:56.461'[39m,
+    time: [32m'20:22:56.461'[39m,
     type: [32m'debit'[39m,
     category: [32m'Utilities'[39m,
     amount: [33m650[39m,
@@ -666,7 +742,7 @@
   {
     id: [32m'68dc3e6897884c8960efbfdb'[39m,
     date: [32m'2025-10-01'[39m,
-    time: [32m'20:32:40.81'[39m,
+    time: [32m'02:02:40.81'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m125[39m,
@@ -678,7 +754,7 @@
   {
     id: [32m'68dd3bc497884c8960efbfdc'[39m,
     date: [32m'2025-09-30'[39m,
-    time: [32m'14:33:40.344'[39m,
+    time: [32m'20:03:40.344'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m200[39m,
@@ -690,7 +766,7 @@
   {
     id: [32m'68dc3db097884c8960efbfda'[39m,
     date: [32m'2025-09-30'[39m,
-    time: [32m'20:29:36.726'[39m,
+    time: [32m'01:59:36.726'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m150[39m,
@@ -702,7 +778,7 @@
   {
     id: [32m'68dc1c4497884c8960efbfd9'[39m,
     date: [32m'2025-09-30'[39m,
-    time: [32m'18:07:00.951'[39m,
+    time: [32m'23:37:00.951'[39m,
     type: [32m'debit'[39m,
     category: [32m'Lending'[39m,
     amount: [33m200[39m,
@@ -714,7 +790,7 @@
   {
     id: [32m'68db6d7f97884c8960efbfd5'[39m,
     date: [32m'2025-09-30'[39m,
-    time: [32m'05:41:19.303'[39m,
+    time: [32m'11:11:19.303'[39m,
     type: [32m'debit'[39m,
     category: [32m'Family support'[39m,
     amount: [33m1500[39m,
@@ -726,7 +802,7 @@
   {
     id: [32m'68db6cfc97884c8960efbfd4'[39m,
     date: [32m'2025-09-30'[39m,
-    time: [32m'05:39:08.813'[39m,
+    time: [32m'11:09:08.813'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m300000[39m,
@@ -738,7 +814,7 @@
   {
     id: [32m'68db6cbc97884c8960efbfd3'[39m,
     date: [32m'2025-09-29'[39m,
-    time: [32m'05:38:04.185'[39m,
+    time: [32m'11:08:04.185'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m100[39m,
@@ -750,7 +826,7 @@
   {
     id: [32m'68db6ca997884c8960efbfd2'[39m,
     date: [32m'2025-09-29'[39m,
-    time: [32m'05:37:45.848'[39m,
+    time: [32m'11:07:45.848'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m50[39m,
@@ -762,7 +838,7 @@
   {
     id: [32m'68d9823297884c8960efbfd1'[39m,
     date: [32m'2025-09-29'[39m,
-    time: [32m'18:45:06.671'[39m,
+    time: [32m'00:15:06.671'[39m,
     type: [32m'debit'[39m,
     category: [32m'Bank Charges'[39m,
     amount: [33m18[39m,
@@ -774,7 +850,7 @@
   {
     id: [32m'68d9801b97884c8960efbfcf'[39m,
     date: [32m'2025-09-28'[39m,
-    time: [32m'18:36:11.713'[39m,
+    time: [32m'00:06:11.713'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m160000[39m,
@@ -786,7 +862,7 @@
   {
     id: [32m'68d9574197884c8960efbfce'[39m,
     date: [32m'2025-09-28'[39m,
-    time: [32m'15:41:53.07'[39m,
+    time: [32m'21:11:53.07'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m200[39m,
@@ -798,7 +874,7 @@
   {
     id: [32m'68d9572997884c8960efbfcd'[39m,
     date: [32m'2025-09-28'[39m,
-    time: [32m'15:41:29.76'[39m,
+    time: [32m'21:11:29.76'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m100[39m,
@@ -810,7 +886,7 @@
   {
     id: [32m'68d956f197884c8960efbfcc'[39m,
     date: [32m'2025-09-28'[39m,
-    time: [32m'15:40:33.893'[39m,
+    time: [32m'21:10:33.893'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m60[39m,
@@ -822,7 +898,7 @@
   {
     id: [32m'68d8f13a97884c8960efbfcb'[39m,
     date: [32m'2025-09-28'[39m,
-    time: [32m'08:26:34.841'[39m,
+    time: [32m'13:56:34.841'[39m,
     type: [32m'debit'[39m,
     category: [32m'Gift/Donation'[39m,
     amount: [33m100[39m,
@@ -834,7 +910,7 @@
   {
     id: [32m'68d8f0c597884c8960efbfca'[39m,
     date: [32m'2025-09-27'[39m,
-    time: [32m'08:24:37.779'[39m,
+    time: [32m'13:54:37.779'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m60[39m,
@@ -846,7 +922,7 @@
   {
     id: [32m'68d7c0a997884c8960efbfc9'[39m,
     date: [32m'2025-09-27'[39m,
-    time: [32m'10:47:05.527'[39m,
+    time: [32m'16:17:05.527'[39m,
     type: [32m'credit'[39m,
     category: [32m'Refund'[39m,
     amount: [33m8000[39m,
@@ -858,7 +934,7 @@
   {
     id: [32m'68d7c08597884c8960efbfc8'[39m,
     date: [32m'2025-09-27'[39m,
-    time: [32m'10:46:29.099'[39m,
+    time: [32m'16:16:29.099'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m40000[39m,
@@ -870,7 +946,7 @@
   {
     id: [32m'68d7688a97884c8960efbfc7'[39m,
     date: [32m'2025-09-26'[39m,
-    time: [32m'04:31:06.046'[39m,
+    time: [32m'10:01:06.046'[39m,
     type: [32m'debit'[39m,
     category: [32m'Lending'[39m,
     amount: [33m15000[39m,
@@ -882,7 +958,7 @@
   {
     id: [32m'68d767f797884c8960efbfc6'[39m,
     date: [32m'2025-09-26'[39m,
-    time: [32m'04:28:39.041'[39m,
+    time: [32m'09:58:39.041'[39m,
     type: [32m'debit'[39m,
     category: [32m'Gift/Donation'[39m,
     amount: [33m15000[39m,
@@ -894,7 +970,7 @@
   {
     id: [32m'68d68c9397884c8960efbfc5'[39m,
     date: [32m'2025-09-26'[39m,
-    time: [32m'12:52:35.981'[39m,
+    time: [32m'18:22:35.981'[39m,
     type: [32m'debit'[39m,
     category: [32m'Family support'[39m,
     amount: [33m1200[39m,
@@ -906,7 +982,7 @@
   {
     id: [32m'68d58b8e97884c8960efbfc4'[39m,
     date: [32m'2025-09-26'[39m,
-    time: [32m'18:35:58.033'[39m,
+    time: [32m'00:05:58.033'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m1600[39m,
@@ -918,7 +994,7 @@
   {
     id: [32m'68d57497a603b14c06a1f878'[39m,
     date: [32m'2025-09-25'[39m,
-    time: [32m'16:57:59.362'[39m,
+    time: [32m'22:27:59.362'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m500[39m,
@@ -930,7 +1006,7 @@
   {
     id: [32m'68d573c9a603b14c06a1f877'[39m,
     date: [32m'2025-09-25'[39m,
-    time: [32m'16:54:33.219'[39m,
+    time: [32m'22:24:33.219'[39m,
     type: [32m'debit'[39m,
     category: [32m'Printing & Stationery'[39m,
     amount: [33m45[39m,
@@ -942,7 +1018,7 @@
   {
     id: [32m'68d572c5a603b14c06a1f875'[39m,
     date: [32m'2025-09-25'[39m,
-    time: [32m'16:50:13.255'[39m,
+    time: [32m'22:20:13.255'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m183[39m,
@@ -954,7 +1030,7 @@
   {
     id: [32m'68d57294a603b14c06a1f874'[39m,
     date: [32m'2025-09-25'[39m,
-    time: [32m'16:49:24.905'[39m,
+    time: [32m'22:19:24.905'[39m,
     type: [32m'debit'[39m,
     category: [32m'Rent'[39m,
     amount: [33m600[39m,
@@ -966,7 +1042,7 @@
   {
     id: [32m'68d57217a603b14c06a1f873'[39m,
     date: [32m'2025-09-25'[39m,
-    time: [32m'16:47:19.801'[39m,
+    time: [32m'22:17:19.801'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m256[39m,
@@ -978,7 +1054,7 @@
   {
     id: [32m'68d41319a603b14c06a1f872'[39m,
     date: [32m'2025-09-24'[39m,
-    time: [32m'15:49:45.253'[39m,
+    time: [32m'21:19:45.253'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m240[39m,
@@ -990,7 +1066,7 @@
   {
     id: [32m'68d412a1a603b14c06a1f871'[39m,
     date: [32m'2025-09-24'[39m,
-    time: [32m'15:47:45.734'[39m,
+    time: [32m'21:17:45.734'[39m,
     type: [32m'debit'[39m,
     category: [32m'Family support'[39m,
     amount: [33m1000[39m,
@@ -1002,7 +1078,7 @@
   {
     id: [32m'68d41285a603b14c06a1f870'[39m,
     date: [32m'2025-09-24'[39m,
-    time: [32m'15:47:17.971'[39m,
+    time: [32m'21:17:17.971'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m180[39m,
@@ -1014,7 +1090,7 @@
   {
     id: [32m'68d41252a603b14c06a1f86f'[39m,
     date: [32m'2025-09-24'[39m,
-    time: [32m'15:46:26.979'[39m,
+    time: [32m'21:16:26.979'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m1570[39m,
@@ -1026,7 +1102,7 @@
   {
     id: [32m'68d41231a603b14c06a1f86e'[39m,
     date: [32m'2025-09-23'[39m,
-    time: [32m'15:45:53.179'[39m,
+    time: [32m'21:15:53.179'[39m,
     type: [32m'debit'[39m,
     category: [32m'Grocery'[39m,
     amount: [33m201[39m,
@@ -1038,7 +1114,7 @@
   {
     id: [32m'68d00a4ca603b14c06a1f862'[39m,
     date: [32m'2025-09-21'[39m,
-    time: [32m'14:23:08.406'[39m,
+    time: [32m'19:53:08.406'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m100[39m,
@@ -1050,7 +1126,7 @@
   {
     id: [32m'68ced242a603b14c06a1f861'[39m,
     date: [32m'2025-09-20'[39m,
-    time: [32m'16:11:46.411'[39m,
+    time: [32m'21:41:46.411'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m120[39m,
@@ -1062,7 +1138,7 @@
   {
     id: [32m'68ced208a603b14c06a1f860'[39m,
     date: [32m'2025-09-20'[39m,
-    time: [32m'16:10:48.024'[39m,
+    time: [32m'21:40:48.024'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m10[39m,
@@ -1074,7 +1150,7 @@
   {
     id: [32m'68ce6997a603b14c06a1f85f'[39m,
     date: [32m'2025-09-20'[39m,
-    time: [32m'08:45:11.139'[39m,
+    time: [32m'14:15:11.139'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m70[39m,
@@ -1086,7 +1162,7 @@
   {
     id: [32m'68cdae19a603b14c06a1f85e'[39m,
     date: [32m'2025-09-20'[39m,
-    time: [32m'19:25:13.754'[39m,
+    time: [32m'00:55:13.754'[39m,
     type: [32m'credit'[39m,
     category: [32m'Refund'[39m,
     amount: [33m50[39m,
@@ -1098,7 +1174,7 @@
   {
     id: [32m'68cc2caca603b14c06a1f85d'[39m,
     date: [32m'2025-09-18'[39m,
-    time: [32m'16:00:44.92'[39m,
+    time: [32m'21:30:44.92'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m240[39m,
@@ -1110,7 +1186,7 @@
   {
     id: [32m'68cb9b8ba603b14c06a1f85c'[39m,
     date: [32m'2025-09-18'[39m,
-    time: [32m'05:41:31.67'[39m,
+    time: [32m'11:11:31.67'[39m,
     type: [32m'debit'[39m,
     category: [32m'Utilities'[39m,
     amount: [33m2000[39m,
@@ -1122,7 +1198,7 @@
   {
     id: [32m'68cb04f1a603b14c06a1f85b'[39m,
     date: [32m'2025-09-17'[39m,
-    time: [32m'18:58:57.941'[39m,
+    time: [32m'00:28:57.941'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m60[39m,
@@ -1134,7 +1210,7 @@
   {
     id: [32m'68cb04d8a603b14c06a1f85a'[39m,
     date: [32m'2025-09-17'[39m,
-    time: [32m'18:58:32.674'[39m,
+    time: [32m'00:28:32.674'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m45[39m,
@@ -1146,7 +1222,7 @@
   {
     id: [32m'68c994dca603b14c06a1f859'[39m,
     date: [32m'2025-09-16'[39m,
-    time: [32m'16:48:28.735'[39m,
+    time: [32m'22:18:28.735'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m140[39m,
@@ -1158,7 +1234,7 @@
   {
     id: [32m'68c99434a603b14c06a1f858'[39m,
     date: [32m'2025-09-16'[39m,
-    time: [32m'16:45:40.114'[39m,
+    time: [32m'22:15:40.114'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m130[39m,
@@ -1170,7 +1246,7 @@
   {
     id: [32m'68c84947a603b14c06a1f854'[39m,
     date: [32m'2025-09-15'[39m,
-    time: [32m'17:13:43.324'[39m,
+    time: [32m'22:43:43.324'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m185[39m,
@@ -1182,7 +1258,7 @@
   {
     id: [32m'68c84902a603b14c06a1f853'[39m,
     date: [32m'2025-09-15'[39m,
-    time: [32m'17:12:34.371'[39m,
+    time: [32m'22:42:34.371'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m80[39m,
@@ -1194,7 +1270,7 @@
   {
     id: [32m'68c7063aa603b14c06a1f84f'[39m,
     date: [32m'2025-09-14'[39m,
-    time: [32m'18:15:22.262'[39m,
+    time: [32m'23:45:22.262'[39m,
     type: [32m'debit'[39m,
     category: [32m'Rent'[39m,
     amount: [33m2500[39m,
@@ -1206,7 +1282,7 @@
   {
     id: [32m'68c705efa603b14c06a1f84e'[39m,
     date: [32m'2025-09-14'[39m,
-    time: [32m'18:14:07.28'[39m,
+    time: [32m'23:44:07.28'[39m,
     type: [32m'credit'[39m,
     category: [32m'Refund'[39m,
     amount: [33m10000[39m,
@@ -1218,7 +1294,7 @@
   {
     id: [32m'68c67fe5a603b14c06a1f84b'[39m,
     date: [32m'2025-09-14'[39m,
-    time: [32m'08:42:13.617'[39m,
+    time: [32m'14:12:13.617'[39m,
     type: [32m'debit'[39m,
     category: [32m'Grocery'[39m,
     amount: [33m35[39m,
@@ -1230,7 +1306,7 @@
   {
     id: [32m'68c65b13a603b14c06a1f84a'[39m,
     date: [32m'2025-09-14'[39m,
-    time: [32m'06:05:07.974'[39m,
+    time: [32m'11:35:07.974'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m20[39m,
@@ -1242,7 +1318,7 @@
   {
     id: [32m'68c58ff0a603b14c06a1f849'[39m,
     date: [32m'2025-09-13'[39m,
-    time: [32m'15:38:24.228'[39m,
+    time: [32m'21:08:24.228'[39m,
     type: [32m'debit'[39m,
     category: [32m'Grocery'[39m,
     amount: [33m224[39m,
@@ -1254,7 +1330,7 @@
   {
     id: [32m'68c57e57a603b14c06a1f848'[39m,
     date: [32m'2025-09-13'[39m,
-    time: [32m'14:23:19.863'[39m,
+    time: [32m'19:53:19.863'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m55[39m,
@@ -1266,7 +1342,7 @@
   {
     id: [32m'68c52ebda603b14c06a1f846'[39m,
     date: [32m'2025-09-13'[39m,
-    time: [32m'08:43:41.294'[39m,
+    time: [32m'14:13:41.294'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m36[39m,
@@ -1278,7 +1354,7 @@
   {
     id: [32m'68c9374aa603b14c06a1f857'[39m,
     date: [32m'2025-09-12'[39m,
-    time: [32m'10:09:14.025'[39m,
+    time: [32m'15:39:14.025'[39m,
     type: [32m'debit'[39m,
     category: [32m'Transport'[39m,
     amount: [33m145[39m,
@@ -1290,7 +1366,7 @@
   {
     id: [32m'68c45872a603b14c06a1f844'[39m,
     date: [32m'2025-09-12'[39m,
-    time: [32m'17:29:22.153'[39m,
+    time: [32m'22:59:22.153'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m850[39m,
@@ -1302,7 +1378,7 @@
   {
     id: [32m'68c45348a603b14c06a1f843'[39m,
     date: [32m'2025-09-12'[39m,
-    time: [32m'17:07:20.527'[39m,
+    time: [32m'22:37:20.527'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m50000[39m,
@@ -1314,7 +1390,7 @@
   {
     id: [32m'68c452dfa603b14c06a1f842'[39m,
     date: [32m'2025-09-12'[39m,
-    time: [32m'17:05:35.131'[39m,
+    time: [32m'22:35:35.131'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m50[39m,
@@ -1326,7 +1402,7 @@
   {
     id: [32m'68c30bcba603b14c06a1f83d'[39m,
     date: [32m'2025-09-11'[39m,
-    time: [32m'17:50:03.326'[39m,
+    time: [32m'23:20:03.326'[39m,
     type: [32m'debit'[39m,
     category: [32m'Investment'[39m,
     amount: [33m50000[39m,
@@ -1338,7 +1414,7 @@
   {
     id: [32m'68c30b7ea603b14c06a1f83c'[39m,
     date: [32m'2025-09-11'[39m,
-    time: [32m'17:48:46.15'[39m,
+    time: [32m'23:18:46.15'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m45[39m,
@@ -1350,7 +1426,7 @@
   {
     id: [32m'68c30b4ca603b14c06a1f83b'[39m,
     date: [32m'2025-09-11'[39m,
-    time: [32m'17:47:56.004'[39m,
+    time: [32m'23:17:56.004'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m50[39m,
@@ -1362,7 +1438,7 @@
   {
     id: [32m'68c30b2ba603b14c06a1f83a'[39m,
     date: [32m'2025-09-10'[39m,
-    time: [32m'17:47:23.109'[39m,
+    time: [32m'23:17:23.109'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m243[39m,
@@ -1374,7 +1450,7 @@
   {
     id: [32m'68c1873aa603b14c06a1f833'[39m,
     date: [32m'2025-09-10'[39m,
-    time: [32m'14:12:10.811'[39m,
+    time: [32m'19:42:10.811'[39m,
     type: [32m'debit'[39m,
     category: [32m'Food'[39m,
     amount: [33m80[39m,
@@ -1386,7 +1462,7 @@
   {
     id: [32m'68c10294a603b14c06a1f81b'[39m,
     date: [32m'2025-09-10'[39m,
-    time: [32m'04:46:12.621'[39m,
+    time: [32m'10:16:12.621'[39m,
     type: [32m'debit'[39m,
     category: [32m'EMI'[39m,
     amount: [33m8961[39m,
@@ -1398,7 +1474,7 @@
   {
     id: [32m'68c0e744a603b14c06a1f816'[39m,
     date: [32m'2025-09-10'[39m,
-    time: [32m'02:49:40.672'[39m,
+    time: [32m'08:19:40.672'[39m,
     type: [32m'credit'[39m,
     category: [32m'Refund'[39m,
     amount: [33m5000[39m,
@@ -1410,7 +1486,7 @@
   {
     id: [32m'68c05516a603b14c06a1f7fd'[39m,
     date: [32m'2025-09-09'[39m,
-    time: [32m'16:25:58.142'[39m,
+    time: [32m'21:55:58.142'[39m,
     type: [32m'debit'[39m,
     category: [32m'Health'[39m,
     amount: [33m84[39m,
@@ -1419,91 +1495,19 @@
     runningBalance: [33m2955803.96[39m,
     labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
   },
-  {
-    id: [32m'68c0447ca603b14c06a1f7fa'[39m,
-    date: [32m'2025-09-09'[39m,
-    time: [32m'15:15:08.025'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Lending'[39m,
-    amount: [33m8000[39m,
-    reimbursable: [33mtrue[39m,
-    comments: [32m'To shubham for EMI'[39m,
-    runningBalance: [33m2955887.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  {
-    id: [32m'68bfea29f115e8a75b9bc539'[39m,
-    date: [32m'2025-09-09'[39m,
-    time: [32m'08:49:45.632'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Food'[39m,
-    amount: [33m258[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Lunch and Dinner '[39m,
-    runningBalance: [33m2963887.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  {
-    id: [32m'68bf3f9af115e8a75b9bc523'[39m,
-    date: [32m'2025-09-09'[39m,
-    time: [32m'20:42:02.929'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Food'[39m,
-    amount: [33m10[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Tea'[39m,
-    runningBalance: [33m2964145.96[39m,
-    labelIds: [ [32m'68bc24faf115e8a75b9bc4f8'[39m, [32m'68bc24faf115e8a75b9bc4f7'[39m ]
-  },
-  {
-    id: [32m'68bf3dd9f115e8a75b9bc522'[39m,
-    date: [32m'2025-09-08'[39m,
-    time: [32m'20:34:33.744'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Food'[39m,
-    amount: [33m45[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Dinner'[39m,
-    runningBalance: [33m2964155.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  {
-    id: [32m'68be8a3ff115e8a75b9bc521'[39m,
-    date: [32m'2025-09-08'[39m,
-    time: [32m'07:48:15.15'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Food'[39m,
-    amount: [33m45[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Lunch '[39m,
-    runningBalance: [33m2964200.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  {
-    id: [32m'68bdda38f115e8a75b9bc505'[39m,
-    date: [32m'2025-09-08'[39m,
-    time: [32m'19:17:12.958'[39m,
-    type: [32m'debit'[39m,
-    category: [32m'Health'[39m,
-    amount: [33m46[39m,
-    reimbursable: [33mfalse[39m,
-    comments: [32m'Electrol powder '[39m,
-    runningBalance: [33m2964245.96[39m,
-    labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-  },
-  ... 125 more items
+  ... 131 more items
 ]
 ----------------------------------------------------------------------------------------------------
-Total Transaction Entries: 225
-Food Category: 106
+Total Transaction Entries: 231
+Food Category: 107
 Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › PUT | Update Debit Transaction" classname="Tests/FinanceTracker.test.js" time="51.611">
+<testcase name="🌐 API Testing Suite › 💳 Transaction Feature › PUT | Update Debit Transaction" classname="Tests/FinanceTracker.test.js" time="0.13">
 <system-out>
 <![CDATA[🔄 Verifying: Update Transaction API for debit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e87eeacce1cb176bb23dc3
+🛠️ Sending PUT request to: http://localhost:8080/api/transactions/68e942bfa8e543e9b282e501
 ✅ Payload: {
   "date": "2025-10-10",
   "type": "debit",
@@ -1516,87 +1520,85 @@ Transport Category: 18
   ]
 }
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 51606 ms
+⏱️ Response Time: 108 ms
 📦 Response Size: 0.24 KB
 🧾 PUT Response: {
-  id: [32m'68e87eeacce1cb176bb23dc3'[39m,
+  id: [32m'68e942bfa8e543e9b282e501'[39m,
   date: [32m'2025-10-10'[39m,
-  time: [32m'03:35:06.189'[39m,
+  time: [32m'23:00:40.101'[39m,
   type: [32m'debit'[39m,
   category: [32m'Bank Charges'[39m,
   amount: [33m10[39m,
   reimbursable: [33mfalse[39m,
   comments: [32m'Testing update'[39m,
-  runningBalance: [33m1618156.96[39m,
+  runningBalance: [33m1600220.96[39m,
   labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
 }
 ✅ PUT request updated successfully! Updated name: N/A
 ----------------------------------------------------------------------------------------------------
+✅ Updated transaction ID: 68e942bfa8e543e9b282e501 with type: debit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › DELETE | Delete Debit Transaction" classname="Tests/FinanceTracker.test.js" time="50.716">
+<testcase name="🌐 API Testing Suite › 💳 Transaction Feature › DELETE | Delete Debit Transaction" classname="Tests/FinanceTracker.test.js" time="0.077">
 <system-out>
 <![CDATA[🔄 Verifying: Delete Transaction API for debit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e87eeacce1cb176bb23dc3
+🗑️ Sending DELETE request to: http://localhost:8080/api/transactions/68e942bfa8e543e9b282e501
 🔁 Status Code: [33m204[39m
-⏱️ Response Time: 50710 ms
+⏱️ Response Time: 75 ms
 📦 Response Size: 0.00 KB
 🧾 DELETE Response: <empty>
 ----------------------------------------------------------------------------------------------------
+✅ Deleted transaction ID: 68e942bfa8e543e9b282e501 for type: debit
 ]]>
 </system-out>
 </testcase>
-<testcase name="🧩 Login Scenarios › POST | Login through API" classname="Tests/FinanceTracker.test.js" time="5.364">
+<testcase name="🧩 Login Scenarios › POST | Login through API" classname="Tests/FinanceTracker.test.js" time="4.533">
 <system-out>
 <![CDATA[🔄 Verifying: Post Login API...
 ✅ Payload: {
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 1638 ms
+⏱️ Response Time: 108 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5NCwiZXhwIjoxNzYyNjU5Mjk0fQ.MSu6OTzmN2hr6i2uoo8daYKjcyaVjqb_krkPTR7mJE4'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDExNzQ0MCwiZXhwIjoxNzYyNzA5NDQwfQ.7AkAJHbzLtC3ELVNvaJ3fc-wXmwD9gGMjwB6TvfkdC0'[39m
 }
 ----------------------------------------------------------------------------------------------------
 🔍 Verifying: Unexpected Post Login Message
 Actual: Logged in successfully | Expected: Logged in successfully
 ----------------------------------------------------------------------------------------------------
-✅ Navigate On URL: [https://beutiful-expense-tracker-app.netlify.app/expense-tracker]
+✅ Navigate On URL: [http://localhost:3000/expense-tracker]
 ----------------------------------------------------------------------------------------------------
-
-[[ATTACHMENT|../test-results/Tests-FinanceTracker-🧩-Lo-6bf23-rios-POST-Login-through-API/video.webm]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="🧩 Login Scenarios › UI | Login with Valid Credentials" classname="Tests/FinanceTracker.test.js" time="3.622">
+<testcase name="🧩 Login Scenarios › UI | Login with Valid Credentials" classname="Tests/FinanceTracker.test.js" time="4.94">
 <system-out>
-<![CDATA[✅ Navigate On URL: [https://beutiful-expense-tracker-app.netlify.app/login]
+<![CDATA[✅ Navigate On URL: [http://localhost:3000/login]
 ----------------------------------------------------------------------------------------------------
 🔄 Filling: Email Input...
 ✅ Filled [Email Input] with value: pratiknarute2@gmail.com
-⏳ Time taken: 0.02 sec
+⏳ Time taken: 0.06 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Filling: Password Input...
 ✅ Filled [Password Input] with value: Pratik@1234
-⏳ Time taken: 0.03 sec
+⏳ Time taken: 0.09 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Clicking: Login Button...
 ✅ Clicked [Login Button]
-⏳ Time taken: 0.02 sec
+⏳ Time taken: 0.04 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Verifying: Login Success Message...
 ✅ Found [Login Success Message]
-⏳ Time taken: 1.79 sec
+⏳ Time taken: 0.23 sec
 ----------------------------------------------------------------------------------------------------
 🔍 Verifying: Login Success Message
 Actual: true | Expected: true
 ----------------------------------------------------------------------------------------------------
-
-[[ATTACHMENT|../test-results/Tests-FinanceTracker-🧩-Lo-31bfc-ogin-with-Valid-Credentials/video.webm]]
 ]]>
 </system-out>
 </testcase>

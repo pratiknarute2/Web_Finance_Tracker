@@ -1,5 +1,6 @@
 const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility.js');
+const { API_URL } = require('../playwright.config.js'); // Import dynamic API_URL
 
 class Get extends Utility {
     constructor(request) {
@@ -8,13 +9,13 @@ class Get extends Utility {
     }
 
     async getTransactionAPI() {
-        let getTransactionAPIResponse = await this.getRequest(   // ✅ Removed this.utility (because getRequest() is from Utility)
-            this.request,        // ✅ Changed request → this.request (class property)
-            'https://expense-tracker-backend-y788.onrender.com/api/transactions',
+        const getTransactionAPIResponse = await this.getRequest(
+            this.request,
+            `${API_URL}/api/transactions`, // ✅ dynamic URL
             'Get Transaction API'
         );
 
-        console.log("Total Transaction Entries: " + getTransactionAPIResponse.length)
+        console.log("Total Transaction Entries: " + getTransactionAPIResponse.length);
 
         // Food categories
         const debitFood = getTransactionAPIResponse.filter(
@@ -23,27 +24,47 @@ class Get extends Utility {
         console.log("Food Category: " + debitFood.length);
 
         // Transport categories
-        const Transport = getTransactionAPIResponse.filter(
+        const transport = getTransactionAPIResponse.filter(
             item => item.type === 'debit' && item.category === 'Transport'
         );
-        console.log("Transport Category: " + Transport.length);
-
+        console.log("Transport Category: " + transport.length);
     }
 
     async getCategoryAPI() {
-        let getCategoryAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/categories', 'Get Categories API')
+        const getCategoryAPIResponse = await this.getRequest(
+            this.request,
+            `${API_URL}/api/categories`, // ✅ dynamic URL
+            'Get Categories API'
+        );
+        return getCategoryAPIResponse;
     }
+
     async getLabelAPI() {
-        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels', 'Get Labels API')
+        const getLabelAPIResponse = await this.getRequest(
+            this.request,
+            `${API_URL}/api/labels`, // ✅ dynamic URL
+            'Get Labels API'
+        );
+        return getLabelAPIResponse;
     }
+
     async getLabelUsageAPI() {
-        let getLabelUsageAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/labels/usage', 'Get Label Usage API')
+        const getLabelUsageAPIResponse = await this.getRequest(
+            this.request,
+            `${API_URL}/api/labels/usage`, // ✅ dynamic URL
+            'Get Label Usage API'
+        );
+        return getLabelUsageAPIResponse;
     }
+
     async getOpeningBalanceAPI() {
-        let getLabelAPIResponse = await this.getRequest(this.request, 'https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance', 'Get Opening Balance API')
+        const getOpeningBalanceAPIResponse = await this.getRequest(
+            this.request,
+            `${API_URL}/api/transactions/opening-balance`, // ✅ dynamic URL
+            'Get Opening Balance API'
+        );
+        return getOpeningBalanceAPIResponse;
     }
-
-
 }
 
 module.exports = Get;

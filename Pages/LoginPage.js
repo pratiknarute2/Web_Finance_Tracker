@@ -1,39 +1,55 @@
 const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility');
-const fs = require('fs/promises');
-
-
+const { UI_URL, API_URL } = require('../playwright.config.js'); // Import dynamic URLs
 
 class LoginPage extends Utility {
     constructor(page) {
         super(page);  // Pass page to parent class
         this.page = page;
 
+        // Locators
         this.emailInput = page.getByRole('textbox', { name: 'Email address' });
         this.passwordInput = page.getByRole('textbox', { name: 'Password' });
         this.loginButton = page.getByRole('button', { name: 'Login' });
         this.loginSuccessMessage = page.getByText('Login successful! Redirecting');
-
     }
 
+    // ✅ Login through POST API
     async login_through_post_API(request) {
+        const loginResponse = await this.postRequest(
+            request,
+            `${API_URL}/api/auth/login`, // Dynamic API URL
+            'Login',
+            'Post Login API'
+        );
 
-        const loginResponse = await this.postRequest(request, 'https://expense-tracker-backend-y788.onrender.com/api/auth/login', 'Login', 'Post Login API')
-        await this.expectToBe(loginResponse.message, 'Logged in successfully', 'Unexpected Post Login Message')
+        await this.expectToBe(loginResponse.message, 'Logged in successfully', 'Unexpected Post Login Message');
 
         const token = loginResponse.token;
-        await this.page.goto('https://beutiful-expense-tracker-app.netlify.app/expense-tracker');
-        await this.page.evaluate((authToken) => localStorage.setItem('token', authToken), token);
-        await this.navigateOnURL(this.page, 'https://beutiful-expense-tracker-app.netlify.app/expense-tracker')
 
+        // Navigate to UI URL dynamically
+        const appURL = UI_URL.replace('/login', '/expense-tracker');
+        await this.page.goto(appURL);
+
+        // Set token in localStorage
+        await this.page.evaluate((authToken) => localStorage.setItem('token', authToken), token);
+
+        // Optional: Navigate again to ensure token is loaded
+        await this.navigateOnURL(this.page, appURL);
     }
+
+    // ✅ Login via UI with valid credentials
     async login_with_valid_credentials(email = 'pratiknarute2@gmail.com', password = 'Pratik@1234') {
-        // Navigate to login page
-        await this.navigateOnURL(this.page, 'https://beutiful-expense-tracker-app.netlify.app/login');
+        // Navigate to login page dynamically
+        await this.navigateOnURL(this.page, UI_URL);
+
+        // Convert to string explicitly
+        email = String(email);
+        password = String(password);
 
         // Fill email & password using utility methods
         await this.fillInputField(this.emailInput, 'pratiknarute2@gmail.com', 'Email Input');
-        await this.fillInputField(this.passwordInput, 'Pratik@1234', 'Password Input');
+        await this.fillInputField(this.passwordInput, password, 'Password Input');
 
         // Click login button
         await this.clickElement(this.loginButton, 'Login Button');
@@ -42,7 +58,6 @@ class LoginPage extends Utility {
         const isVisible = await this.isDisplay(this.loginSuccessMessage, 5000, 'Login Success Message');
         await this.expectToBe(isVisible, true, 'Login Success Message');
     }
-
 
 }
 

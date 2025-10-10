@@ -1,20 +1,45 @@
 const { defineConfig } = require('@playwright/test');
+require('dotenv').config();
+
+
+// 🧠 Choose environment
+const ENV = process.env.ENV || 'local'; // default to local
+
+// 🌍 Environment URLs
+const ENV_CONFIG = {
+  local: { UI_URL: process.env.LOCAL_UI_URL, API_URL: process.env.LOCAL_API_URL },
+  qa: { UI_URL: process.env.QA_UI_URL, API_URL: process.env.QA_API_URL },
+  prod: { UI_URL: process.env.PROD_UI_URL, API_URL: process.env.PROD_API_URL },
+};
+
+const configEnv = ENV_CONFIG[ENV];
+
+if (!configEnv || !configEnv.UI_URL || !configEnv.API_URL) {
+  throw new Error(`❌ Invalid or missing URLs for environment: ${ENV}`);
+}
+
+const { UI_URL, API_URL } = configEnv;
+
+console.log(`✅ Running on ${ENV}`);
+console.log(`🌐 UI URL: ${UI_URL}`);
+console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
   retries: 1,
-  timeout: 120_000,  // Global test timeout (60 seconds)
+  timeout: 120_000,  // Global test timeout: 120 seconds
   expect: {
-    timeout: 30_000,  // Default assertion timeout (10 seconds)
+    timeout: 30_000,  // Default assertion timeout: 30 seconds
   },
 
   use: {
-    actionTimeout: 120000, // Timeout for each action (10 seconds)
-    navigationTimeout: 20_000, // Timeout for navigation (20 seconds)
-    headless: false, // Better for bypassing detection
+    loginURL: UI_URL,
+    actionTimeout: 120_000, // Timeout for each action: 120 seconds
+    navigationTimeout: 20_000, // Timeout for navigation: 20 seconds
+    headless: false, // Run in headed mode for debugging
     launchOptions: {
       args: ['--start-maximized'],
     },
-    video: 'on', // Capture video only on first retry
+    video: 'on-first-retry', // Capture video only on first retry
     screenshot: 'only-on-failure', // Capture screenshot only if the test fails
     trace: 'on-first-retry', // Collect trace only on the first retry
     outputDir: 'test-results/artifacts', // Store raw artifacts
@@ -22,16 +47,19 @@ module.exports = defineConfig({
 
   // projects: [
   //   { name: 'chromium', use: { browserName: 'chromium' }, testMatch: ['Tests/Kolonizer.test.js'] },
-  //   { name: 'firefox', use: { browserName: 'firefox' }, testMatch: ['Tests/Lyca.test.js'] }, // Runs test2 only on Firefox
+  //   { name: 'firefox', use: { browserName: 'firefox' }, testMatch: ['Tests/Lyca.test.js'] },
   // ],
 
   fullyParallel: true,
-  workers: 2, // Set to 1 for debugging; increase for parallel execution
+  workers: 2, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output
-    ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }], // HTML report
-    ['json', { outputFile: 'playwright-reports/report.json' }], // JSON report
-    ['junit', { outputFile: 'playwright-reports/report.xml' }], // JUnit report
+    ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
+    ['json', { outputFile: 'playwright-reports/report.json' }],
+    ['junit', { outputFile: 'playwright-reports/report.xml' }],
   ],
 });
+
+module.exports.UI_URL = UI_URL;
+module.exports.API_URL = API_URL;
