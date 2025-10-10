@@ -11,114 +11,131 @@ let utility;
 
 test.describe.serial('🌐 API Testing Suite', () => {
 
-    // 🔹 1️⃣ Login and Token Generation
-    test('1️⃣ Post Login API', async ({ request }) => {
-        const post = new Post(request);
-        const loginResponse = await post.postLoginAPI();
-        token = loginResponse.token;
+    // 🔐 AUTHENTICATION FEATURE
+    test.describe('🔐 Authentication', () => {
+
+        test('POST | Login API', async ({ request }) => {
+            console.log('\n🔹 Executing Login API...');
+            const post = new Post(request);
+            const loginResponse = await post.postLoginAPI();
+            token = loginResponse.token;
+            expect(token).toBeTruthy();
+        });
     });
 
-    // 🔹 2️⃣–6️⃣ Get APIs
-    test('2️⃣ Get Transaction API', async ({ request }) => {
-        const get = new Get(request);
-        await get.getTransactionAPI();
+    // 🏷️ LABEL FEATURE
+    test.describe('🏷️ Label Feature', () => {
+
+        test('GET | Fetch Label API', async ({ request }) => {
+            const get = new Get(request);
+            await get.getLabelAPI();
+        });
+
+        test('GET | Fetch Label Usage API', async ({ request }) => {
+            const get = new Get(request);
+            await get.getLabelUsageAPI();
+        });
     });
 
-    test('3️⃣ Get Category API', async ({ request }) => {
-        const get = new Get(request);
-        await get.getCategoryAPI();
+    // 💵 OPENING BALANCE FEATURE
+    test.describe('💵 Opening Balance Feature', () => {
+
+        test('GET | Opening Balance API', async ({ request }) => {
+            const get = new Get(request);
+            await get.getOpeningBalanceAPI();
+        });
     });
 
-    test('4️⃣ Get Label API', async ({ request }) => {
-        const get = new Get(request);
-        await get.getLabelAPI();
+    // 💰 CATEGORY FEATURE
+    test.describe('💰 Category Feature', () => {
+
+        test('POST | Create Debit Category', async ({ request }) => {
+            const post = new Post(request);
+            await post.postCategoriesAPI('debit');
+        });
+
+        test('GET | Fetch Categories', async ({ request }) => {
+            const get = new Get(request);
+            await get.getCategoryAPI();
+        });
+
+        test('PUT | Update Debit Category', async ({ request }) => {
+            const put = new Put(request);
+            await put.updateCategoriesAPI('debit');
+        });
+
+        test('DELETE | Delete Debit Category', async ({ request }) => {
+            const del = new Delete(request);
+            await del.deleteCategoriesAPI('debit');
+        });
+
+        test('POST | Create Credit Category', async ({ request }) => {
+            const post = new Post(request);
+            await post.postCategoriesAPI('credit');
+        });
+
+        test('PUT | Update Credit Category', async ({ request }) => {
+            const put = new Put(request);
+            await put.updateCategoriesAPI('credit');
+        });
+
+        test('DELETE | Delete Credit Category', async ({ request }) => {
+            const del = new Delete(request);
+            await del.deleteCategoriesAPI('credit');
+        });
     });
 
-    test('5️⃣ Get Label Usage API', async ({ request }) => {
-        const get = new Get(request);
-        await get.getLabelUsageAPI();
+    // 💳 TRANSACTION FEATURE
+    test.describe('💳 Transaction Feature', () => {
+
+        test('POST | Debit Transaction', async ({ request }) => {
+            const post = new Post(request);
+            await post.postTransactionAPI('debit');
+        });
+
+        test('GET | Fetch Transaction', async ({ request }) => {
+            const get = new Get(request);
+            await get.getTransactionAPI();
+        });
+
+        test('PUT | Update Debit Transaction', async ({ request }) => {
+            const put = new Put(request);
+            await put.updateTransactionAPI('debit');
+        });
+
+        test('DELETE | Delete Debit Transaction', async ({ request }) => {
+            const del = new Delete(request);
+            await del.deleteTransactionAPI('debit');
+        });
+
+        // Uncomment later for Credit Transactions
+        // test('POST | Credit Transaction', async ({ request }) => {
+        //   const post = new Post(request);
+        //   await post.postTransactionAPI('credit');
+        // });
+        // test('PUT | Update Credit Transaction', async ({ request }) => {
+        //   const put = new Put(request);
+        //   await put.updateTransactionAPI('credit');
+        // });
+        // test('DELETE | Delete Credit Transaction', async ({ request }) => {
+        //   const del = new Delete(request);
+        //   await del.deleteTransactionAPI('credit');
+        // });
     });
-
-    test('6️⃣ Get Opening Balance API', async ({ request }) => {
-        const get = new Get(request);
-        await get.getOpeningBalanceAPI();
-    });
-
-    // 🔹 7️⃣–9️⃣ Category APIs (Debit)
-    test('7️⃣ Post Categories API (Debit)', async ({ request }) => {
-        const post = new Post(request);
-        await post.postCategoriesAPI('debit');
-    });
-
-    test('8️⃣ Update Categories API (Debit)', async ({ request }) => {
-        const put = new Put(request);
-        await put.updateCategoriesAPI('debit');
-    });
-
-    test('9️⃣ Delete Categories API (Debit)', async ({ request }) => {
-        const del = new Delete(request);
-        await del.deleteCategoriesAPI('debit');
-    });
-
-    // 🔹 🔟–1️⃣2️⃣ Category APIs (Credit)
-    test('🔟 Post Categories API (Credit)', async ({ request }) => {
-        const post = new Post(request);
-        await post.postCategoriesAPI('credit');
-    });
-
-    test('1️⃣1️⃣ Update Categories API (Credit)', async ({ request }) => {
-        const put = new Put(request);
-        await put.updateCategoriesAPI('credit');
-    });
-
-    test('1️⃣2️⃣ Delete Categories API (Credit)', async ({ request }) => {
-        const del = new Delete(request);
-        await del.deleteCategoriesAPI('credit');
-    });
-
-    // 🔹 1️⃣3️⃣–1️⃣5️⃣ Transaction APIs (Debit)
-    test('1️⃣3️⃣ Post Transaction API (Debit)', async ({ request }) => {
-        const post = new Post(request);
-        await post.postTransactionAPI('debit');
-    });
-
-    test('1️⃣4️⃣ Update Transaction API (Debit)', async ({ request }) => {
-        const put = new Put(request);
-        await put.updateTransactionAPI('debit');
-    });
-
-    test('1️⃣5️⃣ Delete Transaction API (Debit)', async ({ request }) => {
-        const del = new Delete(request);
-        await del.deleteTransactionAPI('debit');
-    });
-
-    // // 🔹 1️⃣6️⃣–1️⃣8️⃣ Transaction APIs (Credit)
-    // test('1️⃣6️⃣ Post Transaction API (Credit)', async ({ request }) => {
-    //     const post = new Post(request);
-    //     await post.postTransactionAPI('credit');
-    // });
-
-    // test('1️⃣7️⃣ Update Transaction API (Credit)', async ({ request }) => {
-    //     const put = new Put(request);
-    //     await put.updateTransactionAPI('credit');
-    // });
-
-    // test('1️⃣8️⃣ Delete Transaction API (Credit)', async ({ request }) => {
-    //     const del = new Delete(request);
-    //     await del.deleteTransactionAPI('credit');
-    // });
 
 });
 
-test.describe('Login Scenarios', () => {
 
-    test('1️⃣ Login through Post API', async ({ request, page }) => {
-        let loginPage = new LoginPage(page);
+// 🧩 LOGIN SCENARIOS (UI + API)
+test.describe('🧩 Login Scenarios', () => {
+
+    test('POST | Login through API', async ({ request, page }) => {
+        const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request);
     });
 
-    test('2️⃣ Login with Valid Credentials', async ({ request, page }) => {
-        let loginPage = new LoginPage(page);
+    test('UI | Login with Valid Credentials', async ({ request, page }) => {
+        const loginPage = new LoginPage(page);
         await loginPage.login_with_valid_credentials(request);
     });
 

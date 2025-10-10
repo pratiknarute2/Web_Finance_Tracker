@@ -1,41 +1,305 @@
-<testsuites id="" name="" tests="17" failures="0" skipped="0" errors="0" time="119.46619">
-<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-09T19:42:56.744Z" hostname="" tests="17" failures="0" skipped="0" time="130.089" errors="0">
-<testcase name="🌐 API Testing Suite › 1️⃣ Post Login API" classname="Tests/FinanceTracker.test.js" time="1.205">
+<testsuites id="" name="" tests="17" failures="0" skipped="0" errors="0" time="118.737728">
+<testsuite name="Tests/FinanceTracker.test.js" timestamp="2025-10-10T03:34:51.361Z" hostname="" tests="17" failures="0" skipped="0" time="127.382" errors="0">
+<testcase name="🌐 API Testing Suite (Feature-wise) › 🔐 Authentication › POST | Login API" classname="Tests/FinanceTracker.test.js" time="1.724">
 <system-out>
-<![CDATA[🔄 Verifying: Post Login API...
+<![CDATA[
+🔹 Executing Login API...
+🔄 Verifying: Post Login API...
 ✅ Payload: {
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 1179 ms
+⏱️ Response Time: 1700 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OCwiZXhwIjoxNzYyNjMwOTc4fQ.bX4IXdLNyRlpOe_cXZJ8gH61WPVUPgm8tKgcHI6-_Gw'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5MywiZXhwIjoxNzYyNjU5MjkzfQ.yGiRrRuLAskx5pyG90TTCPJl_73HJb0qxjfHTv3ZyCA'[39m
 }
 ----------------------------------------------------------------------------------------------------
-🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OCwiZXhwIjoxNzYyNjMwOTc4fQ.bX4IXdLNyRlpOe_cXZJ8gH61WPVUPgm8tKgcHI6-_Gw
+🔑 Global token set: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5MywiZXhwIjoxNzYyNjU5MjkzfQ.yGiRrRuLAskx5pyG90TTCPJl_73HJb0qxjfHTv3ZyCA
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite › 2️⃣ Get Transaction API" classname="Tests/FinanceTracker.test.js" time="1.624">
+<testcase name="🌐 API Testing Suite (Feature-wise) › 🏷️ Label Feature › GET | Fetch Label API" classname="Tests/FinanceTracker.test.js" time="1.008">
+<system-out>
+<![CDATA[🔄 Verifying: Get Labels API...
+🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 1003 ms
+📦 Response Size: 0.26 KB
+🧾 GET Response: [
+  {
+    id: [32m'68bc24f7f115e8a75b9bc4f6'[39m,
+    name: [32m'Essentials'[39m,
+    color: [32m'#4CAF50'[39m,
+    default: [33mfalse[39m
+  },
+  {
+    id: [32m'68bc24faf115e8a75b9bc4f8'[39m,
+    name: [32m'Hygenic'[39m,
+    color: [32m'#2196F3'[39m,
+    default: [33mfalse[39m
+  },
+  {
+    id: [32m'68bc24faf115e8a75b9bc4f7'[39m,
+    name: [32m'Unessentials'[39m,
+    color: [32m'#F44336'[39m,
+    default: [33mfalse[39m
+  }
+]
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 🏷️ Label Feature › GET | Fetch Label Usage API" classname="Tests/FinanceTracker.test.js" time="1.408">
+<system-out>
+<![CDATA[🔄 Verifying: Get Label Usage API...
+🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels/usage
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 1403 ms
+📦 Response Size: 0.13 KB
+🧾 GET Response: [
+  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m105[39m },
+  { id: [32m'68bc24faf115e8a75b9bc4f8'[39m, count: [33m5[39m },
+  { id: [32m'68bc24faf115e8a75b9bc4f7'[39m, count: [33m31[39m }
+]
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💵 Opening Balance Feature › GET | Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.727">
+<system-out>
+<![CDATA[🔄 Verifying: Get Opening Balance API...
+🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 724 ms
+📦 Response Size: 0.01 KB
+🧾 GET Response: [33m50000[39m
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › POST | Create Debit Category" classname="Tests/FinanceTracker.test.js" time="0.982">
+<system-out>
+<![CDATA[🔄 Verifying: Post Categories API for debit...
+✅ Payload: {
+  "name": "Testing",
+  "type": "debit"
+}
+⏱️ Response Time: 979 ms
+🔁 Status Code: [33m200[39m
+📦 Response Size: 0.06 KB
+🧾 JSON Response: { id: [32m'68e87ee1cce1cb176bb23dc1'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m }
+----------------------------------------------------------------------------------------------------
+🔑 Global category ID set: 68e87ee1cce1cb176bb23dc1
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › GET | Fetch Categories" classname="Tests/FinanceTracker.test.js" time="0.95">
+<system-out>
+<![CDATA[🔄 Verifying: Get Categories API...
+🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/categories
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 945 ms
+📦 Response Size: 1.61 KB
+🧾 GET Response: [
+  {
+    id: [32m'68bc201e1c428f12149f53cd'[39m,
+    name: [32m'Gift/Donation'[39m,
+    type: [32m'credit'[39m
+  },
+  { id: [32m'68bdb261f115e8a75b9bc502'[39m, name: [32m'Health'[39m, type: [32m'credit'[39m },
+  {
+    id: [32m'68bc201e1c428f12149f53cc'[39m,
+    name: [32m'Investment'[39m,
+    type: [32m'credit'[39m
+  },
+  { id: [32m'68c1c7bfa603b14c06a1f835'[39m, name: [32m'Loan'[39m, type: [32m'credit'[39m },
+  {
+    id: [32m'68bde13cf115e8a75b9bc51f'[39m,
+    name: [32m'Opening Balance'[39m,
+    type: [32m'credit'[39m
+  },
+  { id: [32m'68bc201e1c428f12149f53cb'[39m, name: [32m'Refund'[39m, type: [32m'credit'[39m },
+  { id: [32m'68bc201e1c428f12149f53ca'[39m, name: [32m'Salary'[39m, type: [32m'credit'[39m },
+  {
+    id: [32m'68d981bd97884c8960efbfd0'[39m,
+    name: [32m'Bank Charges'[39m,
+    type: [32m'debit'[39m
+  },
+  { id: [32m'68bc201d1c428f12149f53c8'[39m, name: [32m'EMI'[39m, type: [32m'debit'[39m },
+  {
+    id: [32m'68bc201b1c428f12149f53c1'[39m,
+    name: [32m'Entertainment'[39m,
+    type: [32m'debit'[39m
+  },
+  {
+    id: [32m'68bc201b1c428f12149f53c3'[39m,
+    name: [32m'Family support'[39m,
+    type: [32m'debit'[39m
+  },
+  {
+    id: [32m'68bdb429f115e8a75b9bc504'[39m,
+    name: [32m'Fashion & Lifestyle'[39m,
+    type: [32m'debit'[39m
+  },
+  { id: [32m'68bc201a1c428f12149f53be'[39m, name: [32m'Food'[39m, type: [32m'debit'[39m },
+  {
+    id: [32m'68bdb2e4f115e8a75b9bc503'[39m,
+    name: [32m'Gift/Donation'[39m,
+    type: [32m'debit'[39m
+  },
+  { id: [32m'68bc201c1c428f12149f53c5'[39m, name: [32m'Grocery'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bdb257f115e8a75b9bc501'[39m, name: [32m'Health'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bddf3cf115e8a75b9bc51b'[39m, name: [32m'Investment'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bc201b1c428f12149f53c2'[39m, name: [32m'Lending'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bc201d1c428f12149f53c9'[39m, name: [32m'Others'[39m, type: [32m'debit'[39m },
+  {
+    id: [32m'68d573b6a603b14c06a1f876'[39m,
+    name: [32m'Printing & Stationery'[39m,
+    type: [32m'debit'[39m
+  },
+  { id: [32m'68bc201c1c428f12149f53c6'[39m, name: [32m'Rent'[39m, type: [32m'debit'[39m },
+  { id: [32m'68e87ee1cce1cb176bb23dc1'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bc201b1c428f12149f53bf'[39m, name: [32m'Transport'[39m, type: [32m'debit'[39m },
+  { id: [32m'68bc201d1c428f12149f53c7'[39m, name: [32m'Utilities'[39m, type: [32m'debit'[39m }
+]
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › PUT | Update Debit Category" classname="Tests/FinanceTracker.test.js" time="1.414">
+<system-out>
+<![CDATA[🔄 Verifying: Update Categories API for debit...
+🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee1cce1cb176bb23dc1
+✅ Payload: {
+  "newName": "Testing updated"
+}
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 1409 ms
+📦 Response Size: 0.07 KB
+🧾 PUT Response: {
+  id: [32m'68e87ee1cce1cb176bb23dc1'[39m,
+  name: [32m'Testing updated'[39m,
+  type: [32m'debit'[39m
+}
+✅ PUT request updated successfully! Updated name: Testing updated
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › DELETE | Delete Debit Category" classname="Tests/FinanceTracker.test.js" time="1.244">
+<system-out>
+<![CDATA[🔄 Verifying: Delete Categories API for debit...
+🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee1cce1cb176bb23dc1
+🔁 Status Code: [33m204[39m
+⏱️ Response Time: 1241 ms
+📦 Response Size: 0.00 KB
+🧾 DELETE Response: <empty>
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › POST | Create Credit Category" classname="Tests/FinanceTracker.test.js" time="1.035">
+<system-out>
+<![CDATA[🔄 Verifying: Post Categories API for credit...
+✅ Payload: {
+  "name": "Testing",
+  "type": "credit"
+}
+⏱️ Response Time: 1030 ms
+🔁 Status Code: [33m200[39m
+📦 Response Size: 0.06 KB
+🧾 JSON Response: { id: [32m'68e87ee5cce1cb176bb23dc2'[39m, name: [32m'Testing'[39m, type: [32m'credit'[39m }
+----------------------------------------------------------------------------------------------------
+🔑 Global category ID set: 68e87ee5cce1cb176bb23dc2
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › PUT | Update Credit Category" classname="Tests/FinanceTracker.test.js" time="1.523">
+<system-out>
+<![CDATA[🔄 Verifying: Update Categories API for credit...
+🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee5cce1cb176bb23dc2
+✅ Payload: {
+  "newName": "Testing updated"
+}
+🔁 Status Code: [33m200[39m
+⏱️ Response Time: 1517 ms
+📦 Response Size: 0.07 KB
+🧾 PUT Response: {
+  id: [32m'68e87ee5cce1cb176bb23dc2'[39m,
+  name: [32m'Testing updated'[39m,
+  type: [32m'credit'[39m
+}
+✅ PUT request updated successfully! Updated name: Testing updated
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💰 Category Feature › DELETE | Delete Credit Category" classname="Tests/FinanceTracker.test.js" time="1.226">
+<system-out>
+<![CDATA[🔄 Verifying: Delete Categories API for credit...
+🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e87ee5cce1cb176bb23dc2
+🔁 Status Code: [33m204[39m
+⏱️ Response Time: 1221 ms
+📦 Response Size: 0.00 KB
+🧾 DELETE Response: <empty>
+----------------------------------------------------------------------------------------------------
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › POST | Create Debit Transaction" classname="Tests/FinanceTracker.test.js" time="1.644">
+<system-out>
+<![CDATA[🔄 Verifying: Post Transaction API for debit...
+✅ Payload: {
+  "date": "2025-10-10",
+  "type": "debit",
+  "category": "Bank Charges",
+  "amount": "10",
+  "reimbursable": "N",
+  "comments": "Testing",
+  "labelIds": [
+    "68bc24f7f115e8a75b9bc4f6"
+  ]
+}
+⏱️ Response Time: 1638 ms
+🔁 Status Code: [33m200[39m
+📦 Response Size: 0.24 KB
+🧾 JSON Response: {
+  id: [32m'68e87eeacce1cb176bb23dc3'[39m,
+  date: [32m'2025-10-10'[39m,
+  time: [32m'03:35:06.189930167'[39m,
+  type: [32m'debit'[39m,
+  category: [32m'Bank Charges'[39m,
+  amount: [33m10[39m,
+  reimbursable: [33mfalse[39m,
+  comments: [32m'Testing'[39m,
+  runningBalance: [33m-10[39m,
+  labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
+}
+----------------------------------------------------------------------------------------------------
+🔑 Global Transaction ID set: 68e87eeacce1cb176bb23dc3
+]]>
+</system-out>
+</testcase>
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › GET | Fetch Transaction" classname="Tests/FinanceTracker.test.js" time="1.184">
 <system-out>
 <![CDATA[🔄 Verifying: Get Transaction API...
 🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1615 ms
-📦 Response Size: 51.32 KB
+⏱️ Response Time: 1176 ms
+📦 Response Size: 51.31 KB
 🧾 GET Response: [
   {
-    id: [32m'68e80f02cce1cb176bb23db0'[39m,
+    id: [32m'68e87eeacce1cb176bb23dc3'[39m,
     date: [32m'2025-10-10'[39m,
-    time: [32m'19:37:38.174'[39m,
+    time: [32m'03:35:06.189'[39m,
     type: [32m'debit'[39m,
     category: [32m'Bank Charges'[39m,
     amount: [33m10[39m,
     reimbursable: [33mfalse[39m,
-    comments: [32m'Testing update'[39m,
+    comments: [32m'Testing'[39m,
     runningBalance: [33m1618156.96[39m,
     labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
   },
@@ -1236,271 +1500,10 @@ Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite › 3️⃣ Get Category API" classname="Tests/FinanceTracker.test.js" time="0.973">
-<system-out>
-<![CDATA[🔄 Verifying: Get Categories API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/categories
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 970 ms
-📦 Response Size: 1.54 KB
-🧾 GET Response: [
-  {
-    id: [32m'68bc201e1c428f12149f53cd'[39m,
-    name: [32m'Gift/Donation'[39m,
-    type: [32m'credit'[39m
-  },
-  { id: [32m'68bdb261f115e8a75b9bc502'[39m, name: [32m'Health'[39m, type: [32m'credit'[39m },
-  {
-    id: [32m'68bc201e1c428f12149f53cc'[39m,
-    name: [32m'Investment'[39m,
-    type: [32m'credit'[39m
-  },
-  { id: [32m'68c1c7bfa603b14c06a1f835'[39m, name: [32m'Loan'[39m, type: [32m'credit'[39m },
-  {
-    id: [32m'68bde13cf115e8a75b9bc51f'[39m,
-    name: [32m'Opening Balance'[39m,
-    type: [32m'credit'[39m
-  },
-  { id: [32m'68bc201e1c428f12149f53cb'[39m, name: [32m'Refund'[39m, type: [32m'credit'[39m },
-  { id: [32m'68bc201e1c428f12149f53ca'[39m, name: [32m'Salary'[39m, type: [32m'credit'[39m },
-  {
-    id: [32m'68d981bd97884c8960efbfd0'[39m,
-    name: [32m'Bank Charges'[39m,
-    type: [32m'debit'[39m
-  },
-  { id: [32m'68bc201d1c428f12149f53c8'[39m, name: [32m'EMI'[39m, type: [32m'debit'[39m },
-  {
-    id: [32m'68bc201b1c428f12149f53c1'[39m,
-    name: [32m'Entertainment'[39m,
-    type: [32m'debit'[39m
-  },
-  {
-    id: [32m'68bc201b1c428f12149f53c3'[39m,
-    name: [32m'Family support'[39m,
-    type: [32m'debit'[39m
-  },
-  {
-    id: [32m'68bdb429f115e8a75b9bc504'[39m,
-    name: [32m'Fashion & Lifestyle'[39m,
-    type: [32m'debit'[39m
-  },
-  { id: [32m'68bc201a1c428f12149f53be'[39m, name: [32m'Food'[39m, type: [32m'debit'[39m },
-  {
-    id: [32m'68bdb2e4f115e8a75b9bc503'[39m,
-    name: [32m'Gift/Donation'[39m,
-    type: [32m'debit'[39m
-  },
-  { id: [32m'68bc201c1c428f12149f53c5'[39m, name: [32m'Grocery'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bdb257f115e8a75b9bc501'[39m, name: [32m'Health'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bddf3cf115e8a75b9bc51b'[39m, name: [32m'Investment'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bc201b1c428f12149f53c2'[39m, name: [32m'Lending'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bc201d1c428f12149f53c9'[39m, name: [32m'Others'[39m, type: [32m'debit'[39m },
-  {
-    id: [32m'68d573b6a603b14c06a1f876'[39m,
-    name: [32m'Printing & Stationery'[39m,
-    type: [32m'debit'[39m
-  },
-  { id: [32m'68bc201c1c428f12149f53c6'[39m, name: [32m'Rent'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bc201b1c428f12149f53bf'[39m, name: [32m'Transport'[39m, type: [32m'debit'[39m },
-  { id: [32m'68bc201d1c428f12149f53c7'[39m, name: [32m'Utilities'[39m, type: [32m'debit'[39m }
-]
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 4️⃣ Get Label API" classname="Tests/FinanceTracker.test.js" time="1.017">
-<system-out>
-<![CDATA[🔄 Verifying: Get Labels API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1015 ms
-📦 Response Size: 0.26 KB
-🧾 GET Response: [
-  {
-    id: [32m'68bc24f7f115e8a75b9bc4f6'[39m,
-    name: [32m'Essentials'[39m,
-    color: [32m'#4CAF50'[39m,
-    default: [33mfalse[39m
-  },
-  {
-    id: [32m'68bc24faf115e8a75b9bc4f8'[39m,
-    name: [32m'Hygenic'[39m,
-    color: [32m'#2196F3'[39m,
-    default: [33mfalse[39m
-  },
-  {
-    id: [32m'68bc24faf115e8a75b9bc4f7'[39m,
-    name: [32m'Unessentials'[39m,
-    color: [32m'#F44336'[39m,
-    default: [33mfalse[39m
-  }
-]
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 5️⃣ Get Label Usage API" classname="Tests/FinanceTracker.test.js" time="1.418">
-<system-out>
-<![CDATA[🔄 Verifying: Get Label Usage API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/labels/usage
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1412 ms
-📦 Response Size: 0.13 KB
-🧾 GET Response: [
-  { id: [32m'68bc24f7f115e8a75b9bc4f6'[39m, count: [33m106[39m },
-  { id: [32m'68bc24faf115e8a75b9bc4f8'[39m, count: [33m5[39m },
-  { id: [32m'68bc24faf115e8a75b9bc4f7'[39m, count: [33m31[39m }
-]
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 6️⃣ Get Opening Balance API" classname="Tests/FinanceTracker.test.js" time="0.879">
-<system-out>
-<![CDATA[🔄 Verifying: Get Opening Balance API...
-🌐 Sending GET request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/opening-balance
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 873 ms
-📦 Response Size: 0.01 KB
-🧾 GET Response: [33m50000[39m
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 7️⃣ Post Categories API (Debit)" classname="Tests/FinanceTracker.test.js" time="1.134">
-<system-out>
-<![CDATA[🔄 Verifying: Post Categories API for debit...
-✅ Payload: {
-  "name": "Testing",
-  "type": "debit"
-}
-⏱️ Response Time: 1127 ms
-🔁 Status Code: [33m200[39m
-📦 Response Size: 0.06 KB
-🧾 JSON Response: { id: [32m'68e81048cce1cb176bb23db5'[39m, name: [32m'Testing'[39m, type: [32m'debit'[39m }
-----------------------------------------------------------------------------------------------------
-🔑 Global category ID set: 68e81048cce1cb176bb23db5
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 8️⃣ Update Categories API (Debit)" classname="Tests/FinanceTracker.test.js" time="1.525">
-<system-out>
-<![CDATA[🔄 Verifying: Update Categories API for debit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e81048cce1cb176bb23db5
-✅ Payload: {
-  "newName": "Testing updated"
-}
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1518 ms
-📦 Response Size: 0.07 KB
-🧾 PUT Response: {
-  id: [32m'68e81048cce1cb176bb23db5'[39m,
-  name: [32m'Testing updated'[39m,
-  type: [32m'debit'[39m
-}
-✅ PUT request updated successfully! Updated name: Testing updated
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 9️⃣ Delete Categories API (Debit)" classname="Tests/FinanceTracker.test.js" time="1.193">
-<system-out>
-<![CDATA[🔄 Verifying: Delete Categories API for debit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e81048cce1cb176bb23db5
-🔁 Status Code: [33m204[39m
-⏱️ Response Time: 1178 ms
-📦 Response Size: 0.00 KB
-🧾 DELETE Response: <empty>
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 🔟 Post Categories API (Credit)" classname="Tests/FinanceTracker.test.js" time="1.042">
-<system-out>
-<![CDATA[🔄 Verifying: Post Categories API for credit...
-✅ Payload: {
-  "name": "Testing",
-  "type": "credit"
-}
-⏱️ Response Time: 1036 ms
-🔁 Status Code: [33m200[39m
-📦 Response Size: 0.06 KB
-🧾 JSON Response: { id: [32m'68e8104ccce1cb176bb23db6'[39m, name: [32m'Testing'[39m, type: [32m'credit'[39m }
-----------------------------------------------------------------------------------------------------
-🔑 Global category ID set: 68e8104ccce1cb176bb23db6
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 1️⃣1️⃣ Update Categories API (Credit)" classname="Tests/FinanceTracker.test.js" time="1.442">
-<system-out>
-<![CDATA[🔄 Verifying: Update Categories API for credit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e8104ccce1cb176bb23db6
-✅ Payload: {
-  "newName": "Testing updated"
-}
-🔁 Status Code: [33m200[39m
-⏱️ Response Time: 1435 ms
-📦 Response Size: 0.07 KB
-🧾 PUT Response: {
-  id: [32m'68e8104ccce1cb176bb23db6'[39m,
-  name: [32m'Testing updated'[39m,
-  type: [32m'credit'[39m
-}
-✅ PUT request updated successfully! Updated name: Testing updated
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 1️⃣2️⃣ Delete Categories API (Credit)" classname="Tests/FinanceTracker.test.js" time="1.187">
-<system-out>
-<![CDATA[🔄 Verifying: Delete Categories API for credit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/categories/68e8104ccce1cb176bb23db6
-🔁 Status Code: [33m204[39m
-⏱️ Response Time: 1181 ms
-📦 Response Size: 0.00 KB
-🧾 DELETE Response: <empty>
-----------------------------------------------------------------------------------------------------
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 1️⃣3️⃣ Post Transaction API (Debit)" classname="Tests/FinanceTracker.test.js" time="1.621">
-<system-out>
-<![CDATA[🔄 Verifying: Post Transaction API for debit...
-✅ Payload: {
-  "date": "2025-10-10",
-  "type": "debit",
-  "category": "Bank Charges",
-  "amount": "10",
-  "reimbursable": "N",
-  "comments": "Testing",
-  "labelIds": [
-    "68bc24f7f115e8a75b9bc4f6"
-  ]
-}
-⏱️ Response Time: 1615 ms
-🔁 Status Code: [33m200[39m
-📦 Response Size: 0.23 KB
-🧾 JSON Response: {
-  id: [32m'68e81051cce1cb176bb23db7'[39m,
-  date: [32m'2025-10-10'[39m,
-  time: [32m'19:43:13.01055164'[39m,
-  type: [32m'debit'[39m,
-  category: [32m'Bank Charges'[39m,
-  amount: [33m10[39m,
-  reimbursable: [33mfalse[39m,
-  comments: [32m'Testing'[39m,
-  runningBalance: [33m-10[39m,
-  labelIds: [ [32m'68bc24f7f115e8a75b9bc4f6'[39m ]
-}
-----------------------------------------------------------------------------------------------------
-🔑 Global Transaction ID set: 68e81051cce1cb176bb23db7
-]]>
-</system-out>
-</testcase>
-<testcase name="🌐 API Testing Suite › 1️⃣4️⃣ Update Transaction API (Debit)" classname="Tests/FinanceTracker.test.js" time="51.895">
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › PUT | Update Debit Transaction" classname="Tests/FinanceTracker.test.js" time="51.611">
 <system-out>
 <![CDATA[🔄 Verifying: Update Transaction API for debit...
-🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e81051cce1cb176bb23db7
+🛠️ Sending PUT request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e87eeacce1cb176bb23dc3
 ✅ Payload: {
   "date": "2025-10-10",
   "type": "debit",
@@ -1513,12 +1516,12 @@ Transport Category: 18
   ]
 }
 🔁 Status Code: [33m200[39m
-⏱️ Response Time: 51888 ms
+⏱️ Response Time: 51606 ms
 📦 Response Size: 0.24 KB
 🧾 PUT Response: {
-  id: [32m'68e81051cce1cb176bb23db7'[39m,
+  id: [32m'68e87eeacce1cb176bb23dc3'[39m,
   date: [32m'2025-10-10'[39m,
-  time: [32m'19:43:13.01'[39m,
+  time: [32m'03:35:06.189'[39m,
   type: [32m'debit'[39m,
   category: [32m'Bank Charges'[39m,
   amount: [33m10[39m,
@@ -1532,31 +1535,31 @@ Transport Category: 18
 ]]>
 </system-out>
 </testcase>
-<testcase name="🌐 API Testing Suite › 1️⃣5️⃣ Delete Transaction API (Debit)" classname="Tests/FinanceTracker.test.js" time="50.941">
+<testcase name="🌐 API Testing Suite (Feature-wise) › 💳 Transaction Feature › DELETE | Delete Debit Transaction" classname="Tests/FinanceTracker.test.js" time="50.716">
 <system-out>
 <![CDATA[🔄 Verifying: Delete Transaction API for debit...
-🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e81051cce1cb176bb23db7
+🗑️ Sending DELETE request to: https://expense-tracker-backend-y788.onrender.com/api/transactions/68e87eeacce1cb176bb23dc3
 🔁 Status Code: [33m204[39m
-⏱️ Response Time: 50926 ms
+⏱️ Response Time: 50710 ms
 📦 Response Size: 0.00 KB
 🧾 DELETE Response: <empty>
 ----------------------------------------------------------------------------------------------------
 ]]>
 </system-out>
 </testcase>
-<testcase name="Login Scenarios › 1️⃣ Login through Post API" classname="Tests/FinanceTracker.test.js" time="6.138">
+<testcase name="🧩 Login Scenarios › POST | Login through API" classname="Tests/FinanceTracker.test.js" time="5.364">
 <system-out>
 <![CDATA[🔄 Verifying: Post Login API...
 ✅ Payload: {
   "email": "pratiknarute2@gmail.com",
   "password": "Pratik@1234"
 }
-⏱️ Response Time: 1697 ms
+⏱️ Response Time: 1638 ms
 🔁 Status Code: [33m200[39m
 📦 Response Size: 0.20 KB
 🧾 JSON Response: {
   message: [32m'Logged in successfully'[39m,
-  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDAzODk3OSwiZXhwIjoxNzYyNjMwOTc5fQ.k4dPgcoAQoLqiP_6vYbhl1tVIwBLkRCi-BLVw2hmFck'[39m
+  token: [32m'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcmF0aWtuYXJ1dGUyQGdtYWlsLmNvbSIsImlhdCI6MTc2MDA2NzI5NCwiZXhwIjoxNzYyNjU5Mjk0fQ.MSu6OTzmN2hr6i2uoo8daYKjcyaVjqb_krkPTR7mJE4'[39m
 }
 ----------------------------------------------------------------------------------------------------
 🔍 Verifying: Unexpected Post Login Message
@@ -1565,11 +1568,11 @@ Actual: Logged in successfully | Expected: Logged in successfully
 ✅ Navigate On URL: [https://beutiful-expense-tracker-app.netlify.app/expense-tracker]
 ----------------------------------------------------------------------------------------------------
 
-[[ATTACHMENT|../test-results/Tests-FinanceTracker-Login-1b639--1️⃣-Login-through-Post-API/video.webm]]
+[[ATTACHMENT|../test-results/Tests-FinanceTracker-🧩-Lo-6bf23-rios-POST-Login-through-API/video.webm]]
 ]]>
 </system-out>
 </testcase>
-<testcase name="Login Scenarios › 2️⃣ Login with Valid Credentials" classname="Tests/FinanceTracker.test.js" time="4.855">
+<testcase name="🧩 Login Scenarios › UI | Login with Valid Credentials" classname="Tests/FinanceTracker.test.js" time="3.622">
 <system-out>
 <![CDATA[✅ Navigate On URL: [https://beutiful-expense-tracker-app.netlify.app/login]
 ----------------------------------------------------------------------------------------------------
@@ -1579,21 +1582,21 @@ Actual: Logged in successfully | Expected: Logged in successfully
 ----------------------------------------------------------------------------------------------------
 🔄 Filling: Password Input...
 ✅ Filled [Password Input] with value: Pratik@1234
-⏳ Time taken: 0.04 sec
+⏳ Time taken: 0.03 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Clicking: Login Button...
 ✅ Clicked [Login Button]
-⏳ Time taken: 0.06 sec
+⏳ Time taken: 0.02 sec
 ----------------------------------------------------------------------------------------------------
 🔄 Verifying: Login Success Message...
 ✅ Found [Login Success Message]
-⏳ Time taken: 2.80 sec
+⏳ Time taken: 1.79 sec
 ----------------------------------------------------------------------------------------------------
 🔍 Verifying: Login Success Message
 Actual: true | Expected: true
 ----------------------------------------------------------------------------------------------------
 
-[[ATTACHMENT|../test-results/Tests-FinanceTracker-Login-fa67a-ogin-with-Valid-Credentials/video.webm]]
+[[ATTACHMENT|../test-results/Tests-FinanceTracker-🧩-Lo-31bfc-ogin-with-Valid-Credentials/video.webm]]
 ]]>
 </system-out>
 </testcase>

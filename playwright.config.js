@@ -26,7 +26,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 3, // Set to 1 for debugging; increase for parallel execution
+  workers: 2, // Set to 1 for debugging; increase for parallel execution
 
   reporter: [
     ['list'], // Console output
