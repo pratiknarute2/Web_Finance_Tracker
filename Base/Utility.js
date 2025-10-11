@@ -78,13 +78,27 @@ class Utility {
 
     }
     async navigateOnURL(page, url) {
-        try {
-            await page.goto(url, { waitUntil: "domcontentloaded" }); // Navigate and wait for the page to load
-            await expect(page).toHaveURL(url, { timeout: 10000 }); // Wait up to 10 seconds
-            process.stdout.write(`✅ Navigate On URL: [${url}]\n`);
+        const startTime = performance.now(); // Start timer
+        process.stdout.write(`🌐 Navigating to URL: [${url}]...\n`);
 
+        try {
+            // Validate URL before attempting navigation
+            if (!url || typeof url !== 'string' || !url.startsWith('http')) {
+                throw new Error(`Invalid URL provided: ${url}`);
+            }
+
+            // Navigate to the page and wait until DOM is ready
+            await page.goto(url, { waitUntil: "domcontentloaded" });
+            await expect(page).toHaveURL(url, { timeout: 10000 });
+
+            // Calculate elapsed time
+            const timeTaken = ((performance.now() - startTime) / 1000).toFixed(2);
+            process.stdout.write(`✅ Successfully navigated to: [${url}]\n`);
+            process.stdout.write(`⏳ Time taken: ${timeTaken} sec\n`);
         } catch (error) {
-            throw new Error(`❌ Failed to navigate to [${url}]. Error: ${error.message}`);
+            const errorMessage = `❌ Failed to navigate to [${url}]. Error: ${error.message}`;
+            process.stdout.write(`${errorMessage}\n`);
+            throw new Error(errorMessage);
         } finally {
             console.log('-'.repeat(100));
         }
@@ -336,6 +350,40 @@ class Utility {
             throw error; // RE-THROW to fail the test
         }
     }
+
+    async selectDropdown(locator, optionValue, stepName = 'Dropdown') {
+        const startTime = performance.now();
+        process.stdout.write(`🔄 Selecting [${optionValue}] from ${stepName}...\n`);
+
+        try {
+            // ✅ Check that page and locator are still valid
+            if (!this.page || this.page.isClosed()) {
+                throw new Error('Page or browser context is closed.');
+            }
+
+            await locator.waitFor({ state: 'visible', timeout: 10000 });
+            await locator.scrollIntoViewIfNeeded();
+
+            // ✅ Double-check dropdown exists before selecting
+            const isVisible = await locator.isVisible();
+            if (!isVisible) {
+                throw new Error(`${stepName} not visible for selecting.`);
+            }
+
+            await locator.selectOption({ label: optionValue });
+
+            const timeTaken = ((performance.now() - startTime) / 1000).toFixed(2);
+            process.stdout.write(`✅ Selected [${optionValue}] from ${stepName}\n`);
+            process.stdout.write(`⏳ Time taken: ${timeTaken} sec\n`);
+        } catch (error) {
+            const errorMessage = `❌ Failed to select [${optionValue}] from ${stepName} --> ${error.message}`;
+            process.stdout.write(`${errorMessage}\n`);
+            throw new Error(errorMessage);
+        }
+
+        console.log('-'.repeat(100));
+    }
+
 
 
 

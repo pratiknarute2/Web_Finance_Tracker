@@ -32,7 +32,7 @@ class Put extends Utility {
         const transactionResponse = await this.putRequest(
             this.request,
             `${API_URL}/api/transactions/${global.transactionId}`, // ✅ dynamic URL
-            `Transaction_update`,
+            `Transaction_update_${transactionType}`,
             `Update Transaction API for ${transactionType}`
         );
 

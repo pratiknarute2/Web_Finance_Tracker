@@ -12,6 +12,8 @@ class LoginPage extends Utility {
         this.passwordInput = page.getByRole('textbox', { name: 'Password' });
         this.loginButton = page.getByRole('button', { name: 'Login' });
         this.loginSuccessMessage = page.getByText('Login successful! Redirecting');
+        this.loginErrorMessageToaster = page.locator("//section//div[text()='Invalid email or password']");
+        this.loginErrorMessageText = page.locator("//form//div[text()='Invalid email or password']");
     }
 
     // ✅ Login through POST API
@@ -23,9 +25,10 @@ class LoginPage extends Utility {
             'Post Login API'
         );
 
-        await this.expectToBe(loginResponse.message, 'Logged in successfully', 'Unexpected Post Login Message');
+        await this.expectToBe(loginResponse.message, 'Logged in successfully', 'Post Login Message');
 
-        const token = loginResponse.token;
+        global.token = loginResponse.token;
+        console.log('🔑 Global token set:', global.token);
 
         // Navigate to UI URL dynamically
         const appURL = UI_URL.replace('/login', '/expense-tracker');
@@ -58,6 +61,25 @@ class LoginPage extends Utility {
         const isVisible = await this.isDisplay(this.loginSuccessMessage, 5000, 'Login Success Message');
         await this.expectToBe(isVisible, true, 'Login Success Message');
     }
+    async login_with_invalid_credentials() {
+        // Navigate to login page dynamically
+        await this.navigateOnURL(this.page, UI_URL);
+
+        // Fill email & password using utility methods
+        await this.fillInputField(this.emailInput, 'pratiknarute2@gmail.com', 'Email Input');
+        await this.fillInputField(this.passwordInput, '123', 'Password Input');
+
+        // Click login button
+        await this.clickElement(this.loginButton, 'Login Button');
+
+        const isVisible_loginErrorMessageText = await this.isDisplay(this.loginErrorMessageText, 5000, 'Text Error Message: Invalid email or password');
+        const isVisible_loginErrorMessageToaster = await this.isDisplay(this.loginErrorMessageToaster, 5000, 'Toaster Error Message: Invalid email or password');
+
+        await this.expectToBe(isVisible_loginErrorMessageText, true, 'Text Error Message: Invalid email or password');
+        await this.expectToBe(isVisible_loginErrorMessageToaster, true, 'Toaster Error Message: Invalid email or password');
+
+    }
+
 
 }
 

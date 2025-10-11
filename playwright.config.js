@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'local'; // default to local
+const ENV = process.env.ENV || 'local'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {

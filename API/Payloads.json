@@ -37,9 +37,20 @@
       "68bc24f7f115e8a75b9bc4f6"
     ]
   },
-  "Transaction_update": {
+  "Transaction_update_debit": {
     "date": "2025-10-10",
     "type": "debit",
+    "category": "Bank Charges",
+    "amount": "10",
+    "reimbursable": "N",
+    "comments": "Testing update",
+    "labelIds": [
+      "68bc24f7f115e8a75b9bc4f6"
+    ]
+  },
+  "Transaction_update_credit": {
+    "date": "2025-10-10",
+    "type": "credit",
     "category": "Bank Charges",
     "amount": "10",
     "reimbursable": "N",

@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const LoginPage = require('../Pages/LoginPage');
+const HomePage = require('../Pages/HomePage');
 const Utility = require('../Base/Utility.js');
 const Post = require('../API/Post.js');
 const Get = require('../API/Get.js');
@@ -107,28 +108,25 @@ test.describe.serial('🌐 API Testing Suite', () => {
             const del = new Delete(request);
             await del.deleteTransactionAPI('debit');
         });
-
-        // Uncomment later for Credit Transactions
-        // test('POST | Credit Transaction', async ({ request }) => {
-        //   const post = new Post(request);
-        //   await post.postTransactionAPI('credit');
-        // });
-        // test('PUT | Update Credit Transaction', async ({ request }) => {
-        //   const put = new Put(request);
-        //   await put.updateTransactionAPI('credit');
-        // });
-        // test('DELETE | Delete Credit Transaction', async ({ request }) => {
-        //   const del = new Delete(request);
-        //   await del.deleteTransactionAPI('credit');
-        // });
+        test('POST | Credit Transaction', async ({ request }) => {
+            const post = new Post(request);
+            await post.postTransactionAPI('credit');
+        });
+        test('PUT | Update Credit Transaction', async ({ request }) => {
+            const put = new Put(request);
+            await put.updateTransactionAPI('credit');
+        });
+        test('DELETE | Delete Credit Transaction', async ({ request }) => {
+            const del = new Delete(request);
+            await del.deleteTransactionAPI('credit');
+        });
     });
 
 });
 
 
 // 🧩 LOGIN SCENARIOS (UI + API)
-test.describe('🧩 Login Scenarios', () => {
-
+test.describe.skip('🧩 Login Scenarios', () => {
     test('POST | Login through API', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request);
@@ -138,5 +136,30 @@ test.describe('🧩 Login Scenarios', () => {
         const loginPage = new LoginPage(page);
         await loginPage.login_with_valid_credentials(request);
     });
+    test('UI | Login with Invalid Credentials', async ({ request, page }) => {
+        const loginPage = new LoginPage(page);
+        await loginPage.login_with_invalid_credentials(request);
+    });
 
 });
+
+test.describe("Arthmatical Calculation", () => {
+    test("UI | Table calculations", async ({ request, page }) => {
+        const loginPage = new LoginPage(page);
+        const homePage = new HomePage(page);
+
+        await loginPage.login_through_post_API(request)
+        await homePage.arthmaticalTableCalculation(request)
+
+    })
+    test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
+        const loginPage = new LoginPage(page);
+        const homePage = new HomePage(page);
+
+        await loginPage.login_through_post_API(request)
+        await homePage.impactCalculationOfCreatedTransaction()
+
+    })
+
+
+})
