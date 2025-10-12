@@ -37,6 +37,10 @@ npx playwright install
 
 ---
 
+<!-- download .env -->
+npm install dotenv
+
+
 ## 🚀 Execute Tests
 
 ▶️ Run All Test Cases

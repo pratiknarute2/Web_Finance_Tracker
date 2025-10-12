@@ -9,9 +9,7 @@ playwright-reports/
 artifacts/
 *.log
 
-# Environment variables & secrets
-.env
-*.env
+
 
 # VS Code settings (optional)
 .vscode/
