@@ -384,6 +384,22 @@ class Utility {
         console.log('-'.repeat(100));
     }
 
+    formatDateToYYYYMMDD(uiDate) {
+        const [month, day, year] = uiDate.split('/'); // Split by '/'
+        const mm = month.padStart(2, '0'); // pad month to 2 digits
+        const dd = day.padStart(2, '0');   // pad day to 2 digits
+        return `${year}-${mm}-${dd}`;
+    }
+
+    async removeSpecialCharFromNumber(locator) {
+        const text = (await locator.textContent() || "")
+            .replace(/[^\d.-]/g, '').trim();
+        const amount = parseFloat(text) || 0;
+        return amount
+    }
+
+
+
 
 
 

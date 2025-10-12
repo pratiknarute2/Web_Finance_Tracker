@@ -25,15 +25,15 @@ console.log(`🌐 UI URL: ${UI_URL}`);
 console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
-  retries: 1,
-  timeout: 120_000,  // Global test timeout: 120 seconds
+  retries: 0,
+  timeout: 200_000,  // Global test timeout: 200 sec
   expect: {
     timeout: 30_000,  // Default assertion timeout: 30 seconds
   },
 
   use: {
     loginURL: UI_URL,
-    actionTimeout: 120_000, // Timeout for each action: 120 seconds
+    actionTimeout: 20_000, // Timeout for each action: 120 seconds
     navigationTimeout: 20_000, // Timeout for navigation: 20 seconds
     headless: false, // Run in headed mode for debugging
     launchOptions: {

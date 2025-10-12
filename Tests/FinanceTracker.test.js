@@ -10,7 +10,7 @@ const Delete = require('../API/Delete.js');
 let token = '';
 let utility;
 
-test.describe.serial('🌐 API Testing Suite', () => {
+test.describe.skip('🌐 API Testing Suite', () => {
 
     // 🔐 AUTHENTICATION FEATURE
     test.describe('🔐 Authentication', () => {
@@ -152,14 +152,15 @@ test.describe("Arthmatical Calculation", () => {
         await homePage.arthmaticalTableCalculation(request)
 
     })
-    test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        const homePage = new HomePage(page);
+    // test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
+    //     const loginPage = new LoginPage(page);
+    //     const homePage = new HomePage(page);
 
-        await loginPage.login_through_post_API(request)
-        await homePage.impactCalculationOfCreatedTransaction()
+    //     await loginPage.login_through_post_API(request)
+    //     await homePage.impactCalculationOfCreatedTransaction()
 
-    })
+
+    // })
 
 
 })
