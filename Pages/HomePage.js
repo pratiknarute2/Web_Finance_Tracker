@@ -64,8 +64,8 @@ class HomePage extends Utility {
         while (true) {
             await this.waitForTableData();
 
-            debitAmount = await this.calculateDebitAmounts(debitAmount); // Sum debit amounts
-            creditAmount = await this.calculateCreditAmounts(creditAmount); // Sum credit amounts
+            debitAmount = await this.calculateDebitAmountsSum(debitAmount); // Sum debit amounts
+            creditAmount = await this.calculateCreditAmountsSum(creditAmount); // Sum credit amounts
             await this.waitForDataStabilization();
 
             pageCount++;
@@ -82,7 +82,7 @@ class HomePage extends Utility {
         const openingBalance = await get.getOpeningBalanceAPI();
         const actualCurrentBalance = openingBalance + summaryData.TotalIncomeSummary - summaryData.TotalExpenseSummary;
 
-        await this.performArthmaticalTableCalculationValidations(debitAmount, creditAmount, summaryData, actualCurrentBalance);
+        await this.validateSummaryCalculations(debitAmount, creditAmount, summaryData, actualCurrentBalance);
 
         // Validate each row backward for current balance correctness
         let lastPage = pageCount - 1;
@@ -170,7 +170,7 @@ class HomePage extends Utility {
     // ============================
     // 🔹 Calculation Helpers
     // ============================
-    async calculateDebitAmounts(currentDebit) {
+    async calculateDebitAmountsSum(currentDebit) {
         let total = currentDebit;
         const count = await this.debitAmountsElement.count();
         for (let i = 0; i < count; i++) {
@@ -182,7 +182,7 @@ class HomePage extends Utility {
         return total;
     }
 
-    async calculateCreditAmounts(currentCredit) {
+    async calculateCreditAmountsSum(currentCredit) {
         let total = currentCredit;
         const count = await this.creditAmountsElement.count();
         for (let i = 0; i < count; i++) {
@@ -203,7 +203,7 @@ class HomePage extends Utility {
         };
     }
 
-    async performArthmaticalTableCalculationValidations(debitAmount, creditAmount, summaryData, actualCurrentBalance) {
+    async validateSummaryCalculations(debitAmount, creditAmount, summaryData, actualCurrentBalance) {
         await this.expectToBe(debitAmount.toFixed(2), summaryData.TotalExpenseSummary.toFixed(2), 'Summary Total expense balance matching');
         await this.expectToBe(creditAmount.toFixed(2), summaryData.TotalIncomeSummary.toFixed(2), 'Summary Total income balance matching');
         await this.expectToBe(actualCurrentBalance.toFixed(2), summaryData.currentBalanceSummary.toFixed(2), 'Summary Current balance matching');
