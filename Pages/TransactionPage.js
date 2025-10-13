@@ -1,6 +1,6 @@
 const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility');
-const { UI_URL } = require('../playwright.config.js');
+const { UI_URL } = require('../playwright.config.js')
 
 class TransactionPage extends Utility {
 
@@ -62,9 +62,7 @@ class TransactionPage extends Utility {
         }
 
         await this.clickElement(this.addTransactionButton, 'Add Transaction');
-
-        console.log(`✅ ${transactionType} transaction added successfully`);
-
+        await this.staticWait(1)
         return {
             date_yyyy_mm_dd,
             transactionType,

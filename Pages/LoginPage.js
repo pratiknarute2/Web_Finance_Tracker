@@ -39,6 +39,8 @@ class LoginPage extends Utility {
 
         // Optional: Navigate again to ensure token is loaded
         await this.navigateOnURL(this.page, appURL);
+
+        await this.staticWait(3)
     }
 
     // ✅ Login via UI with valid credentials

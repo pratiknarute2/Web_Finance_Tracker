@@ -35,7 +35,7 @@ module.exports = defineConfig({
     loginURL: UI_URL,
     actionTimeout: 20_000, // Timeout for each action: 120 seconds
     navigationTimeout: 20_000, // Timeout for navigation: 20 seconds
-    headless: false, // Run in headed mode for debugging
+    headless: true, // Run in headed mode for debugging
     launchOptions: {
       args: ['--start-maximized'],
     },

@@ -1,6 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const LoginPage = require('../Pages/LoginPage');
 const HomePage = require('../Pages/HomePage');
+const TransactionPage = require('../Pages/TransactionPage');
 const Utility = require('../Base/Utility.js');
 const Post = require('../API/Post.js');
 const Get = require('../API/Get.js');
@@ -155,9 +156,21 @@ test.describe("Arthmatical Calculation", () => {
     test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
+        const transactionPage = new TransactionPage(page);
 
         await loginPage.login_through_post_API(request)
-        await homePage.impactCalculationOfCreatedTransaction()
+
+        // Capture summary before transaction
+        const beforeSummary = await homePage.getSummaryCardsData();
+
+        const createdTransaction = await transactionPage.createTransaction(
+            '2025-10-09', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
+        );
+
+        await homePage.verifyTransactionSuccessMessage()
+
+        await homePage.impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary)
+        await homePage.deleteTransaction(createdTransaction)
 
 
     })

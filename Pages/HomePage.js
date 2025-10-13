@@ -33,7 +33,9 @@ class HomePage extends Utility {
 
         // Transaction messages & filters
         this.successfullMessageTransaction = this.page.locator("//div[text()='Transaction added successfully!']");
+        this.deleteMessageTransaction = this.page.locator("//div[text()='Transaction deleted successfully']");
         this.showFilterButton = this.page.locator("//button[text()='Show Filters']");
+        this.hideFilterButton = this.page.locator("//button[text()='Hide Filters']");
         this.startDateFilter = this.page.locator("//label[text()='Start Date:']//input");
         this.endDateFilter = this.page.locator("//label[text()='End Date:']//input");
 
@@ -47,6 +49,7 @@ class HomePage extends Utility {
         this.balance1Row_Table = this.page.locator("//table//tbody//tr[1]//td[7]");
         this.edit1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Edit']]");
         this.delete1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Delete']");
+        this.deleteConfirmationYes = this.page.locator("//button[text()='Yes']");
     }
 
     // ============================
@@ -66,7 +69,7 @@ class HomePage extends Utility {
 
             debitAmount = await this.calculateDebitAmountsSum(debitAmount); // Sum debit amounts
             creditAmount = await this.calculateCreditAmountsSum(creditAmount); // Sum credit amounts
-            await this.waitForDataStabilization();
+            await this.staticWait(1);
 
             pageCount++;
             if (!(await this.canProceedToNextPage())) break; // Exit if last page
@@ -96,24 +99,20 @@ class HomePage extends Utility {
         }
     }
 
+
+    async deleteTransaction(createdTransaction) {
+        // Apply filters and validate transaction appears in table
+        await this.applyTransactionFilters(createdTransaction);
+        await this.clickElement(this.delete1Row_Table, 'Delete Transaction')
+        await this.clickElement(this.deleteConfirmationYes, 'Delete Confirmation Yes')
+        let deleteTransaction = await this.isDisplay(this.deleteMessageTransaction, 5000, 'Delete Transaction Toaster Message')
+        await this.expectToBe(deleteTransaction, true, 'Delete Transaction Toaster Message')
+    }
+
     // ============================
     // 🔹 Transaction Impact Methods
     // ============================
-    async impactCalculationOfCreatedTransaction() {
-        const transactionPage = new TransactionPage(this.page);
-        await this.waitForTableData();
-
-        // Capture summary before transaction
-        const beforeSummary = await this.getSummaryCardsData();
-
-        // Create transaction
-        const createdTransaction = await transactionPage.createTransaction(
-            '2025-10-09', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
-        );
-
-        // Verify success message
-        await this.verifyTransactionSuccessMessage();
-        await this.waitForDataStabilization();
+    async impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary) {
 
         // Capture summary after transaction
         const afterSummary = await this.getSummaryCardsData();
@@ -124,6 +123,7 @@ class HomePage extends Utility {
         // Apply filters and validate transaction appears in table
         await this.applyTransactionFilters(createdTransaction);
         await this.validateImpactOfTranctionAddedOnTable(createdTransaction);
+        await this.clickElement(this.hideFilterButton, 'Hide Filter Button')
     }
 
     // ============================
@@ -136,8 +136,6 @@ class HomePage extends Utility {
     async waitForTableData() {
         await this.debitAmountsElement.first().waitFor({ state: 'visible', timeout: 10000 });
     }
-
-    async waitForDataStabilization() { await this.page.waitForTimeout(2000); }
 
     async canProceedToNextPage() {
         try {
@@ -212,35 +210,70 @@ class HomePage extends Utility {
     // ============================
     // 🔹 Transaction Helpers
     // ============================
-    async validateImpactOfTransactionAddedOnSummary(before, after, transaction) {
-        const amount = parseFloat(transaction.amount);
-        let expectedExpense = before.TotalExpenseSummary;
-        let expectedIncome = before.TotalIncomeSummary;
-        let expectedBalance = before.currentBalanceSummary;
+    async validateImpactOfTransactionAddedOnSummary(before, after, createdTransactionDetails) {
+        try {
+            const round = (num) => parseFloat(parseFloat(num).toFixed(2));
 
-        if (transaction.transactionType.toLowerCase() === 'debit') {
-            expectedExpense += amount;
-            expectedBalance -= amount;
-        } else {
-            expectedIncome += amount;
-            expectedBalance += amount;
+            const type = createdTransactionDetails.transactionType.toLowerCase();
+            const amount = parseFloat(createdTransactionDetails.amount);
+
+            console.log("\n🧩 Validating Summary Impact of Transaction...");
+            console.log("------------------------------------------------------------");
+            console.log(`Transaction Type       : ${type}`);
+            console.log(`Transaction Amount      : ${amount}`);
+            console.log(`Before → Total Expense  : ${before.TotalExpenseSummary}`);
+            console.log(`Before → Total Income   : ${before.TotalIncomeSummary}`);
+            console.log(`Before → Current Balance: ${before.currentBalanceSummary}`);
+            console.log("------------------------------------------------------------");
+
+            let expectedTotalExpense = before.TotalExpenseSummary;
+            let expectedTotalIncome = before.TotalIncomeSummary;
+            let expectedCurrentBalance = before.currentBalanceSummary;
+
+            if (type === 'debit') {
+                expectedTotalExpense += amount;
+                expectedCurrentBalance -= amount;
+            } else if (type === 'credit') {
+                expectedTotalIncome += amount;
+                expectedCurrentBalance += amount;
+            }
+
+            console.log(`Expected → Total Expense  : ${round(expectedTotalExpense)}`);
+            console.log(`Expected → Total Income   : ${round(expectedTotalIncome)}`);
+            console.log(`Expected → Current Balance: ${round(expectedCurrentBalance)}`);
+            console.log("------------------------------------------------------------");
+            console.log(`After → Total Expense  : ${after.TotalExpenseSummary}`);
+            console.log(`After → Total Income   : ${after.TotalIncomeSummary}`);
+            console.log(`After → Current Balance: ${after.currentBalanceSummary}`);
+            console.log("------------------------------------------------------------");
+
+            // 🧪 Assertions
+            await this.expectToBe(round(after.TotalExpenseSummary), round(expectedTotalExpense), "Total Expense summary impacted");
+            await this.expectToBe(round(after.TotalIncomeSummary), round(expectedTotalIncome), "Total Income summary impacted");
+            await this.expectToBe(round(after.currentBalanceSummary), round(expectedCurrentBalance), "Current Balance summary impacted");
+
+            console.log("✅ Summary impact validated successfully.\n");
+
+        } catch (error) {
+            console.error(`❌ Error in validating impact of transaction: ${error.message}`);
+            throw error;
+        } finally {
+            console.log('-'.repeat(100));
         }
-
-        await this.expectToBe(after.currentBalanceSummary, expectedBalance, 'Current Balance summary impacted');
-        await this.expectToBe(after.TotalExpenseSummary, expectedExpense, 'Total Expenses summary impacted');
-        await this.expectToBe(after.TotalIncomeSummary, expectedIncome, 'Total Income summary impacted');
     }
+
 
     async verifyTransactionSuccessMessage() {
         const displayed = await this.isDisplay(this.successfullMessageTransaction, 5000, 'Transaction Added Message');
         await this.expectToBe(displayed, true, 'Transaction Added Message validation');
+        console.log(`✅ Transaction added successfully`);
     }
 
     async applyTransactionFilters(transaction) {
         await this.clickElement(this.showFilterButton, 'Show Filter');
         await this.fillInputField(this.startDateFilter, transaction.date_yyyy_mm_dd, 'Start Date');
         await this.fillInputField(this.endDateFilter, transaction.date_yyyy_mm_dd, 'End Date');
-        await this.page.waitForTimeout(3000);
+        await this.staticWait(2)
     }
 
     async validateImpactOfTranctionAddedOnTable(transaction) {

@@ -398,6 +398,12 @@ class Utility {
         return amount
     }
 
+    async staticWait(sec) {
+        console.log(`⏳ Waiting for ${sec}s...`);
+        await this.page.waitForTimeout((sec * 1000))
+        console.log('-'.repeat(100));
+    }
+
 
 
 
