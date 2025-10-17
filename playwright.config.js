@@ -25,6 +25,7 @@ console.log(`🌐 UI URL: ${UI_URL}`);
 console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
+  globalTeardown: require.resolve('./global-teardown.js'),
   retries: 1,
   timeout: 200_000,  // Global test timeout: 200 sec
   expect: {
@@ -41,7 +42,7 @@ module.exports = defineConfig({
     },
     video: 'on-first-retry', // Capture video only on first retry
     screenshot: 'only-on-failure', // Capture screenshot only if the test fails
-    trace: 'on-first-retry', // Collect trace only on the first retry
+    trace: 'on', // ✅ Always collect trace for every test
     outputDir: 'test-results/artifacts', // Store raw artifacts
   },
 

@@ -41,16 +41,18 @@ npx playwright install
 npm install dotenv
 
 
+<!-- Install archiver for zip report -->
+npm install archiver --save-dev
+
+
 ## 🚀 Execute Tests
 
 ▶️ Run All Test Cases
+After execution, an HTML report will open automatically showing the test results.
 ```bash
 npx playwright test Tests/FinanceTracker.test.js && npx playwright show-report playwright-reports/html-report
 ```
 
-After execution, an HTML report will open automatically showing the test results.
-
----
 
 ## 🧾 Folder Structure
 ```
