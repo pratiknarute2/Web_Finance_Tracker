@@ -49,7 +49,7 @@ class HomePage extends Utility {
         this.balance1Row_Table = this.page.locator("//table//tbody//tr[1]//td[7]");
         this.edit1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Edit']]");
         this.delete1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Delete']");
-        this.deleteConfirmationYes = this.page.locator("//button[text()='Yes']");
+        this.deleteConfirmationYes = this.page.locator("//button[text()='Yes'] | //button[text()='Delete']");
     }
 
     // ============================
@@ -115,6 +115,7 @@ class HomePage extends Utility {
     async impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary) {
 
         // Capture summary after transaction
+        await this.staticWait(3)
         const afterSummary = await this.getSummaryCardsData();
 
         // Validate impact on summary cards
@@ -248,6 +249,7 @@ class HomePage extends Utility {
             console.log("------------------------------------------------------------");
 
             // 🧪 Assertions
+
             await this.expectToBe(round(after.TotalExpenseSummary), round(expectedTotalExpense), "Total Expense summary impacted");
             await this.expectToBe(round(after.TotalIncomeSummary), round(expectedTotalIncome), "Total Income summary impacted");
             await this.expectToBe(round(after.currentBalanceSummary), round(expectedCurrentBalance), "Current Balance summary impacted");
@@ -271,13 +273,14 @@ class HomePage extends Utility {
 
     async applyTransactionFilters(transaction) {
         await this.clickElement(this.showFilterButton, 'Show Filter');
-        await this.fillInputField(this.startDateFilter, transaction.date_yyyy_mm_dd, 'Start Date');
-        await this.fillInputField(this.endDateFilter, transaction.date_yyyy_mm_dd, 'End Date');
+        await this.fillInputField(this.startDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'Start Date');
+        await this.fillInputField(this.endDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'End Date');
         await this.staticWait(2)
     }
 
     async validateImpactOfTranctionAddedOnTable(transaction) {
-        await this.expectToBe(this.formatDateToYYYYMMDD((await this.date1Row_Table.textContent())?.trim()), transaction.date_yyyy_mm_dd, 'Date validation');
+        let actualDate = (await this.date1Row_Table.textContent())?.trim()
+        await this.expectToBe(this.formatDateReplace_To_Hyphen(actualDate), transaction.date_dd_mm_yyyy, 'Date validation');
         await this.expectToBe((await this.category1Row_Table.textContent())?.trim(), transaction.category, 'Category validation');
         await this.expectToBe((await this.label1Row_Table.textContent())?.trim(), transaction.label, 'Label validation');
 

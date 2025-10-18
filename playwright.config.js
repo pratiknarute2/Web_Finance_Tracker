@@ -3,11 +3,10 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'local'
+const ENV = process.env.ENV || 'qa'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {
-  local: { UI_URL: process.env.LOCAL_UI_URL, API_URL: process.env.LOCAL_API_URL },
   qa: { UI_URL: process.env.QA_UI_URL, API_URL: process.env.QA_API_URL },
   prod: { UI_URL: process.env.PROD_UI_URL, API_URL: process.env.PROD_API_URL },
 };
@@ -26,7 +25,7 @@ console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
   globalTeardown: require.resolve('./global-teardown.js'),
-  retries: 1,
+  retries: 0,
   timeout: 200_000,  // Global test timeout: 200 sec
   expect: {
     timeout: 30_000,  // Default assertion timeout: 30 seconds
@@ -36,7 +35,7 @@ module.exports = defineConfig({
     loginURL: UI_URL,
     actionTimeout: 20_000, // Timeout for each action: 120 seconds
     navigationTimeout: 20_000, // Timeout for navigation: 20 seconds
-    headless: true, // Run in headed mode for debugging
+    headless: false, // Run in headed mode for debugging
     launchOptions: {
       args: ['--start-maximized'],
     },
@@ -52,7 +51,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 2, // Increase for parallel execution; set to 1 for debugging
+  workers: 1, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output

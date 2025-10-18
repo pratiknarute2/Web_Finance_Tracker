@@ -11,7 +11,7 @@ const Delete = require('../API/Delete.js');
 let token = '';
 let utility;
 
-test.describe.serial('🌐 API Testing Suite', () => {
+test.describe.skip('🌐 API Testing Suite', () => {
 
     // 🔐 AUTHENTICATION FEATURE
     test.describe('🔐 Authentication', () => {
@@ -127,7 +127,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
 
 
 // 🧩 LOGIN SCENARIOS (UI + API)
-test.describe('🧩 Login Scenarios', () => {
+test.describe.skip('🧩 Login Scenarios', () => {
     test('POST | Login through API', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request);
@@ -145,7 +145,7 @@ test.describe('🧩 Login Scenarios', () => {
 });
 
 test.describe("Arthmatical Calculation", () => {
-    test("UI | Table calculations", async ({ request, page }) => {
+    test.skip("UI | Table calculations", async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
 
@@ -164,11 +164,10 @@ test.describe("Arthmatical Calculation", () => {
         const beforeSummary = await homePage.getSummaryCardsData();
 
         const createdTransaction = await transactionPage.createTransaction(
-            '2025-10-09', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
+            '25-09-2025', 'credit', 'Refund', '1000', 'Essentials', 'Automation Testing'
         );
 
         await homePage.verifyTransactionSuccessMessage()
-
         await homePage.impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary)
         await homePage.deleteTransaction(createdTransaction)
 

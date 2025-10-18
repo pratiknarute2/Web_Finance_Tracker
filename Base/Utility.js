@@ -384,12 +384,20 @@ class Utility {
         console.log('-'.repeat(100));
     }
 
-    formatDateToYYYYMMDD(uiDate) {
-        const [month, day, year] = uiDate.split('/'); // Split by '/'
+    formatDate_FromDDMMYYYY_To_YYYYMMDD(date_dd_mm_yyyy) {
+        const [day, month, year] = date_dd_mm_yyyy.split('-'); // Split by '/'
         const mm = month.padStart(2, '0'); // pad month to 2 digits
         const dd = day.padStart(2, '0');   // pad day to 2 digits
         return `${year}-${mm}-${dd}`;
     }
+
+    formatDateReplace_To_Hyphen(date_dd_mm_yyyy) {
+        const [day, month, year] = date_dd_mm_yyyy.split('/'); // Split by '/'
+        const dd = day.padStart(2, '0');   // Ensure day has 2 digits
+        const mm = month.padStart(2, '0'); // Ensure month has 2 digits
+        return `${dd}-${mm}-${year}`;      // Return in DD-MM-YYYY format
+    }
+
 
     async removeSpecialCharFromNumber(locator) {
         const text = (await locator.textContent() || "")

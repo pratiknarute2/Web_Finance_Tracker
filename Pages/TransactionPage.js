@@ -21,16 +21,16 @@ class TransactionPage extends Utility {
         this.essentialsCategory = page.getByText('Essentials', { exact: true });
         this.unessentialsCategory = page.getByText('Unessentials', { exact: true });
         this.addTransactionButton = page.getByRole('button', { name: 'Add Transaction' });
-        this.dateTab = page.getByRole('textbox', { name: 'Date *' });
+        this.dateTab = page.locator("//input[@id='date']")
     }
 
-    async createTransaction(date_yyyy_mm_dd, transactionType, category, amount, label, comments) {
+    async createTransaction(date_dd_mm_yyyy, transactionType, category, amount, label, comments) {
         console.log(`🔹 Creating ${transactionType} transaction`);
 
         // ✅ Open Transaction Modal
         await this.clickElement(this.addEntryButton, 'Add Entry');
-
-        await this.fillInputField(this.dateTab, date_yyyy_mm_dd, 'Select Date')
+        await console.log(`/Pages/TransactionPage.js:33:49: ${date_dd_mm_yyyy}`)
+        await this.fillInputField(this.dateTab, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(date_dd_mm_yyyy), 'Select Date')
         // ✅ Choose Transaction Type
         if (transactionType.toLowerCase() === 'credit') {
             await this.clickElement(this.creditButton, 'Credit');
@@ -64,7 +64,7 @@ class TransactionPage extends Utility {
         await this.clickElement(this.addTransactionButton, 'Add Transaction');
         await this.staticWait(1)
         return {
-            date_yyyy_mm_dd,
+            date_dd_mm_yyyy,
             transactionType,
             category,
             amount,
