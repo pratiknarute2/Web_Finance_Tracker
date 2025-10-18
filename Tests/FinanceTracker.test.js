@@ -11,7 +11,7 @@ const Delete = require('../API/Delete.js');
 let token = '';
 let utility;
 
-test.describe.skip('🌐 API Testing Suite', () => {
+test.describe.serial('🌐 API Testing Suite', () => {
 
     // 🔐 AUTHENTICATION FEATURE
     test.describe('🔐 Authentication', () => {
@@ -127,7 +127,7 @@ test.describe.skip('🌐 API Testing Suite', () => {
 
 
 // 🧩 LOGIN SCENARIOS (UI + API)
-test.describe.skip('🧩 Login Scenarios', () => {
+test.describe('🧩 Login Scenarios', () => {
     test('POST | Login through API', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request);
@@ -145,7 +145,7 @@ test.describe.skip('🧩 Login Scenarios', () => {
 });
 
 test.describe("Arthmatical Calculation", () => {
-    test.skip("UI | Table calculations", async ({ request, page }) => {
+    test("UI | Table calculations", async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
 
