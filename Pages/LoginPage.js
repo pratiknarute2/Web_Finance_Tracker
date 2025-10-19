@@ -44,17 +44,13 @@ class LoginPage extends Utility {
     }
 
     // ✅ Login via UI with valid credentials
-    async login_with_valid_credentials(email = 'testingnotes011@gmail.com', password = 'Testing@123') {
+    async login_with_valid_credentials(email, password) {
         // Navigate to login page dynamically
         await this.navigateOnURL(this.page, UI_URL);
 
-        // Convert to string explicitly
-        email = String(email);
-        password = String(password);
-
         // Fill email & password using utility methods
-        await this.fillInputField(this.emailInput, 'testingnotes011@gmail.com', 'Email Input');
-        await this.fillInputField(this.passwordInput, password, 'Password Input');
+        await this.fillInputField(this.emailInput, email.email, 'Email Input');
+        await this.fillInputField(this.passwordInput, password.password, 'Password Input');
 
         // Click login button
         await this.clickElement(this.loginButton, 'Login Button');
@@ -68,7 +64,7 @@ class LoginPage extends Utility {
         await this.navigateOnURL(this.page, UI_URL);
 
         // Fill email & password using utility methods
-        await this.fillInputField(this.emailInput, 'pratiknarute2@gmail.com', 'Email Input');
+        await this.fillInputField(this.emailInput, 'testingnotes011@gmail.com', 'Email Input');
         await this.fillInputField(this.passwordInput, '123', 'Password Input');
 
         // Click login button

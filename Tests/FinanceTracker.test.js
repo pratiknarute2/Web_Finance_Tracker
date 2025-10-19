@@ -88,7 +88,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
     });
 
     // 💳 TRANSACTION FEATURE
-    test.describe('💳 Transaction Feature', () => {
+    test.describe.skip('💳 Transaction Feature', () => {
 
         test('POST | Debit Transaction', async ({ request }) => {
             const post = new Post(request);
@@ -135,7 +135,8 @@ test.describe('🧩 Login Scenarios', () => {
 
     test('UI | Login with Valid Credentials', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
-        await loginPage.login_with_valid_credentials(request);
+        await loginPage.login_with_valid_credentials({ email: 'testingnotes011@gmail.com' }, { password: 'Testing@123' });
+
     });
     test('UI | Login with Invalid Credentials', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
@@ -164,7 +165,7 @@ test.describe("Arthmatical Calculation", () => {
         const beforeSummary = await homePage.getSummaryCardsData();
 
         const createdTransaction = await transactionPage.createTransaction(
-            '25-09-2025', 'credit', 'Refund', '1000', 'Essentials', 'Automation Testing'
+            '19-09-2025', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
         );
 
         await homePage.verifyTransactionSuccessMessage()

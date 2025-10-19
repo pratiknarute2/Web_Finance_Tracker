@@ -60,21 +60,21 @@ class HomePage extends Utility {
         let debitAmount = 0;
         let creditAmount = 0;
 
-        // Wait until Next button is initially enabled
-        await this.waitForInitialNextButton();
+        await this.staticWait(1)
 
         // Loop through all pages to sum debit and credit amounts
         while (true) {
-            await this.waitForTableData();
+            await this.waitForTableData(); // safe wait
 
-            debitAmount = await this.calculateDebitAmountsSum(debitAmount); // Sum debit amounts
-            creditAmount = await this.calculateCreditAmountsSum(creditAmount); // Sum credit amounts
+            debitAmount = await this.calculateDebitAmountsSum(debitAmount);
+            creditAmount = await this.calculateCreditAmountsSum(creditAmount);
             await this.staticWait(1);
 
             pageCount++;
-            if (!(await this.canProceedToNextPage())) break; // Exit if last page
+            if (!(await this.canProceedToNextPage())) break;
             await this.navigateToNextPage(pageCount);
         }
+
 
         console.log(`✅ Processed ${(pageCount - 1)} pages successfully.`);
         console.log(`💰 Total Debit Amount: ${debitAmount.toFixed(2)} | Total Credit Amount: ${creditAmount.toFixed(2)} `);
@@ -127,16 +127,23 @@ class HomePage extends Utility {
         await this.clickElement(this.hideFilterButton, 'Hide Filter Button')
     }
 
-    // ============================
-    // 🔹 Waits & Navigation Helpers
-    // ============================
-    async waitForInitialNextButton() {
-        await this.page.waitForFunction(el => el && !el.disabled, await this.paginationNext.elementHandle(), { timeout: 15000 });
-    }
 
     async waitForTableData() {
-        await this.debitAmountsElement.first().waitFor({ state: 'visible', timeout: 10000 });
+        // Wait for network requests to finish
+        await this.page.waitForLoadState('networkidle');
+
+        const rows = this.page.locator("//table//tbody//tr");
+        const rowCount = await rows.count();
+
+        if (rowCount === 0) {
+            console.warn("⚠️ No rows found on this page.");
+            return; // Return safely if table is empty
+        }
+
+        // Wait for first row to be visible
+        await rows.first().waitFor({ state: 'visible', timeout: 40000 });
     }
+
 
     async canProceedToNextPage() {
         try {

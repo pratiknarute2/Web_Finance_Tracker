@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'qa'
+const ENV = process.env.ENV || 'prod'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {
