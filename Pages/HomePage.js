@@ -25,6 +25,7 @@ class HomePage extends Utility {
         this.creditAmountsElement = this.page.locator("//table//tbody//tr//td[@class='credit-amount']");
         this.allCreditAmountsElement = this.page.locator("//table//tbody//tr//td[6]");
         this.currentBalancesElement = this.page.locator("//table//tbody//tr//td[7]");
+        this.allDateElements = this.page.locator("//table//tbody//tr//td[1]")
 
         // Summary cards
         this.currentBalanceSummary = this.page.locator("//div[@class='summary-cards']//div[@class='summary-card balance']//p");
@@ -90,13 +91,24 @@ class HomePage extends Utility {
         // Validate each row backward for current balance correctness
         let lastPage = pageCount - 1;
         let expectedCurrentBalance;
+        let storedDates = [];
+
         while (true) {
-            expectedCurrentBalance = await this.validateTableCalcualtion(request, pageCount, lastPage, expectedCurrentBalance, openingBalance);
+            expectedCurrentBalance = await this.validateTableCalcualtion(
+                request, pageCount, lastPage, expectedCurrentBalance, openingBalance
+            );
+
+            storedDates = await this.fetchDates(storedDates);
+
             pageCount--;
             if (!(await this.canProceedToPreviousPage())) break;
             await this.navigateToPreviousPage(pageCount - 1);
             lastPage = 0;
         }
+
+        // ✅ Validate after fetching all pages
+        await this.validateOrderOfDateAsOldToLatestWise(storedDates);
+
     }
 
 
@@ -347,6 +359,40 @@ class HomePage extends Utility {
 
         return expectedBalance;
     }
+
+    // ============================
+    // 🔹 Fetch All Dates
+    // ============================
+    async fetchDates(storedDates = []) {
+        const countOfDateElements = await this.allDateElements.count();
+
+        for (let i = countOfDateElements - 1; i >= 0; i--) {
+            const dateText = (await this.allDateElements.nth(i).textContent()).trim();
+            storedDates.push(dateText);
+        }
+        return storedDates;
+    }
+
+    // ============================
+    // 🔹 Validate Dates Order (Old → Latest)
+    // ============================
+    async validateOrderOfDateAsOldToLatestWise(storedDates) {
+        const parseDate = (dateStr) => {
+            const [day, month, year] = dateStr.split(/[\/\-]/).map(Number);
+            return new Date(year, month - 1, day);
+        };
+
+        const dateObjects = storedDates.map(parseDate);
+        const isSorted = dateObjects.every((d, i, arr) => i === 0 || arr[i - 1] <= d);
+
+        console.log(`🗓️ Total Dates Found: ${storedDates.length}`);
+        console.log("🗓️ All table dates (full):", JSON.stringify(storedDates, null, 2));
+        console.log(`✅ Dates are in order (old → latest): ${isSorted}`);
+
+        await this.expectToBe(isSorted, true, 'Dates are sorted from old → latest');
+    }
+
+
 }
 
 module.exports = HomePage;
