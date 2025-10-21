@@ -11,7 +11,7 @@ const Delete = require('../API/Delete.js');
 let token = '';
 let utility;
 
-test.describe.skip('🌐 API Testing Suite', () => {
+test.describe.serial('🌐 API Testing Suite', () => {
 
     // 🔐 AUTHENTICATION FEATURE
     test.describe('🔐 Authentication', () => {
@@ -88,7 +88,7 @@ test.describe.skip('🌐 API Testing Suite', () => {
     });
 
     // 💳 TRANSACTION FEATURE
-    test.describe.skip('💳 Transaction Feature', () => {
+    test.describe('💳 Transaction Feature', () => {
 
         test('POST | Debit Transaction', async ({ request }) => {
             const post = new Post(request);
@@ -127,7 +127,7 @@ test.describe.skip('🌐 API Testing Suite', () => {
 
 
 // 🧩 LOGIN SCENARIOS (UI + API)
-test.describe.skip('🧩 Login Scenarios', () => {
+test.describe('🧩 Login Scenarios', () => {
     test('POST | Login through API', async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request);
@@ -154,7 +154,7 @@ test.describe("Arthmatical Calculation", () => {
         await homePage.arthmaticalTableCalculation(request)
 
     })
-    test.skip("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
+    test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         const homePage = new HomePage(page);
         const transactionPage = new TransactionPage(page);

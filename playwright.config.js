@@ -25,7 +25,7 @@ console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
   globalTeardown: require.resolve('./global-teardown.js'),
-  retries: 0,
+  retries: 1,
   timeout: 200_000,  // Global test timeout: 200 sec
   expect: {
     timeout: 30_000,  // Default assertion timeout: 30 seconds
