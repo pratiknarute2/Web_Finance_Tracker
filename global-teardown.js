@@ -2,43 +2,28 @@ const fs = require('fs');
 const path = require('path');
 const archiver = require('archiver');
 
+async function waitForFiles(dir, retries = 5, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    const files = fs.existsSync(dir) ? fs.readdirSync(dir) : [];
+    if (files.length > 0) return true;
+    console.log(`⏳ Waiting for report files... attempt ${i + 1}`);
+    await new Promise(r => setTimeout(r, delay));
+  }
+  return false;
+}
+
 module.exports = async () => {
   try {
     console.log('🧩 Zipping report after all tests...');
 
-    // ===============================
-    // Possible report folders
-    // ===============================
-    const possiblePaths = [
-      path.join(process.cwd(), 'playwright-reports', 'html-report'), // workspace
-      path.join(__dirname, 'playwright-reports', 'html-report'),     // local default
-      path.join(__dirname, 'playwright-report'),                     // fallback
-    ];
+    const htmlReportDir = path.join(process.cwd(), 'playwright-reports', 'html-report');
 
-    // Find the first existing report folder
-    const htmlReportDir = possiblePaths.find(p => fs.existsSync(p));
-    if (!htmlReportDir) {
-      console.error('❌ HTML report folder not found in any known location.');
+    const hasFiles = await waitForFiles(htmlReportDir, 10, 500);
+    if (!hasFiles) {
+      console.error('❌ Report folder is empty or not generated:', htmlReportDir);
       return;
     }
 
-    // ===============================
-    // Wait for Playwright to finish writing files
-    // ===============================
-    console.log('⏱ Waiting 2 seconds for report generation...');
-    await new Promise(r => setTimeout(r, 2000));
-
-    // Log folder contents for debugging
-    const reportFiles = fs.readdirSync(htmlReportDir);
-    if (reportFiles.length === 0) {
-      console.error('❌ Report folder is empty:', htmlReportDir);
-      return;
-    }
-    console.log('📂 Report folder contains:', reportFiles);
-
-    // ===============================
-    // Create ZIP
-    // ===============================
     const baseDir = path.dirname(htmlReportDir);
     const outputZip = path.join(baseDir, `Playwright_Full_Report_${Date.now()}.zip`);
 
@@ -52,30 +37,19 @@ module.exports = async () => {
         resolve();
       });
 
-      archive.on('warning', err => {
-        if (err.code === 'ENOENT') console.warn('⚠️', err);
-        else reject(err);
-      });
-
+      archive.on('warning', err => err.code === 'ENOENT' ? console.warn('⚠️', err) : reject(err));
       archive.on('error', err => reject(err));
 
       archive.pipe(output);
-
-      // Add HTML report folder
       archive.directory(htmlReportDir, 'html-report');
 
-      // Add optional JSON & XML reports
       ['report.json', 'report.xml'].forEach(file => {
         const filePath = path.join(baseDir, file);
-        if (fs.existsSync(filePath)) {
-          archive.file(filePath, { name: file });
-          console.log(`📄 Added file: ${file}`);
-        }
+        if (fs.existsSync(filePath)) archive.file(filePath, { name: file });
       });
 
       archive.finalize();
     });
-
   } catch (err) {
     console.error('❌ Error creating ZIP:', err.message);
   }
