@@ -7,13 +7,17 @@ module.exports = async () => {
     console.log('🧩 Zipping report after all tests...');
 
     // ===============================
-    // Determine possible report folders
+    // Possible report folders
     // ===============================
     const possiblePaths = [
-      path.join(__dirname, 'playwright-reports', 'html-report'),   // local default
-      path.join(__dirname, 'playwright-report'),                   // fallback (Jenkins default)
+      path.join(__dirname, 'playwright-reports', 'html-report'),    // local default
+      path.join(__dirname, 'playwright-report'),                    // fallback (Jenkins default)
       path.join(process.cwd(), 'playwright-reports', 'html-report'), // workspace fallback
     ];
+
+    // Debug: print which paths exist
+    console.log('Checking possible paths for report folder:');
+    possiblePaths.forEach(p => console.log('→', p, fs.existsSync(p)));
 
     // Find the first existing report folder
     const htmlReportDir = possiblePaths.find(p => fs.existsSync(p));
@@ -23,15 +27,17 @@ module.exports = async () => {
     }
 
     const baseDir = path.dirname(htmlReportDir);
-    const outputZip = path.join(baseDir, 'Playwright_Full_Report.zip');
+    const outputZip = path.join(baseDir, `Playwright_Full_Report_${Date.now()}.zip`);
 
-    // Delete old ZIP if exists
-    if (fs.existsSync(outputZip)) {
-      fs.unlinkSync(outputZip);
-      console.log('🧹 Old ZIP deleted');
-    }
+    // Delete old ZIP if exists (optional)
+    // if (fs.existsSync(outputZip)) {
+    //   fs.unlinkSync(outputZip);
+    //   console.log('🧹 Old ZIP deleted');
+    // }
 
+    // ===============================
     // Create ZIP
+    // ===============================
     const output = fs.createWriteStream(outputZip);
     const archive = archiver('zip', { zlib: { level: 9 } });
 
