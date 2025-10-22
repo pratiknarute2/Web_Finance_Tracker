@@ -55,7 +55,8 @@ module.exports = defineConfig({
 
   reporter: [
     ['list'], // Console output
-    ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
+    // ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
+    ['html', { outputFolder: 'playwright-reports/html-report', open: 'never' }],
     ['json', { outputFile: 'playwright-reports/report.json' }],
     ['junit', { outputFile: 'playwright-reports/report.xml' }],
   ],
