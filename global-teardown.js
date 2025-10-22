@@ -4,17 +4,26 @@ const archiver = require('archiver');
 
 module.exports = async () => {
   try {
-    const baseDir = path.join(__dirname, 'playwright-reports');
-    const htmlReportDir = path.join(baseDir, 'html-report');
-    const outputZip = path.join(baseDir, 'Playwright_Full_Report.zip');
-
     console.log('🧩 Zipping report after all tests...');
 
-    // Check if report folder exists
-    if (!fs.existsSync(htmlReportDir)) {
-      console.error(`❌ HTML report folder not found: ${htmlReportDir}`);
+    // ===============================
+    // Determine possible report folders
+    // ===============================
+    const possiblePaths = [
+      path.join(__dirname, 'playwright-reports', 'html-report'),   // local default
+      path.join(__dirname, 'playwright-report'),                   // fallback (Jenkins default)
+      path.join(process.cwd(), 'playwright-reports', 'html-report'), // workspace fallback
+    ];
+
+    // Find the first existing report folder
+    const htmlReportDir = possiblePaths.find(p => fs.existsSync(p));
+    if (!htmlReportDir) {
+      console.error('❌ HTML report folder not found in any known location.');
       return;
     }
+
+    const baseDir = path.dirname(htmlReportDir);
+    const outputZip = path.join(baseDir, 'Playwright_Full_Report.zip');
 
     // Delete old ZIP if exists
     if (fs.existsSync(outputZip)) {
@@ -45,7 +54,7 @@ module.exports = async () => {
       // Add HTML report folder
       archive.directory(htmlReportDir, 'html-report');
 
-      // Add optional JSON & XML reports
+      // Add optional JSON & XML reports if present
       ['report.json', 'report.xml'].forEach(file => {
         const filePath = path.join(baseDir, file);
         if (fs.existsSync(filePath)) {
