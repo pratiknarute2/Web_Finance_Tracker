@@ -10,14 +10,10 @@ module.exports = async () => {
     // Possible report folders
     // ===============================
     const possiblePaths = [
-      path.join(__dirname, 'playwright-reports', 'html-report'),    // local default
-      path.join(__dirname, 'playwright-report'),                    // fallback (Jenkins default)
-      path.join(process.cwd(), 'playwright-reports', 'html-report'), // workspace fallback
+      path.join(process.cwd(), 'playwright-reports', 'html-report'), // workspace
+      path.join(__dirname, 'playwright-reports', 'html-report'),     // local default
+      path.join(__dirname, 'playwright-report'),                     // fallback
     ];
-
-    // Debug: print which paths exist
-    console.log('Checking possible paths for report folder:');
-    possiblePaths.forEach(p => console.log('→', p, fs.existsSync(p)));
 
     // Find the first existing report folder
     const htmlReportDir = possiblePaths.find(p => fs.existsSync(p));
@@ -26,18 +22,26 @@ module.exports = async () => {
       return;
     }
 
-    const baseDir = path.dirname(htmlReportDir);
-    const outputZip = path.join(baseDir, `Playwright_Full_Report_${Date.now()}.zip`);
+    // ===============================
+    // Wait for Playwright to finish writing files
+    // ===============================
+    console.log('⏱ Waiting 2 seconds for report generation...');
+    await new Promise(r => setTimeout(r, 2000));
 
-    // Delete old ZIP if exists (optional)
-    // if (fs.existsSync(outputZip)) {
-    //   fs.unlinkSync(outputZip);
-    //   console.log('🧹 Old ZIP deleted');
-    // }
+    // Log folder contents for debugging
+    const reportFiles = fs.readdirSync(htmlReportDir);
+    if (reportFiles.length === 0) {
+      console.error('❌ Report folder is empty:', htmlReportDir);
+      return;
+    }
+    console.log('📂 Report folder contains:', reportFiles);
 
     // ===============================
     // Create ZIP
     // ===============================
+    const baseDir = path.dirname(htmlReportDir);
+    const outputZip = path.join(baseDir, `Playwright_Full_Report_${Date.now()}.zip`);
+
     const output = fs.createWriteStream(outputZip);
     const archive = archiver('zip', { zlib: { level: 9 } });
 
@@ -60,7 +64,7 @@ module.exports = async () => {
       // Add HTML report folder
       archive.directory(htmlReportDir, 'html-report');
 
-      // Add optional JSON & XML reports if present
+      // Add optional JSON & XML reports
       ['report.json', 'report.xml'].forEach(file => {
         const filePath = path.join(baseDir, file);
         if (fs.existsSync(filePath)) {
@@ -71,6 +75,7 @@ module.exports = async () => {
 
       archive.finalize();
     });
+
   } catch (err) {
     console.error('❌ Error creating ZIP:', err.message);
   }
