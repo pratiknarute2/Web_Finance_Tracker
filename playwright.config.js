@@ -54,13 +54,11 @@ module.exports = defineConfig({
   workers: 2, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
-    ['list'],
-    ['html', {
-      outputFolder: path.join(process.cwd(), 'playwright-reports', 'html-report'),
-      open: 'never'
-    }],
-    ['json', { outputFile: path.join(process.cwd(), 'playwright-reports', 'report.json') }],
-    ['junit', { outputFile: path.join(process.cwd(), 'playwright-reports', 'report.xml') }],
+    ['list'], // Console output
+    // ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
+    ['html', { outputFolder: 'playwright-reports/html-report', open: 'never' }],
+    ['json', { outputFile: 'playwright-reports/report.json' }],
+    ['junit', { outputFile: 'playwright-reports/report.xml' }],
   ],
 });
 
