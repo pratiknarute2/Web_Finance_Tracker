@@ -24,7 +24,6 @@ console.log(`🌐 UI URL: ${UI_URL}`);
 console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
-  globalTeardown: require.resolve('./global-teardown.js'),
   retries: 1,
   timeout: 200_000,  // Global test timeout: 200 sec
   expect: {
@@ -51,12 +50,12 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 2, // Increase for parallel execution; set to 1 for debugging
+  workers: 1, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output
-    // ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
-    ['html', { outputFolder: 'playwright-reports/html-report', open: 'never' }],
+    ['html', { outputFolder: 'playwright-reports/html-report', open: 'on-failure' }],
+    // ['html', { outputFolder: 'playwright-reports/html-report', open: 'never' }],
     ['json', { outputFile: 'playwright-reports/report.json' }],
     ['junit', { outputFile: 'playwright-reports/report.xml' }],
   ],

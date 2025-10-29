@@ -108,6 +108,7 @@ class Utility {
     async postRequest(request, URI, payloadKey, testName) {
         process.stdout.write(`🔄 Verifying: ${testName}...\n`);
         try {
+            console.log(`🌐 Sending POST request to: ${URI}`);
             const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
             const payloadBody = data[payloadKey];
 
@@ -115,33 +116,50 @@ class Utility {
                 throw new Error(`❌ Payload key '${payloadKey}' not found in Payloads.json`);
             }
 
+            const headers = {
+                'Content-Type': 'application/json',
+                ...(global.token && { authorization: 'Bearer ' + global.token })
+            };
+
+            console.log("📤 Request Headers:", JSON.stringify(headers, null, 2));
             console.log("✅ Payload:", JSON.stringify(payloadBody, null, 2));
+
             const startTime = Date.now();
 
             const response = await request.post(URI, {
                 data: payloadBody,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(global.token && { authorization: 'Bearer ' + global.token }) // optional auth header
-                }
+                headers
             });
 
             const endTime = Date.now();
             const responseTime = endTime - startTime;
+
             console.log(`⏱️ Response Time: ${responseTime} ms`);
             console.log("🔁 Status Code:", response.status());
-
-            if (!response.ok()) {
-                throw new Error(`❌ Request failed with status ${response.status()}`);
-            }
+            console.log("📥 Response Headers:", JSON.stringify(response.headers(), null, 2));
 
             const rawText = await response.text();
             const responseSizeInBytes = Buffer.byteLength(rawText, 'utf8');
             const responseSizeInKB = (responseSizeInBytes / 1024).toFixed(2);
             console.log(`📦 Response Size: ${responseSizeInKB} KB`);
 
-            const responseData = JSON.parse(rawText);
-            console.log("🧾 JSON Response:", responseData);
+            console.log("📜 Raw Response Text:", rawText || "<EMPTY>");
+
+            // ✅ Status validation before parsing JSON
+            if (!response.ok()) {
+                throw new Error(`❌ Request failed with status ${response.status()}`);
+            }
+
+            // ✅ Safe JSON parsing
+            let responseData;
+            try {
+                responseData = JSON.parse(rawText);
+                console.log("🧾 JSON Response:", responseData);
+            } catch (err) {
+                console.warn("⚠️ Response is not valid JSON! Returning raw text instead.");
+                responseData = rawText;
+            }
+
             console.log('-'.repeat(100));
             return responseData;
 

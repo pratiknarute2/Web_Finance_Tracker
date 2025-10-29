@@ -5,11 +5,13 @@
   },
   "Categories_debit": {
     "name": "Testing",
-    "type": "debit"
+    "type": "debit",
+    "status": ""
   },
   "Categories_credit": {
     "name": "Testing",
-    "type": "credit"
+    "type": "credit",
+    "status": ""
   },
   "Categories_Update": {
     "newName": "Testing updated"
