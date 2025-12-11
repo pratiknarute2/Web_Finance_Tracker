@@ -9,6 +9,7 @@ const ENV = process.env.ENV || 'prod'
 const ENV_CONFIG = {
   qa: { UI_URL: process.env.QA_UI_URL, API_URL: process.env.QA_API_URL },
   prod: { UI_URL: process.env.PROD_UI_URL, API_URL: process.env.PROD_API_URL },
+  dev: { UI_URL: process.env.DEV_UI_URL, API_URL: process.env.DEV_API_URL },
 };
 
 const configEnv = ENV_CONFIG[ENV];
