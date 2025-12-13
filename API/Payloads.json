@@ -60,5 +60,13 @@
     "labelIds": [
       "68bc24f7f115e8a75b9bc4f6"
     ]
+  },
+  "Label": {
+    "name": "Testing Label",
+    "color": "#4CAF50"
+  },
+  "Label_Update": {
+    "name": "Updated Testing Label",
+    "color": "#4CAF50"
   }
 }

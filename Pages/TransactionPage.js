@@ -6,7 +6,7 @@ class TransactionPage extends Utility {
 
     constructor(page) {
         super(page);
-        this.page = page;
+        this.page = page
 
         // 🔹 Locators
         this.emailField = page.getByRole('textbox', { name: 'Email address' });

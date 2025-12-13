@@ -12,31 +12,36 @@ let token = '';
 let utility;
 
 test.describe.serial('🌐 API Testing Suite', () => {
-
     // 🔐 AUTHENTICATION FEATURE
-    test.describe('🔐 Authentication', () => {
-
-        test('POST | Login API', async ({ request }) => {
-            console.log('\n🔹 Executing Login API...');
-            const post = new Post(request);
-            const loginResponse = await post.postLoginAPI();
-            token = loginResponse.token;
-            expect(token).toBeTruthy();
+    test.describe('🔐 Login Authentication', () => {
+        test('POST | Login through API', async ({ request, page }) => {
+            const loginPage = new LoginPage(page);
+            await loginPage.login_through_post_API(request);
         });
     });
 
     // 🏷️ LABEL FEATURE
     test.describe('🏷️ Label Feature', () => {
+        test('Post | Create Label', async ({request})=>{
+            const labelResponse = await new Post(request).postLabelAPI()
+        })
 
-        test('GET | Fetch Label API', async ({ request }) => {
+        test('GET | Fetch Label', async ({ request }) => {
             const get = new Get(request);
             await get.getLabelAPI();
         });
 
-        test('GET | Fetch Label Usage API', async ({ request }) => {
+        test('GET | Fetch Label Usage', async ({ request }) => {
             const get = new Get(request);
             await get.getLabelUsageAPI();
         });
+        test('Update | Update Label', async ({ request }) => {
+            await new Put(request).updateLabelAPI()
+        })
+        test('Delete | Delete Label', async ({ request }) => {
+            await new Delete(request).deleteLabelApi()
+
+        })
     });
 
     // 💵 OPENING BALANCE FEATURE
@@ -125,52 +130,47 @@ test.describe.serial('🌐 API Testing Suite', () => {
 
 });
 
+test.describe('UI', ()=>{
+    // 🧩 LOGIN SCENARIOS (UI + API)
+    test.describe('Login Scenarios', () => {
+        test('Login with Valid Credentials', async ({ request, page }) => {
+            const loginPage = new LoginPage(page);
+            await loginPage.login_with_valid_credentials({ email: 'testingnotes011@gmail.com' }, { password: 'Testing@123' });
 
-// 🧩 LOGIN SCENARIOS (UI + API)
-test.describe('🧩 Login Scenarios', () => {
-    test('POST | Login through API', async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.login_through_post_API(request);
+        });
+        test('Login with Invalid Credentials', async ({ request, page }) => {
+            const loginPage = new LoginPage(page);
+            await loginPage.login_with_invalid_credentials(request);
+        });
+
     });
 
-    test('UI | Login with Valid Credentials', async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.login_with_valid_credentials({ email: 'testingnotes011@gmail.com' }, { password: 'Testing@123' });
+    test.describe("Arithmetical Calculation", () => {
+        test.beforeEach((async ({ request, page }) => {
+            const loginPage = new LoginPage(page);
+            await loginPage.login_through_post_API(request)
+        }))
+        test("Table calculations", async ({ request, page }) => {
+            const homePage = new HomePage(page);
+            await homePage.arthmaticalTableCalculation(request)
+        })
+        test("Impact Calculation of Created transaction", async ({ request, page }) => {
+            const homePage = new HomePage(page);
+            const transactionPage = new TransactionPage(page);
 
-    });
-    test('UI | Login with Invalid Credentials', async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        await loginPage.login_with_invalid_credentials(request);
-    });
+            // Capture summary before transaction
+            const beforeSummary = await homePage.getSummaryCardsData();
 
-});
+            const createdTransaction = await transactionPage.createTransaction(
+                '19-09-2025', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
+            );
 
-test.describe("Arthmatical Calculation", () => {
-    test("UI | Table calculations", async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        const homePage = new HomePage(page);
+            await homePage.verifyTransactionSuccessMessage()
+            await homePage.impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary)
+            await homePage.deleteTransaction(createdTransaction)
 
-        await loginPage.login_through_post_API(request)
-        await homePage.arthmaticalTableCalculation(request)
+        })
 
-    })
-    test("UI | Impact Calculation of Created transaction", async ({ request, page }) => {
-        const loginPage = new LoginPage(page);
-        const homePage = new HomePage(page);
-        const transactionPage = new TransactionPage(page);
-
-        await loginPage.login_through_post_API(request)
-
-        // Capture summary before transaction
-        const beforeSummary = await homePage.getSummaryCardsData();
-
-        const createdTransaction = await transactionPage.createTransaction(
-            '19-09-2025', 'debit', 'Food', '1000', 'Essentials', 'Automation Testing'
-        );
-
-        await homePage.verifyTransactionSuccessMessage()
-        await homePage.impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary)
-        await homePage.deleteTransaction(createdTransaction)
 
     })
 

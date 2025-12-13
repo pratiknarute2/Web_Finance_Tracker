@@ -37,6 +37,20 @@ class Delete extends Utility {
         console.log(`✅ Deleted transaction ID: ${global.transactionId} for type: ${transactionType}`);
         return deleteResponse;
     }
+    async deleteLabelApi(){
+        if (!global.labelId) {
+            throw new Error('❌ labelId is not set. Create a label first!');
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/labels/${global.labelId}`,
+            `Delete Label API`
+        );
+
+        console.log(`✅ Deleted label ID: ${global.labelId}`);
+        return deleteResponse;
+    }
 }
 
 module.exports = Delete;

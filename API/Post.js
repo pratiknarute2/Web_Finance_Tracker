@@ -1,6 +1,7 @@
 const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility.js');
-const { API_URL } = require('../playwright.config.js'); // Import dynamic API_URL
+const { API_URL } = require('../playwright.config.js');
+const fs = require("fs/promises"); // Import dynamic API_URL
 
 class Post extends Utility {
     constructor(request) {
@@ -45,9 +46,28 @@ class Post extends Utility {
             `Post Transaction API for ${transactionType}`
         );
 
+
         global.transactionId = transactionResponse.id;
         console.log('🔑 Global Transaction ID set:', global.transactionId);
         return transactionResponse;
+    }
+
+    async postLabelAPI(){
+        const labelResponse = await this.postRequest(
+            this.request,
+            `${API_URL}/api/labels`,
+            `Label`,
+            `Post Label API`
+
+        )
+        global.labelId = labelResponse.id
+        console.log('🔑 Global Label ID set:', global.labelId);
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payloadBody = data[`Label`];
+
+        expect(labelResponse.name).toContain(payloadBody.name)
+        return labelResponse;
     }
 }
 

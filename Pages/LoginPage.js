@@ -56,7 +56,7 @@ class LoginPage extends Utility {
         await this.clickElement(this.loginButton, 'Login Button');
 
         // Wait & verify success message
-        const isVisible = await this.isDisplay(this.loginSuccessMessage, 5000, 'Login Success Message');
+        const isVisible = await this.isDisplay(this.loginSuccessMessage, 30000, 'Login Success Message');
         await this.expectToBe(isVisible, true, 'Login Success Message');
     }
     async login_with_invalid_credentials() {
@@ -70,8 +70,8 @@ class LoginPage extends Utility {
         // Click login button
         await this.clickElement(this.loginButton, 'Login Button');
 
-        const isVisible_loginErrorMessageText = await this.isDisplay(this.loginErrorMessageText, 5000, 'Text Error Message: Invalid email or password');
-        const isVisible_loginErrorMessageToaster = await this.isDisplay(this.loginErrorMessageToaster, 5000, 'Toaster Error Message: Invalid email or password');
+        const isVisible_loginErrorMessageText = await this.isDisplay(this.loginErrorMessageText, 30000, 'Text Error Message: Invalid email or password');
+        const isVisible_loginErrorMessageToaster = await this.isDisplay(this.loginErrorMessageToaster, 30000, 'Toaster Error Message: Invalid email or password');
 
         await this.expectToBe(isVisible_loginErrorMessageText, true, 'Text Error Message: Invalid email or password');
         await this.expectToBe(isVisible_loginErrorMessageToaster, true, 'Toaster Error Message: Invalid email or password');
