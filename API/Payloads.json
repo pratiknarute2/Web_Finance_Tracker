@@ -13,9 +13,28 @@
     "type": "credit",
     "status": ""
   },
+  "Category_given_Ledger": {
+    "name": "Testing Given",
+    "type": "debit",
+    "status": "given"
+  },
+  "Category_received_Ledger": {
+    "name": "Testing Received",
+    "type": "credit",
+    "status": "received"
+  },
   "Categories_Update": {
     "newName": "Testing updated"
   },
+  "Category_Given_Update_Ledger": {
+    "newName":"Testing Given Updated",
+    "status":"given"
+  },
+  "Category_Received_Update_Ledger": {
+    "newName":"Testing Received Updated",
+    "status":"received"
+  },
+
   "Transaction_debit": {
     "date": "2025-10-10",
     "type": "debit",

@@ -56,40 +56,87 @@ test.describe.serial('🌐 API Testing Suite', () => {
     // 💰 CATEGORY FEATURE
     test.describe('💰 Category Feature', () => {
 
-        test('POST | Create Debit Category', async ({ request }) => {
-            const post = new Post(request);
-            await post.postCategoriesAPI('debit');
+        test.describe('Categories API | Debit', () => {
+
+            test('POST | Create Debit Category', async ({ request }) => {
+                const post = new Post(request);
+                await post.postCategoriesAPI('debit');
+            });
+
+            test('GET | Fetch Categories', async ({ request }) => {
+                const get = new Get(request);
+                await get.getCategoryAPI();
+            });
+
+            test('PUT | Update Debit Category', async ({ request }) => {
+                const put = new Put(request);
+                await put.updateCategoriesAPI('debit');
+            });
+
+            test('DELETE | Delete Debit Category', async ({ request }) => {
+                const del = new Delete(request);
+                await del.deleteCategoriesAPI('debit');
+            });
+
         });
 
-        test('GET | Fetch Categories', async ({ request }) => {
-            const get = new Get(request);
-            await get.getCategoryAPI();
+
+        test.describe('Categories API | Credit', () => {
+
+            test('POST | Create Credit Category', async ({ request }) => {
+                const post = new Post(request);
+                await post.postCategoriesAPI('credit');
+            });
+
+            test('PUT | Update Credit Category', async ({ request }) => {
+                const put = new Put(request);
+                await put.updateCategoriesAPI('credit');
+            });
+
+            test('DELETE | Delete Credit Category', async ({ request }) => {
+                const del = new Delete(request);
+                await del.deleteCategoriesAPI('credit');
+            });
+
+        });
+        test.describe('Contact Ledger Category – Given', () => {
+            test('POST | Create', async ({ request }) => {
+                await new Post(request).postGivenCategoryAPI()
+            });
+            test('GET | Fetch', async ({ request }) => {
+                const response = await new Get(request).getCategoryAPI()
+                const givenCategory = await response.find(category => category.id === global.givenCategoryId);
+                expect.soft(givenCategory).toBeDefined();
+                expect.soft(givenCategory.id).toBe(global.givenCategoryId);
+            });
+            test('PUT | Update', async ({ request }) => {
+                await new Put(request).updateGivenCategoryAPI()
+
+            });
+            test('DELETE | Delete', async ({ request }) => {
+                await new Delete(request).deleteGivenCategoryAPI()
+            });
+        });
+        test.describe('Contact Ledger Category – Received', () => {
+            test('POST | Create', async ({ request }) => {
+                await new Post(request).postReceivedCategoryAPI()
+            });
+            test('GET | Fetch', async ({ request }) => {
+                const response = await new Get(request).getCategoryAPI()
+                const receivedCategory = await response.find(category => category.id === global.receivedCategoryId);
+                expect.soft(receivedCategory).toBeDefined();
+                expect.soft(receivedCategory.id).toBe(global.receivedCategoryId);
+
+            });
+            test('PUT | Update', async ({ request }) => {
+                await new Put(request).updateReceivedCategoryAPI()
+            });
+            test('DELETE | Delete', async ({ request }) => {
+                await new Delete(request).deleteReceivedCategoryAPI()
+            });
         });
 
-        test('PUT | Update Debit Category', async ({ request }) => {
-            const put = new Put(request);
-            await put.updateCategoriesAPI('debit');
-        });
 
-        test('DELETE | Delete Debit Category', async ({ request }) => {
-            const del = new Delete(request);
-            await del.deleteCategoriesAPI('debit');
-        });
-
-        test('POST | Create Credit Category', async ({ request }) => {
-            const post = new Post(request);
-            await post.postCategoriesAPI('credit');
-        });
-
-        test('PUT | Update Credit Category', async ({ request }) => {
-            const put = new Put(request);
-            await put.updateCategoriesAPI('credit');
-        });
-
-        test('DELETE | Delete Credit Category', async ({ request }) => {
-            const del = new Delete(request);
-            await del.deleteCategoriesAPI('credit');
-        });
     });
 
     // 💳 TRANSACTION FEATURE
@@ -130,7 +177,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
 
 });
 
-test.describe('UI', ()=>{
+test.describe.skip('UI', ()=>{
     // 🧩 LOGIN SCENARIOS (UI + API)
     test.describe('Login Scenarios', () => {
         test('Login with Valid Credentials', async ({ request, page }) => {

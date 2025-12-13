@@ -1,6 +1,6 @@
-const { expect } = require('@playwright/test');
+const {expect} = require('@playwright/test');
 const Utility = require('../Base/Utility.js');
-const { API_URL } = require('../playwright.config.js');
+const {API_URL} = require('../playwright.config.js');
 const fs = require("fs/promises"); // Import dynamic API_URL
 
 class Put extends Utility {
@@ -25,6 +25,48 @@ class Put extends Utility {
         console.log(`✅ Updated category ID: ${global.categoryId} with type: ${transactionType}`);
     }
 
+    async updateGivenCategoryAPI() {
+        if (!global.givenCategoryId) {
+            throw new Error('❌ givenCategoryId is not set. Create a category first!');
+        }
+
+        const categoryResponse = await this.putRequest(
+            this.request,
+            `${API_URL}/api/categories/${global.givenCategoryId}`, // ✅ dynamic URL
+            `Category_Given_Update_Ledger`,
+            `Given - Update Categories API`
+        );
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payload = data['Category_Given_Update_Ledger']
+
+        expect(categoryResponse.status).toBe(payload.status);
+        console.log(`✅ Updated Given category ID: ${global.givenCategoryId}`);
+
+        return categoryResponse
+
+    }
+
+    async updateReceivedCategoryAPI() {
+        if (!global.receivedCategoryId) {
+            throw new Error('❌ receivedCategoryId is not set. Create a category first!');
+        }
+
+        const categoryResponse = await this.putRequest(
+            this.request,
+            `${API_URL}/api/categories/${global.receivedCategoryId}`, // ✅ dynamic URL
+            `Category_Received_Update_Ledger`,
+            `Received - Update Categories API`
+        );
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payload = data['Category_Received_Update_Ledger']
+
+        expect(categoryResponse.status).toBe(payload.status);
+        console.log(`✅ Updated Received category ID: ${global.receivedCategoryId}`);
+        return categoryResponse
+    }
+
     async updateTransactionAPI(transactionType) {
         if (!global.transactionId) {
             throw new Error('❌ transactionId is not set. Create a transaction first!');
@@ -40,6 +82,7 @@ class Put extends Utility {
         expect(transactionResponse.type).toBe(transactionType);
         console.log(`✅ Updated transaction ID: ${global.transactionId} with type: ${transactionType}`);
     }
+
     async updateLabelAPI() {
         if (!global.labelId) {
             throw new Error('❌ labelId is not set. Create a label first!');

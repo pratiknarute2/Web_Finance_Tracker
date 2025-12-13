@@ -22,6 +22,37 @@ class Delete extends Utility {
         console.log(`✅ Deleted category ID: ${global.categoryId} for type: ${transactionType}`);
         return deleteResponse;
     }
+    async deleteGivenCategoryAPI() {
+        if (!global.givenCategoryId) {
+            throw new Error('❌ givenCategoryId is not set. Create a category first!');
+
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/categories/${global.givenCategoryId}`,
+            `Delete Given Categories API`
+        );
+
+        console.log(`✅ Deleted Given category ID: ${global.givenCategoryId}`);
+        return deleteResponse;
+
+    }
+    async deleteReceivedCategoryAPI() {
+        if (!global.receivedCategoryId) {
+            throw new Error('❌ receivedCategoryId is not set. Create a category first!');
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/categories/${global.receivedCategoryId}`,
+            `Delete Received Categories API`
+        );
+
+        console.log(`✅ Deleted category ID: ${global.receivedCategoryId}`);
+        return deleteResponse;
+    }
+
 
     async deleteTransactionAPI(transactionType) {
         if (!global.transactionId) {

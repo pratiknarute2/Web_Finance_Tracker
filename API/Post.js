@@ -69,6 +69,41 @@ class Post extends Utility {
         expect(labelResponse.name).toContain(payloadBody.name)
         return labelResponse;
     }
+    async postGivenCategoryAPI(){
+        const categoryResponse = await this.postRequest(
+            this.request,
+            `${API_URL}/api/categories`,
+            `Category_given_Ledger`,
+            `Post Given Category API`
+        );
+        global.givenCategoryId = categoryResponse.id
+        console.log('🔑 Global Given Category ID set:', global.givenCategoryId);
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const payload = data['Category_given_Ledger']
+        expect.soft(categoryResponse.name).toBe(payload.name)
+        expect.soft(categoryResponse.type).toBe(payload.type)
+        expect.soft(categoryResponse.status).toBe(payload.status)
+
+        return categoryResponse;
+    }
+    async postReceivedCategoryAPI(){
+        const categoryResponse = await this.postRequest(
+            this.request,
+            `${API_URL}/api/categories`,
+            `Category_received_Ledger`,
+            `Post Received Category API`
+        );
+        global.receivedCategoryId = categoryResponse.id
+        console.log('🔑 Global Received Category ID set:', global.receivedCategoryId);
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const payload = data['Category_received_Ledger']
+        expect.soft(categoryResponse.name).toBe(payload.name)
+        expect.soft(categoryResponse.type).toBe(payload.type)
+        expect.soft(categoryResponse.status).toBe(payload.status)
+        return categoryResponse;
+    }
 }
 
 module.exports = Post;
