@@ -79,6 +79,9 @@ class Post extends Utility {
         global.givenCategoryId = categoryResponse.id
         console.log('🔑 Global Given Category ID set:', global.givenCategoryId);
 
+        global.givenCategoryName = categoryResponse.name
+        console.log('🔑 Global Given Category Name set:', global.givenCategoryName);
+
         const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
         const payload = data['Category_given_Ledger']
         expect.soft(categoryResponse.name).toBe(payload.name)
@@ -97,12 +100,82 @@ class Post extends Utility {
         global.receivedCategoryId = categoryResponse.id
         console.log('🔑 Global Received Category ID set:', global.receivedCategoryId);
 
+        global.receivedCategoryName = categoryResponse.name
+        console.log('🔑 Global Received Category Name set:', global.receivedCategoryName);
+
         const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
         const payload = data['Category_received_Ledger']
         expect.soft(categoryResponse.name).toBe(payload.name)
         expect.soft(categoryResponse.type).toBe(payload.type)
         expect.soft(categoryResponse.status).toBe(payload.status)
         return categoryResponse;
+    }
+    async postContactAPI(){
+        const response = await this.postRequest(
+            this.request,
+            `${API_URL}/api/contacts`,
+            `Contact`,
+            `Post Contact API`
+        )
+        global.contactId = response.id
+        global.contactName = response.name
+        console.log('🔑 Global Contact ID set:', global.contactId);
+        console.log('🔑 Global Contact Name set:', global.contactName);
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const payload = data['Contact']
+        expect.soft(response.name).toBe(payload.name)
+        expect.soft(response.email).toBe(payload.email)
+        expect.soft(response.mobNo).toBe(payload.mobNo)
+        return response;
+    }
+    async postGivenContactLedgerTransactionAPI(){
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const Transaction_Received_Payload = data['Transaction_Given']
+
+        Transaction_Received_Payload.labelIds = [global.labelId];
+        Transaction_Received_Payload.contactId = global.contactId;
+        Transaction_Received_Payload.category = global.givenCategoryName;
+
+        // ✅ WRITE BACK TO FILE
+        await fs.writeFile(
+            'API/Payloads.json',
+            JSON.stringify(data, null, 2),
+            'utf-8'
+        );
+        const response = await this.postRequest(
+            this.request,
+            `${API_URL}/api/transactions`,
+            `Transaction_Given`,
+            `Post Given Contact Ledger Transaction API`
+        )
+
+        global.givenTransactionId = response.id
+        console.log(`🔑 Global Given transaction Id Set: `, global.givenTransactionId);
+    }
+    async postReceivedContactLedgerTransactionAPI(){
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const Transaction_Received_Payload = data['Transaction_Received']
+
+        Transaction_Received_Payload.labelIds = [global.labelId];
+        Transaction_Received_Payload.contactId = global.contactId;
+        Transaction_Received_Payload.category = global.receivedCategoryName;
+
+        // ✅ WRITE BACK TO FILE
+        await fs.writeFile(
+            'API/Payloads.json',
+            JSON.stringify(data, null, 2),
+            'utf-8'
+        );
+        const response = await this.postRequest(
+            this.request,
+            `${API_URL}/api/transactions`,
+            `Transaction_Received`,
+            `Post Received Contact Ledger Transaction API`
+        )
+
+        global.receivedTransactionId = response.id
+        console.log(`🔑 Global Received transaction Id Set: `, global.receivedTransactionId);
     }
 }
 

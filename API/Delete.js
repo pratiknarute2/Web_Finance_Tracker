@@ -22,6 +22,7 @@ class Delete extends Utility {
         console.log(`✅ Deleted category ID: ${global.categoryId} for type: ${transactionType}`);
         return deleteResponse;
     }
+
     async deleteGivenCategoryAPI() {
         if (!global.givenCategoryId) {
             throw new Error('❌ givenCategoryId is not set. Create a category first!');
@@ -38,6 +39,7 @@ class Delete extends Utility {
         return deleteResponse;
 
     }
+
     async deleteReceivedCategoryAPI() {
         if (!global.receivedCategoryId) {
             throw new Error('❌ receivedCategoryId is not set. Create a category first!');
@@ -68,7 +70,8 @@ class Delete extends Utility {
         console.log(`✅ Deleted transaction ID: ${global.transactionId} for type: ${transactionType}`);
         return deleteResponse;
     }
-    async deleteLabelApi(){
+
+    async deleteLabelApi() {
         if (!global.labelId) {
             throw new Error('❌ labelId is not set. Create a label first!');
         }
@@ -80,6 +83,50 @@ class Delete extends Utility {
         );
 
         console.log(`✅ Deleted label ID: ${global.labelId}`);
+        return deleteResponse;
+    }
+
+    async deleteContactsAPI() {
+        if (!global.contactId) {
+            throw new Error('❌ contactId is not set. Create a contact first!');
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/contacts/${global.contactId}`,
+            `Delete Contact API`
+        );
+
+        console.log(`✅ Deleted contact ID: ${global.contactId}`);
+        return deleteResponse;
+    }
+
+    async deleteGivenContactLedgerTransactionAPI() {
+        if (!global.givenTransactionId) {
+            throw new Error('❌ givenContactLedgerTransactionId is not set. Create a transaction first!');
+        }
+
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/transactions/${global.givenTransactionId}`,
+            `Delete Given Contact Ledger Transaction API`
+        );
+
+        console.log(`✅ Deleted Given Contact Ledger transaction ID: ${global.givenTransactionId}`);
+        return deleteResponse;
+    }
+
+    async deleteReceivedContactLedgerTransactionAPI() {
+        if (!global.receivedTransactionId) {
+            throw new Error('❌ receivedTransactionId is not set. Create a transaction first!');
+        }
+        const deleteResponse = await this.deleteRequest(
+            this.request,
+            `${API_URL}/api/transactions/${global.receivedTransactionId}`,
+            `Delete Received Contact Ledger Transaction API`
+        );
+
+        console.log(`✅ Deleted Received Contact Ledger transaction ID: ${global.receivedTransactionId}`);
         return deleteResponse;
     }
 }

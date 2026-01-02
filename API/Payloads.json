@@ -27,14 +27,13 @@
     "newName": "Testing updated"
   },
   "Category_Given_Update_Ledger": {
-    "newName":"Testing Given Updated",
-    "status":"given"
+    "newName": "Testing Given Updated",
+    "status": "given"
   },
   "Category_Received_Update_Ledger": {
-    "newName":"Testing Received Updated",
-    "status":"received"
+    "newName": "Testing Received Updated",
+    "status": "received"
   },
-
   "Transaction_debit": {
     "date": "2025-10-10",
     "type": "debit",
@@ -45,6 +44,28 @@
     "labelIds": [
       "68bc24f7f115e8a75b9bc4f6"
     ]
+  },
+  "Transaction_Given": {
+    "date": "2026-01-01",
+    "type": "debit",
+    "category": "Testing Given",
+    "amount": 100,
+    "comments": "Testing Given Transaction",
+    "labelIds": [
+      "69576fd070f723ec2b8f300f"
+    ],
+    "contactId": "69576fcf70f723ec2b8f300e"
+  },
+  "Transaction_Received": {
+    "date": "2026-01-01",
+    "type": "credit",
+    "category": "Testing Received",
+    "amount": 100,
+    "comments": "Testing Received Transaction",
+    "labelIds": [
+      "69576fd070f723ec2b8f300f"
+    ],
+    "contactId": "69576fcf70f723ec2b8f300e"
   },
   "Transaction_credit": {
     "date": "2025-10-10",
@@ -87,5 +108,15 @@
   "Label_Update": {
     "name": "Updated Testing Label",
     "color": "#4CAF50"
+  },
+  "Contact": {
+    "name": "TESTING USER",
+    "email": "testing123@gmail.com",
+    "mobNo": "2258122141"
+  },
+  "Contact_Update": {
+    "name": "TESTING USER UPDATED",
+    "email": "testing123@gmail.com",
+    "mobNo": "2258122141"
   }
 }

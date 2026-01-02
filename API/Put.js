@@ -102,6 +102,25 @@ class Put extends Utility {
         return labelResponseUpdated;
 
     }
+    async updateContactsApi(){
+        if(!global.contactId){
+            throw new Error('❌ contactId is not set. Create a contact first!');
+        }
+
+        const contactResponse = await this.putRequest(
+            this.request,
+            `${API_URL}/api/contacts/${global.contactId}`,
+            `Contact_Update`,
+            `Update Contact API`
+        )
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payload = data['Contact_Update'];
+
+        expect.soft(contactResponse.name).toBe(payload.name);
+        expect.soft(contactResponse.email).toBe(payload.email);
+        expect.soft(contactResponse.phone).toBe(payload.phone);
+    }
 
 }
 

@@ -105,7 +105,7 @@ npx playwright codegen --target=java
 After execution, an HTML report will open automatically.
 
 ```bash
-npx playwright test Tests/FinanceTracker.test.js && npx playwright show-report playwright-reports/html-report
+npx playwright test Tests/API.test.js && npx playwright show-report playwright-reports/html-report
 ```
 
 ---
@@ -130,7 +130,7 @@ WEB_FINANCE_TRACKER/
 │
 ├── Tests/
 │   ├── UpdateProfile.test.js
-│   └── FinanceTracker.test.js
+│   └── API.test.js
 │
 ├── TestData/
 │   └── testData.xlsx

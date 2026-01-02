@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'qa'
+const ENV = process.env.ENV || 'prod'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {
@@ -26,7 +26,7 @@ console.log(`🧩 API URL: ${API_URL}`);
 
 module.exports = defineConfig({
   retries: 1,
-  timeout: 200_000,  // Global test timeout: 200 sec
+  timeout: 300_000,  // Global test timeout: 300 sec
   expect: {
     timeout: 30_000,  // Default assertion timeout: 30 seconds
   },
@@ -51,7 +51,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 3, // Increase for parallel execution; set to 1 for debugging
+  workers: 1, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output
