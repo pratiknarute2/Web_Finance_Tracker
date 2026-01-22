@@ -125,9 +125,13 @@ class HomePage extends Utility {
     // 🔹 Transaction Impact Methods
     // ============================
     async impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary) {
+        await this.staticWait(3)
 
         // Capture summary after transaction
-        await this.staticWait(3)
+        await this.currentBalancesElement.first().waitFor({
+            state: 'visible',
+            timeout: 10000
+        });
         const afterSummary = await this.getSummaryCardsData();
 
         // Validate impact on summary cards
@@ -213,6 +217,11 @@ class HomePage extends Utility {
     }
 
     async getSummaryCardsData() {
+        await this.staticWait(3)
+        await this.currentBalancesElement.first().waitFor({
+            state: 'visible',
+            timeout: 10000
+        });
         const parse = async (locator) => parseFloat(((await locator.first().textContent()) || '').replace(/[^\d.-]/g, '').trim()) || 0;
         return {
             currentBalanceSummary: await parse(this.currentBalanceSummary),
@@ -238,7 +247,12 @@ class HomePage extends Utility {
             const amount = parseFloat(createdTransactionDetails.amount);
 
             console.log("\n🧩 Validating Summary Impact of Transaction...");
-            console.log("------------------------------------------------------------");
+            await this.currentBalancesElement.first().waitFor({
+                state: 'visible',
+                timeout: 10000
+            });
+
+
             console.log(`Transaction Type       : ${type}`);
             console.log(`Transaction Amount      : ${amount}`);
             console.log(`Before → Total Expense  : ${before.TotalExpenseSummary}`);

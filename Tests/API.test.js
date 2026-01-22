@@ -12,7 +12,7 @@ const fs = require("fs/promises");
 let token = '';
 let utility;
 
-test.describe.serial('🌐 API Testing Suite', () => {
+test.describe('🌐 API Testing Suite', () => {
     // 🔐 AUTHENTICATION FEATURE
     test.describe('🔐 Login Authentication', () => {
         test('POST | Login through API', async ({ request, page }) => {
@@ -22,7 +22,10 @@ test.describe.serial('🌐 API Testing Suite', () => {
     });
 
     // 🏷️ LABEL FEATURE
-    test.describe('🏷️ Label Feature', () => {
+    test.describe.serial('🏷️ Label Feature', () => {
+        test.beforeAll(async ({ request }) => {
+            await new Post(request).postLoginAPI()
+        })
         test('Post | Create Label', async ({request})=>{
             const labelResponse = await new Post(request).postLabelAPI()
         })
@@ -46,7 +49,10 @@ test.describe.serial('🌐 API Testing Suite', () => {
     });
 
     // 💵 OPENING BALANCE FEATURE
-    test.describe('💵 Opening Balance Feature', () => {
+    test.describe.serial('💵 Opening Balance Feature', () => {
+        test.beforeAll(async ({ request }) => {
+            await new Post(request).postLoginAPI()
+        })
 
         test('GET | Opening Balance API', async ({ request }) => {
             const get = new Get(request);
@@ -56,8 +62,11 @@ test.describe.serial('🌐 API Testing Suite', () => {
 
     // 💰 CATEGORY FEATURE
     test.describe('💰 Category Feature', () => {
+        test.beforeAll(async ({ request }) => {
+            await new Post(request).postLoginAPI()
+        })
 
-        test.describe('Debit', () => {
+        test.describe.serial('Debit', () => {
 
             test('POST | Create Debit Category', async ({ request }) => {
                 const post = new Post(request);
@@ -82,7 +91,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
         });
 
 
-        test.describe('Credit', () => {
+        test.describe.serial('Credit', () => {
 
             test('POST | Create Credit Category', async ({ request }) => {
                 const post = new Post(request);
@@ -100,7 +109,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
             });
 
         });
-        test.describe('Given', () => {
+        test.describe.serial('Given', () => {
             test('POST | Create', async ({ request }) => {
                 await new Post(request).postGivenCategoryAPI()
             });
@@ -118,7 +127,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
                 await new Delete(request).deleteGivenCategoryAPI()
             });
         });
-        test.describe('Received', () => {
+        test.describe.serial('Received', () => {
             test('POST | Create', async ({ request }) => {
                 await new Post(request).postReceivedCategoryAPI()
 
@@ -145,7 +154,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
         test.beforeAll(async ({ request }) => {
             await new Post(request).postLoginAPI()
         })
-        test.describe('Debit', async ()=>{
+        test.describe.serial('Debit', async ()=>{
             test('POST | Debit Transaction', async ({ request }) => {
                 const post = new Post(request);
                 await post.postTransactionAPI('debit');
@@ -166,7 +175,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
             });
 
         })
-        test.describe('Credit', async ()=>{
+        test.describe.serial('Credit', async ()=>{
             test('POST | Credit Transaction', async ({ request }) => {
                 const post = new Post(request);
                 await post.postTransactionAPI('credit');
@@ -182,7 +191,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
 
         })
 
-        test.describe(`Contact Ledger Transactions`, async () =>{
+        test.describe.serial(`Contact Ledger Transactions`, async () =>{
             test.beforeAll(async ({request}) => {
                 await new Post(request).postLoginAPI(request)
                 await new Post(request).postGivenCategoryAPI()
@@ -212,7 +221,7 @@ test.describe.serial('🌐 API Testing Suite', () => {
         })
     });
 
-    test.describe('Manage Contacts', async () => {
+    test.describe.serial('Manage Contacts', async () => {
         test.beforeAll(async ({request}) => {
             await new Post(request).postLoginAPI(request)
         })

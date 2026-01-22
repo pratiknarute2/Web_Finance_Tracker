@@ -9,25 +9,32 @@ class Get extends Utility {
     }
 
     async getTransactionAPI() {
-        const getTransactionAPIResponse = await this.getRequest(
+        const result = await this.getRequest(
             this.request,
-            `${API_URL}/api/transactions`, // ✅ dynamic URL
+            `${API_URL}/api/transactions`,
             'Get Transaction API'
         );
 
-        console.log("Total Transaction Entries: " + getTransactionAPIResponse.length);
+        // result is already JSON object
+        const transactions = result.content;
+
+        if (!Array.isArray(transactions)) {
+            throw new Error("Transactions API: content is not an array");
+        }
+
+        console.log("Total Transaction Entries:", transactions.length);
 
         // Food categories
-        const debitFood = getTransactionAPIResponse.filter(
+        const debitFood = transactions.filter(
             item => item.type === 'debit' && item.category === 'Food'
         );
-        console.log("Food Category: " + debitFood.length);
+        console.log("Food Category:", debitFood.length);
 
         // Transport categories
-        const transport = getTransactionAPIResponse.filter(
+        const transport = transactions.filter(
             item => item.type === 'debit' && item.category === 'Transport'
         );
-        console.log("Transport Category: " + transport.length);
+        console.log("Transport Category:", transport.length);
     }
 
     async getCategoryAPI() {
@@ -69,10 +76,13 @@ class Get extends Utility {
             'Get Contacts API'
         );
 
+        // result is already JSON object
+        const contactsResponse = response.content;
+
         // Find the single contact object that matches the global values.
         // Use string comparison to avoid type mismatches (ids might be numbers or strings).
-        const contact = Array.isArray(response)
-            ? response.find(item => `${item.id}` === `${global.contactId}` && `${item.name}` === `${global.contactName}`)
+        const contact = Array.isArray(contactsResponse)
+            ? contactsResponse.find(item => `${item.id}` === `${global.contactId}` && `${item.name}` === `${global.contactName}`)
             : null;
 
         expect.soft(`${contact.id}`).toBe(`${global.contactId}`);

@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'prod'
+const ENV = process.env.ENV || 'qa'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {
@@ -51,7 +51,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 1, // Increase for parallel execution; set to 1 for debugging
+  workers: 2, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output
