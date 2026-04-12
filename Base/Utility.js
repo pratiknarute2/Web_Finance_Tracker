@@ -20,6 +20,7 @@ class Utility {
             throw new Error(errorMessage);
         }
         console.log('-'.repeat(100));
+
     }
 
     async fillInputField(locator, value, stepName) {

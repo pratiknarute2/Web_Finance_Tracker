@@ -31,6 +31,14 @@ module.exports = defineConfig({
     timeout: 30_000,  // Default assertion timeout: 30 seconds
   },
 
+  // Restrict Playwright to only discover tests inside the top-level `Tests` folder
+  // and explicitly ignore the `Practice` folder (which contains a nested Playwright
+  // installation and causes the "Requiring @playwright/test second time" error).
+  testDir: 'Tests',
+  testIgnore: ['Practice/**', 'Practice/node_modules/**'],
+  // Fail CI if any test is left with `.only`
+  forbidOnly: !!process.env.CI,
+
   use: {
     loginURL: UI_URL,
     actionTimeout: 20_000, // Timeout for each action: 120 seconds
@@ -51,7 +59,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 3, // Increase for parallel execution; set to 1 for debugging
+  workers: 1, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output

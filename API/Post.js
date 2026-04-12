@@ -1,5 +1,6 @@
 const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility.js');
+const Delete = require('../API/Delete.js');
 const { API_URL } = require('../playwright.config.js');
 const fs = require("fs/promises"); // Import dynamic API_URL
 
@@ -24,6 +25,13 @@ class Post extends Utility {
     }
 
     async postCategoriesAPI(transactionType) {
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payloadBody = data[`Categories_${transactionType}`];
+
+        if (payloadBody?.name) {
+            await new Delete(this.request).deleteEntityByNameIfExists('categories', payloadBody.name);
+        }
+
         const categoryResponse = await this.postRequest(
             this.request,
             `${API_URL}/api/categories`,
@@ -53,18 +61,22 @@ class Post extends Utility {
     }
 
     async postLabelAPI(){
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payloadBody = data[`Label`];
+
+        if (payloadBody?.name) {
+            await new Delete(this.request).deleteEntityByNameIfExists('labels', payloadBody.name);
+        }
+
         const labelResponse = await this.postRequest(
             this.request,
             `${API_URL}/api/labels`,
             `Label`,
             `Post Label API`
-
         )
+
         global.labelId = labelResponse.id
         console.log('🔑 Global Label ID set:', global.labelId);
-
-        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
-        const payloadBody = data[`Label`];
 
         expect(labelResponse.name).toContain(payloadBody.name)
         return labelResponse;
@@ -111,6 +123,13 @@ class Post extends Utility {
         return categoryResponse;
     }
     async postContactAPI(){
+        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
+        const payload = data['Contact']
+
+        if (payload?.name) {
+            await new Delete(this.request).deleteEntityByNameIfExists('contacts', payload.name);
+        }
+
         const response = await this.postRequest(
             this.request,
             `${API_URL}/api/contacts`,
@@ -122,8 +141,6 @@ class Post extends Utility {
         console.log('🔑 Global Contact ID set:', global.contactId);
         console.log('🔑 Global Contact Name set:', global.contactName);
 
-        const data = JSON.parse(await fs.readFile('API/Payloads.json','utf-8'))
-        const payload = data['Contact']
         expect.soft(response.name).toBe(payload.name)
         expect.soft(response.email).toBe(payload.email)
         expect.soft(response.mobNo).toBe(payload.mobNo)

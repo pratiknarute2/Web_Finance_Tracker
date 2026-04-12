@@ -1,6 +1,7 @@
-const {expect} = require('@playwright/test');
+const { expect } = require('@playwright/test');
 const Utility = require('../Base/Utility.js');
-const {API_URL} = require('../playwright.config.js');
+const Delete = require('../API/Delete.js');
+const { API_URL } = require('../playwright.config.js');
 const fs = require("fs/promises"); // Import dynamic API_URL
 
 class Put extends Utility {
@@ -14,6 +15,27 @@ class Put extends Utility {
             throw new Error('❌ categoryId is not set. Create a category first!');
         }
 
+        // Ensure category exists before update – verify fences for concurrency / stale state.
+        const allCategories = await this.getRequest(
+            this.request,
+            `${API_URL}/api/categories`,
+            'Get Categories API'
+        );
+
+        const categoryList = Array.isArray(allCategories) ? allCategories : allCategories.content || [];
+        const targetCategory = categoryList.find(c => `${c.id}` === `${global.categoryId}`);
+        if (!targetCategory) {
+            throw new Error(`❌ Category not found for update: ${global.categoryId}`);
+        }
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const updatePayload = data['Categories_Update'];
+
+        if (updatePayload?.newName) {
+            // Avoid unique-name conflict by removing existing target name before PUT.
+            await new Delete(this.request).deleteEntityByNameIfExists('categories', updatePayload.newName);
+        }
+
         const categoryResponse = await this.putRequest(
             this.request,
             `${API_URL}/api/categories/${global.categoryId}`, // ✅ dynamic URL
@@ -23,6 +45,7 @@ class Put extends Utility {
 
         expect(categoryResponse.type).toBe(transactionType);
         console.log(`✅ Updated category ID: ${global.categoryId} with type: ${transactionType}`);
+        return categoryResponse;
     }
 
     async updateGivenCategoryAPI() {
@@ -102,8 +125,8 @@ class Put extends Utility {
         return labelResponseUpdated;
 
     }
-    async updateContactsApi(){
-        if(!global.contactId){
+    async updateContactsApi() {
+        if (!global.contactId) {
             throw new Error('❌ contactId is not set. Create a contact first!');
         }
 

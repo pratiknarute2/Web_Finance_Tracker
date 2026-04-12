@@ -26,6 +26,7 @@ class HomePage extends Utility {
         this.allCreditAmountsElement = this.page.locator("//table//tbody//tr//td[6]");
         this.currentBalancesElement = this.page.locator("//table//tbody//tr//td[7]");
         this.allDateElements = this.page.locator("//table//tbody//tr//td[1]")
+        this.pageIndicator = this.page.locator("//div[@class='pagination']//span");
 
         // Summary cards
         this.currentBalanceSummary = this.page.locator("//div[@class='summary-cards']//div[@class='summary-card balance']//p");
@@ -70,6 +71,11 @@ class HomePage extends Utility {
             debitAmount = await this.calculateDebitAmountsSum(debitAmount);
             creditAmount = await this.calculateCreditAmountsSum(creditAmount);
             await this.staticWait(1);
+
+            // ✅ ADD DEBUG LOGS HERE
+            console.log("➡️ Checking Next button...");
+            console.log("Enabled:", await this.paginationNext.isEnabled());
+            console.log("Disabled:", await this.paginationNext.isDisabled());
 
             pageCount++;
             if (!(await this.canProceedToNextPage())) break;
@@ -125,7 +131,7 @@ class HomePage extends Utility {
     // 🔹 Transaction Impact Methods
     // ============================
     async impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary) {
-        await this.staticWait(3)
+        await this.staticWait(5)
 
         // Capture summary after transaction
         await this.currentBalancesElement.first().waitFor({
@@ -163,30 +169,70 @@ class HomePage extends Utility {
 
     async canProceedToNextPage() {
         try {
-            await this.page.waitForFunction(el => el && !el.disabled, await this.paginationNext.elementHandle(), { timeout: 10000 });
-        } catch { return false; }
-        return await this.paginationNext.isEnabled();
+            const text = await this.pageIndicator.textContent(); // "Page 2 of 8"
+
+            console.log("📄 Pagination text:", text);
+
+            const match = text.match(/Page (\d+) of (\d+)/);
+            if (!match) return false;
+
+            const current = parseInt(match[1]);
+            const total = parseInt(match[2]);
+
+            console.log(`➡️ Current Page: ${current} | Total Pages: ${total}`);
+
+            return current < total;
+
+        } catch (e) {
+            return false;
+        }
     }
 
     async canProceedToPreviousPage() {
         try {
-            await this.page.waitForFunction(el => el && !el.disabled, await this.paginationPrevious.elementHandle(), { timeout: 10000 });
-        } catch { return false; }
-        return await this.paginationPrevious.isEnabled();
+            await this.paginationPrevious.waitFor({ state: 'visible', timeout: 5000 });
+
+            const isDisabled = await this.paginationPrevious.isDisabled();
+            return !isDisabled;
+
+        } catch (e) {
+            return false;
+        }
     }
 
     async navigateToNextPage(pageCount) {
-        await Promise.all([
-            this.clickElement(this.paginationNext, 'Pagination Next: ' + pageCount),
-            this.page.waitForLoadState('networkidle', { timeout: 10000 })
-        ]);
+        const previousFirstRowText = await this.getFirstTableRowText();
+        await this.paginationNext.click();
+        await this.waitForPaginatedTableUpdate(pageCount, previousFirstRowText);
     }
 
     async navigateToPreviousPage(pageCount) {
-        await Promise.all([
-            this.clickElement(this.paginationPrevious, 'Pagination Previous: ' + pageCount),
-            this.page.waitForLoadState('networkidle', { timeout: 10000 })
-        ]);
+        const previousFirstRowText = await this.getFirstTableRowText();
+        await this.paginationPrevious.click();
+        await this.waitForPaginatedTableUpdate(pageCount, previousFirstRowText);
+    }
+
+    async getFirstTableRowText() {
+        const firstRow = this.page.locator("//table//tbody//tr").first();
+        return ((await firstRow.textContent()) || "").trim();
+    }
+
+    async waitForPaginatedTableUpdate(expectedPage, previousFirstRowText) {
+        await expect(this.pageIndicator).toContainText(`Page ${expectedPage} of`, { timeout: 10000 });
+
+        await this.page.waitForFunction((previousText) => {
+            const rows = [...document.querySelectorAll('table tbody tr')];
+            if (rows.length === 0) return false;
+
+            const firstRowText = rows[0].textContent.trim();
+            const hasAmount = rows.some((row) => {
+                const debitText = row.querySelector('td:nth-child(5)')?.textContent.trim() || '';
+                const creditText = row.querySelector('td:nth-child(6)')?.textContent.trim() || '';
+                return /\d/.test(debitText) || /\d/.test(creditText);
+            });
+
+            return firstRowText !== previousText && hasAmount;
+        }, previousFirstRowText, { timeout: 10000 });
     }
 
     // ============================
@@ -194,9 +240,9 @@ class HomePage extends Utility {
     // ============================
     async calculateDebitAmountsSum(currentDebit) {
         let total = currentDebit;
-        const count = await this.debitAmountsElement.count();
+        const count = await this.allDebitAmountsElement.count();
         for (let i = 0; i < count; i++) {
-            const text = (await this.debitAmountsElement.nth(i).textContent() || "").replace(/[^\d.-]/g, '').trim();
+            const text = (await this.allDebitAmountsElement.nth(i).textContent() || "").replace(/[^\d.-]/g, '').trim();
             const amount = parseFloat(text) || 0;
             console.log(`Debit: ${total + amount} = (${total} + ${amount})`); // preserved log
             total += amount;
@@ -206,9 +252,9 @@ class HomePage extends Utility {
 
     async calculateCreditAmountsSum(currentCredit) {
         let total = currentCredit;
-        const count = await this.creditAmountsElement.count();
+        const count = await this.allCreditAmountsElement.count();
         for (let i = 0; i < count; i++) {
-            const text = (await this.creditAmountsElement.nth(i).textContent() || "").replace(/[^\d.-]/g, '').trim();
+            const text = (await this.allCreditAmountsElement.nth(i).textContent() || "").replace(/[^\d.-]/g, '').trim();
             const amount = parseFloat(text) || 0;
             console.log(`Credit: ${total + amount} = (${total} + ${amount})`); // preserved log
             total += amount;

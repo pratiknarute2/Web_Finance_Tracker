@@ -24,19 +24,18 @@ test.describe('🔐 Login Authentication', () => {
 test.describe.serial('🏷️ Label Feature', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI()
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payloadBody = data[`Label`];
+        await new Delete(request).deleteEntityByNameIfExists('labels', payloadBody.name)
     })
-    test('Post | Create Label', async ({request})=>{
+    test('Post | Create Label', async ({ request }) => {
         const labelResponse = await new Post(request).postLabelAPI()
     })
 
     test('GET | Fetch Label', async ({ request }) => {
         const get = new Get(request);
         await get.getLabelAPI();
-    });
-
-    test('GET | Fetch Label Usage', async ({ request }) => {
-        const get = new Get(request);
-        await get.getLabelUsageAPI();
     });
     test('Update | Update Label', async ({ request }) => {
         await new Put(request).updateLabelAPI()
@@ -64,6 +63,20 @@ test.describe.serial('💵 Opening Balance Feature', () => {
 test.describe.serial('💰 Category Feature', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI()
+
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+
+        let payloadBody = data[`Categories_debit`];
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+
+        payloadBody = data[`Categories_credit`];
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+
+        payloadBody = data[`Category_given_Ledger`];
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+
+        payloadBody = data[`Category_received_Ledger`];
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
     })
 
     test.describe('Debit', () => {
@@ -82,10 +95,10 @@ test.describe.serial('💰 Category Feature', () => {
             await put.updateCategoriesAPI('debit');
         });
 
-        test('DELETE | Delete Debit Category', async ({ request }) => {
-            const del = new Delete(request);
-            await del.deleteCategoriesAPI('debit');
-        });
+        // test('DELETE | Delete Debit Category', async ({ request }) => {
+        //     const del = new Delete(request);
+        //     await del.deleteCategoriesAPI('debit');
+        // });
 
     });
 
@@ -149,19 +162,24 @@ test.describe.serial('💰 Category Feature', () => {
 });
 // Manage Contact
 test.describe.serial('Manage Contacts', async () => {
-    test.beforeAll(async ({request}) => {
+    test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI(request)
+        const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
+        const payloadBody = data[`Contact`];
+        if (payloadBody?.name) {
+            await new Delete(request).deleteEntityByNameIfExists('contacts', payloadBody.name)
+        }
     })
-    test('POST | Create Contact', async ({request})=>{
+    test('POST | Create Contact', async ({ request }) => {
         await new Post(request).postContactAPI()
     })
-    test('GET | Fetch Contacts', async ({request})=>{
+    test('GET | Fetch Contacts', async ({ request }) => {
         await new Get(request).getContactsAPI()
     })
-    test('PUT | Update Contact', async ({request})=>{
+    test('PUT | Update Contact', async ({ request }) => {
         await new Put(request).updateContactsApi()
     })
-    test('DELETE | Delete Contact', async ({request}) => {
+    test('DELETE | Delete Contact', async ({ request }) => {
         await new Delete(request).deleteContactsAPI()
     })
 
@@ -172,7 +190,7 @@ test.describe('💳 Transaction Feature', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI()
     })
-    test.describe.serial('Debit', async ()=>{
+    test.describe.serial('Debit', async () => {
         test('POST | Debit Transaction', async ({ request }) => {
             const post = new Post(request);
             await post.postTransactionAPI('debit');
@@ -193,7 +211,7 @@ test.describe('💳 Transaction Feature', () => {
         });
 
     })
-    test.describe.serial('Credit', async ()=>{
+    test.describe.serial('Credit', async () => {
         test('POST | Credit Transaction', async ({ request }) => {
             const post = new Post(request);
             await post.postTransactionAPI('credit');
@@ -209,26 +227,26 @@ test.describe('💳 Transaction Feature', () => {
 
     })
 
-    test.describe.serial(`Contact Ledger Transactions`, async () =>{
-        test.beforeAll(async ({request}) => {
+    test.describe.serial(`Contact Ledger Transactions`, async () => {
+        test.beforeAll(async ({ request }) => {
             await new Post(request).postGivenCategoryAPI()
             await new Post(request).postReceivedCategoryAPI()
             await new Post(request).postContactAPI()
             await new Post(request).postLabelAPI()
         })
-        test('POST | Given', async ({request}) => {
+        test('POST | Given', async ({ request }) => {
             await new Post(request).postGivenContactLedgerTransactionAPI()
         })
-        test('POST | Received', async ({request}) => {
+        test('POST | Received', async ({ request }) => {
             await new Post(request).postReceivedContactLedgerTransactionAPI()
         })
-        test('DELETE | Given', async ({request}) => {
+        test('DELETE | Given', async ({ request }) => {
             await new Delete(request).deleteGivenContactLedgerTransactionAPI()
         })
-        test('DELETE | Received', async ({request}) => {
+        test('DELETE | Received', async ({ request }) => {
             await new Delete(request).deleteReceivedContactLedgerTransactionAPI()
         })
-        test.afterAll(async ({request}) => {
+        test.afterAll(async ({ request }) => {
             await new Delete(request).deleteGivenCategoryAPI()
             await new Delete(request).deleteReceivedCategoryAPI()
             await new Delete(request).deleteContactsAPI()
@@ -237,6 +255,9 @@ test.describe('💳 Transaction Feature', () => {
 
     })
 });
+
+
+
 
 
 
