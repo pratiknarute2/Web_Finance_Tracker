@@ -2,6 +2,13 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs/promises');
 
 class Utility {
+    getAuthHeaders() {
+        return {
+            'Content-Type': 'application/json',
+            ...(global.token && { Authorization: 'Bearer ' + global.token })
+        };
+    }
+
     async clickElement(locator, stepName) {
         const startTime = performance.now();
         process.stdout.write(`🔄 Clicking: ${stepName}...\n`);
@@ -118,8 +125,7 @@ class Utility {
             }
 
             const headers = {
-                'Content-Type': 'application/json',
-                ...(global.token && { authorization: 'Bearer ' + global.token })
+                ...this.getAuthHeaders()
             };
 
             console.log("📤 Request Headers:", JSON.stringify(headers, null, 2));
@@ -184,8 +190,7 @@ class Utility {
                 apiRequest = await playwright.request.newContext({
                     baseURL: URI,
                     extraHTTPHeaders: {
-                        'Content-Type': 'application/json',
-                        ...(global.token && { authorization: 'Bearer ' + global.token }) // optional auth header
+                        ...this.getAuthHeaders()
                     }
                 });
                 console.log('⚠️ Created new APIRequestContext because old one was closed');
@@ -193,10 +198,7 @@ class Utility {
 
             const startTime = Date.now();
             const response = await apiRequest.get(URI, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
+                headers: this.getAuthHeaders()
             });
             const endTime = Date.now();
 
@@ -250,8 +252,7 @@ class Utility {
                 apiRequest = await playwright.request.newContext({
                     baseURL: URI,
                     extraHTTPHeaders: {
-                        'Content-Type': 'application/json',
-                        ...(global.token && { authorization: 'Bearer ' + global.token })
+                        ...this.getAuthHeaders()
                     }
                 });
                 console.log('⚠️ Created new APIRequestContext because old one was closed');
@@ -261,10 +262,7 @@ class Utility {
             const startTime = Date.now();
             const response = await apiRequest.put(URI, {
                 data: payloadBody,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(global.token && { authorization: 'Bearer ' + global.token })
-                }
+                headers: this.getAuthHeaders()
             });
             const endTime = Date.now();
 
@@ -323,8 +321,7 @@ class Utility {
                 apiRequest = await playwright.request.newContext({
                     baseURL: URI,
                     extraHTTPHeaders: {
-                        'Content-Type': 'application/json',
-                        ...(global.token && { authorization: 'Bearer ' + global.token })
+                        ...this.getAuthHeaders()
                     }
                 });
                 console.log('⚠️ Created new APIRequestContext because old one was closed');
@@ -332,10 +329,7 @@ class Utility {
 
             const startTime = Date.now();
             const response = await apiRequest.delete(URI, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...(global.token && { authorization: 'Bearer ' + global.token })
-                }
+                headers: this.getAuthHeaders()
             });
             const endTime = Date.now();
 

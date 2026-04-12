@@ -29,17 +29,18 @@ class Put extends Utility {
         }
 
         const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
-        const updatePayload = data['Categories_Update'];
+        const payloadKey = `Categories_Update_${transactionType}`;
+        const updatePayload = data[payloadKey] || data['Categories_Update'];
 
         if (updatePayload?.newName) {
             // Avoid unique-name conflict by removing existing target name before PUT.
-            await new Delete(this.request).deleteEntityByNameIfExists('categories', updatePayload.newName);
+            await new Delete(this.request).deleteEntityByNameIfExists('categories', updatePayload.newName, { type: transactionType });
         }
 
         const categoryResponse = await this.putRequest(
             this.request,
             `${API_URL}/api/categories/${global.categoryId}`, // ✅ dynamic URL
-            `Categories_Update`,
+            payloadKey,
             `Update Categories API for ${transactionType}`
         );
 

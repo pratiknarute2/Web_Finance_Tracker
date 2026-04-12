@@ -67,16 +67,16 @@ test.describe.serial('💰 Category Feature', () => {
         const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
 
         let payloadBody = data[`Categories_debit`];
-        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name, { type: payloadBody.type })
 
         payloadBody = data[`Categories_credit`];
-        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name, { type: payloadBody.type })
 
         payloadBody = data[`Category_given_Ledger`];
-        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name, { type: payloadBody.type })
 
         payloadBody = data[`Category_received_Ledger`];
-        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name)
+        await new Delete(request).deleteEntityByNameIfExists('categories', payloadBody.name, { type: payloadBody.type })
     })
 
     test.describe('Debit', () => {
@@ -255,7 +255,6 @@ test.describe('💳 Transaction Feature', () => {
 
     })
 });
-
 
 
 

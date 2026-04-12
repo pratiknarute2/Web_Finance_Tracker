@@ -26,6 +26,12 @@
   "Categories_Update": {
     "newName": "Testing updated"
   },
+  "Categories_Update_debit": {
+    "newName": "Testing Debit Updated"
+  },
+  "Categories_Update_credit": {
+    "newName": "Testing Credit Updated"
+  },
   "Category_Given_Update_Ledger": {
     "newName": "Testing Given Updated",
     "status": "given"

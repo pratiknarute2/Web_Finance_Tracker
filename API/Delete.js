@@ -160,7 +160,7 @@ class Delete extends Utility {
         }
     }
 
-    async deleteEntityByNameIfExists(entityType, nameToDelete) {
+    async deleteEntityByNameIfExists(entityType, nameToDelete, filters = {}) {
         console.log(`Looking for existing ${entityType} with name '${nameToDelete}' to delete before creating.`);
 
         const existingData = await this.getRequest(
@@ -177,7 +177,11 @@ class Delete extends Utility {
             return;
         }
 
-        const matchItems = items.filter(item => item.name === nameToDelete || (item.name && item.name.includes('Updated')));
+        const matchItems = items.filter(item => {
+            const nameMatches = item.name === nameToDelete;
+            const typeMatches = !filters.type || item.type === filters.type;
+            return nameMatches && typeMatches;
+        });
 
         if (matchItems.length === 0) {
             console.log(`No existing ${entityType} entries to delete with name '${nameToDelete}'.`);

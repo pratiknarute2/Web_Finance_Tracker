@@ -29,7 +29,7 @@ class Post extends Utility {
         const payloadBody = data[`Categories_${transactionType}`];
 
         if (payloadBody?.name) {
-            await new Delete(this.request).deleteEntityByNameIfExists('categories', payloadBody.name);
+            await new Delete(this.request).deleteEntityByNameIfExists('categories', payloadBody.name, { type: transactionType });
         }
 
         const categoryResponse = await this.postRequest(
