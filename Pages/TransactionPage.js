@@ -68,7 +68,8 @@ class TransactionPage extends Utility {
             transactionType,
             category,
             amount,
-            label
+            label,
+            comments
         };
 
     }

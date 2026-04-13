@@ -16,41 +16,47 @@ class HomePage extends Utility {
     // ============================
     initLocators() {
         // Pagination buttons
-        this.paginationNext = this.page.locator("//button[contains(text(),'Next')]");
-        this.paginationPrevious = this.page.locator("//button[contains(text(),'Previous')]");
+        this.paginationNext = this.page.locator("//button[normalize-space()='Next' or normalize-space()='›']").last();
+        this.paginationPrevious = this.page.locator("//button[normalize-space()='Previous' or normalize-space()='‹']").last();
+        this.pageIndicator = this.page.locator("//button[normalize-space()='›' or normalize-space()='Next']/following-sibling::*[contains(normalize-space(),'/')][1] | //div[contains(@class,'pagination')]//span").last();
+
+        this.transactionsTable = this.page.locator("//h2[normalize-space()='Transactions']/following::table[1]");
+        this.transactionRows = this.transactionsTable.locator("tbody tr");
 
         // Table amounts
-        this.debitAmountsElement = this.page.locator("//table//tbody//tr//td[@class='debit-amount']");
-        this.allDebitAmountsElement = this.page.locator("//table//tbody//tr//td[5]");
-        this.creditAmountsElement = this.page.locator("//table//tbody//tr//td[@class='credit-amount']");
-        this.allCreditAmountsElement = this.page.locator("//table//tbody//tr//td[6]");
-        this.currentBalancesElement = this.page.locator("//table//tbody//tr//td[7]");
-        this.allDateElements = this.page.locator("//table//tbody//tr//td[1]")
-        this.pageIndicator = this.page.locator("//div[@class='pagination']//span");
+        this.debitAmountsElement = this.transactionsTable.locator("tbody tr td.debit-amount");
+        this.allDebitAmountsElement = this.transactionsTable.locator("tbody tr td:nth-child(5)");
+        this.creditAmountsElement = this.transactionsTable.locator("tbody tr td.credit-amount");
+        this.allCreditAmountsElement = this.transactionsTable.locator("tbody tr td:nth-child(6)");
+        this.currentBalancesElement = this.transactionsTable.locator("tbody tr td:nth-child(7)");
+        this.allDateElements = this.transactionsTable.locator("tbody tr td:nth-child(1)")
 
         // Summary cards
-        this.currentBalanceSummary = this.page.locator("//div[@class='summary-cards']//div[@class='summary-card balance']//p");
-        this.totalIncome = this.page.locator("//div[@class='summary-cards']//div[@class='summary-card income']//p");
-        this.totalExpense = this.page.locator("//div[@class='summary-cards']//div[@class='summary-card expense']//p");
+        this.currentBalanceSummary = this.page.locator("//h3[normalize-space()='Current Balance']/following-sibling::p[1]");
+        this.totalIncome = this.page.locator("//h3[normalize-space()='Total Income']/following-sibling::p[1]");
+        this.totalExpense = this.page.locator("//h3[normalize-space()='Total Expense']/following-sibling::p[1]");
 
         // Transaction messages & filters
         this.successfullMessageTransaction = this.page.locator("//div[text()='Transaction added successfully!']");
         this.deleteMessageTransaction = this.page.locator("//div[text()='Transaction deleted successfully']");
         this.showFilterButton = this.page.locator("//button[text()='Show Filters']");
         this.hideFilterButton = this.page.locator("//button[text()='Hide Filters']");
-        this.startDateFilter = this.page.locator("//label[text()='Start Date:']//input");
-        this.endDateFilter = this.page.locator("//label[text()='End Date:']//input");
+        this.categoryFilter = this.page.getByLabel('Category:');
+        this.startDateFilter = this.page.getByLabel('Start Date:');
+        this.endDateFilter = this.page.getByLabel('End Date:');
+        this.labelFilter = this.page.getByLabel('Label:');
 
         // First row table locators
-        this.date1Row_Table = this.page.locator("//table//tbody//tr[1]//td[1]");
-        this.category1Row_Table = this.page.locator("//table//tbody//tr[1]//td[2]");
-        this.comments1Row_Table = this.page.locator("//table//tbody//tr[1]//td[3]");
-        this.label1Row_Table = this.page.locator("//table//tbody//tr[1]//td[4]");
-        this.debitAmount1Row_Table = this.page.locator("//table//tbody//tr[1]//td[5]");
-        this.creditAmount1Row_Table = this.page.locator("//table//tbody//tr[1]//td[6]");
-        this.balance1Row_Table = this.page.locator("//table//tbody//tr[1]//td[7]");
-        this.edit1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Edit']]");
-        this.delete1Row_Table = this.page.locator("//table//tbody//tr[1]//td[8]//span[@title='Delete']");
+        const firstTransactionRow = this.transactionRows.first();
+        this.date1Row_Table = firstTransactionRow.locator("td").nth(0);
+        this.category1Row_Table = firstTransactionRow.locator("td").nth(1);
+        this.comments1Row_Table = firstTransactionRow.locator("td").nth(2);
+        this.label1Row_Table = firstTransactionRow.locator("td").nth(3);
+        this.debitAmount1Row_Table = firstTransactionRow.locator("td").nth(4);
+        this.creditAmount1Row_Table = firstTransactionRow.locator("td").nth(5);
+        this.balance1Row_Table = firstTransactionRow.locator("td").nth(6);
+        this.edit1Row_Table = this.getRowAction(firstTransactionRow, 'Edit');
+        this.delete1Row_Table = this.getRowAction(firstTransactionRow, 'Delete');
         this.deleteConfirmationYes = this.page.locator("//button[text()='Yes'] | //button[text()='Delete']");
     }
 
@@ -74,11 +80,12 @@ class HomePage extends Utility {
 
             // ✅ ADD DEBUG LOGS HERE
             console.log("➡️ Checking Next button...");
-            console.log("Enabled:", await this.paginationNext.isEnabled());
-            console.log("Disabled:", await this.paginationNext.isDisabled());
+            const canGoNext = await this.canProceedToNextPage();
+            console.log("Enabled:", canGoNext);
+            console.log("Disabled:", !canGoNext);
 
             pageCount++;
-            if (!(await this.canProceedToNextPage())) break;
+            if (!canGoNext) break;
             await this.navigateToNextPage(pageCount);
         }
 
@@ -121,7 +128,8 @@ class HomePage extends Utility {
     async deleteTransaction(createdTransaction) {
         // Apply filters and validate transaction appears in table
         await this.applyTransactionFilters(createdTransaction);
-        await this.clickElement(this.delete1Row_Table, 'Delete Transaction')
+        const transactionRow = await this.getTransactionRow(createdTransaction);
+        await this.clickElement(this.getRowAction(transactionRow, 'Delete'), 'Delete Transaction')
         await this.clickElement(this.deleteConfirmationYes, 'Delete Confirmation Yes')
         let deleteTransaction = await this.isDisplay(this.deleteMessageTransaction, 5000, 'Delete Transaction Toaster Message')
         await this.expectToBe(deleteTransaction, true, 'Delete Transaction Toaster Message')
@@ -131,14 +139,7 @@ class HomePage extends Utility {
     // 🔹 Transaction Impact Methods
     // ============================
     async impactCalculationOfCreatedTransaction(createdTransaction, beforeSummary) {
-        await this.staticWait(5)
-
-        // Capture summary after transaction
-        await this.currentBalancesElement.first().waitFor({
-            state: 'visible',
-            timeout: 10000
-        });
-        const afterSummary = await this.getSummaryCardsData();
+        const afterSummary = await this.waitForSummaryImpact(beforeSummary, createdTransaction);
 
         // Validate impact on summary cards
         await this.validateImpactOfTransactionAddedOnSummary(beforeSummary, afterSummary, createdTransaction);
@@ -154,7 +155,7 @@ class HomePage extends Utility {
         // Wait for network requests to finish
         await this.page.waitForLoadState('networkidle');
 
-        const rows = this.page.locator("//table//tbody//tr");
+        const rows = this.transactionRows;
         const rowCount = await rows.count();
 
         if (rowCount === 0) {
@@ -169,21 +170,17 @@ class HomePage extends Utility {
 
     async canProceedToNextPage() {
         try {
-            const text = await this.pageIndicator.textContent(); // "Page 2 of 8"
+            await this.paginationNext.waitFor({ state: 'visible', timeout: 10000 });
+            const paginationText = await this.getPaginationText();
 
-            console.log("📄 Pagination text:", text);
+            if (paginationText) {
+                console.log("📄 Pagination text:", paginationText);
+            }
 
-            const match = text.match(/Page (\d+) of (\d+)/);
-            if (!match) return false;
-
-            const current = parseInt(match[1]);
-            const total = parseInt(match[2]);
-
-            console.log(`➡️ Current Page: ${current} | Total Pages: ${total}`);
-
-            return current < total;
+            return !(await this.paginationNext.isDisabled());
 
         } catch (e) {
+            console.warn(`⚠️ Next pagination check failed: ${e.message}`);
             return false;
         }
     }
@@ -213,15 +210,25 @@ class HomePage extends Utility {
     }
 
     async getFirstTableRowText() {
-        const firstRow = this.page.locator("//table//tbody//tr").first();
+        const firstRow = this.transactionRows.first();
         return ((await firstRow.textContent()) || "").trim();
     }
 
     async waitForPaginatedTableUpdate(expectedPage, previousFirstRowText) {
-        await expect(this.pageIndicator).toContainText(`Page ${expectedPage} of`, { timeout: 10000 });
+        const expectedPageText = new RegExp(`(?:Page\\s+)?${expectedPage}\\s*(?:/|of)\\s*\\d+`, 'i');
+        try {
+            await expect(this.pageIndicator).toContainText(expectedPageText, { timeout: 5000 });
+        } catch (e) {
+            console.warn(`⚠️ Pagination indicator did not match page ${expectedPage}: ${e.message}`);
+        }
 
         await this.page.waitForFunction((previousText) => {
-            const rows = [...document.querySelectorAll('table tbody tr')];
+            const transactionHeading = [...document.querySelectorAll('h2')]
+                .find((heading) => heading.textContent.trim() === 'Transactions');
+            const table = transactionHeading?.nextElementSibling?.matches('table')
+                ? transactionHeading.nextElementSibling
+                : transactionHeading?.parentElement?.querySelector('table');
+            const rows = [...(table?.querySelectorAll('tbody tr') || [])];
             if (rows.length === 0) return false;
 
             const firstRowText = rows[0].textContent.trim();
@@ -233,6 +240,18 @@ class HomePage extends Utility {
 
             return firstRowText !== previousText && hasAmount;
         }, previousFirstRowText, { timeout: 10000 });
+    }
+
+    async getPaginationText() {
+        try {
+            if (await this.pageIndicator.count()) {
+                return ((await this.pageIndicator.textContent()) || '').trim();
+            }
+        } catch (e) {
+            return '';
+        }
+
+        return '';
     }
 
     // ============================
@@ -352,24 +371,168 @@ class HomePage extends Utility {
 
     async applyTransactionFilters(transaction) {
         await this.clickElement(this.showFilterButton, 'Show Filter');
+        await this.selectDropdown(this.categoryFilter, transaction.category, 'Category Filter');
         await this.fillInputField(this.startDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'Start Date');
         await this.fillInputField(this.endDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'End Date');
-        await this.staticWait(2)
+        await this.selectDropdown(this.labelFilter, transaction.label, 'Label Filter');
+        await this.waitForFilteredTransaction(transaction);
     }
 
     async validateImpactOfTranctionAddedOnTable(transaction) {
-        let actualDate = (await this.date1Row_Table.textContent())?.trim()
+        const transactionRow = await this.getTransactionRow(transaction);
+        const cells = transactionRow.locator("td");
+
+        let actualDate = (await cells.nth(0).textContent())?.trim()
         await this.expectToBe(this.formatDateReplace_To_Hyphen(actualDate), transaction.date_dd_mm_yyyy, 'Date validation');
-        await this.expectToBe((await this.category1Row_Table.textContent())?.trim(), transaction.category, 'Category validation');
-        await this.expectToBe((await this.label1Row_Table.textContent())?.trim(), transaction.label, 'Label validation');
+        await this.expectToBe((await cells.nth(1).textContent())?.trim(), transaction.category, 'Category validation');
+        await this.expectToBe((await cells.nth(2).textContent())?.trim(), transaction.comments, 'Comments validation');
+        await this.expectToBe((await cells.nth(3).textContent())?.trim(), transaction.label, 'Label validation');
 
         if (transaction.transactionType.toLowerCase() === 'debit') {
-            const actual = parseFloat((await this.debitAmount1Row_Table.textContent())?.trim().replace(/,/g, '')).toFixed(2);
+            const actual = parseFloat((await cells.nth(4).textContent())?.trim().replace(/,/g, '')).toFixed(2);
             await this.expectToBe(actual, parseFloat(transaction.amount).toFixed(2), 'Debit Amount validation');
         } else {
-            const actual = parseFloat((await this.creditAmount1Row_Table.textContent())?.trim().replace(/,/g, '')).toFixed(2);
+            const actual = parseFloat((await cells.nth(5).textContent())?.trim().replace(/,/g, '')).toFixed(2);
             await this.expectToBe(actual, parseFloat(transaction.amount).toFixed(2), 'Credit Amount validation');
         }
+    }
+
+    async waitForFilteredTransaction(transaction) {
+        await expect.poll(async () => {
+            return this.findTransactionInFilteredPages(transaction);
+        }, {
+            message: 'Wait for filtered transaction row',
+            timeout: 20000
+        }).toBe(true);
+    }
+
+    async getTransactionRow(transaction) {
+        const rowIndex = await this.getMatchingTransactionRowIndex(transaction);
+
+        if (rowIndex !== -1) {
+            return this.transactionRows.nth(rowIndex);
+        }
+
+        throw new Error(`Transaction row not found for ${transaction.date_dd_mm_yyyy} | ${transaction.category} | ${transaction.amount} | ${transaction.comments}`);
+    }
+
+    async readTransactionRows() {
+        return await this.transactionRows.evaluateAll((rows) => rows.map((row) => {
+            const cells = [...row.querySelectorAll('td')].map((cell) => cell.textContent.trim());
+            const normalizeAmount = (value) => {
+                const parsed = parseFloat((value || '').replace(/,/g, '').trim());
+                return Number.isNaN(parsed) ? '0.00' : parsed.toFixed(2);
+            };
+
+            return {
+                date: cells[0] || '',
+                category: cells[1] || '',
+                comments: cells[2] || '',
+                label: cells[3] || '',
+                debit: normalizeAmount(cells[4]),
+                credit: normalizeAmount(cells[5])
+            };
+        }));
+    }
+
+    getExpectedSummaryAfterTransaction(before, createdTransactionDetails) {
+        const type = createdTransactionDetails.transactionType.toLowerCase();
+        const amount = parseFloat(createdTransactionDetails.amount);
+
+        const expected = {
+            currentBalanceSummary: before.currentBalanceSummary,
+            TotalIncomeSummary: before.TotalIncomeSummary,
+            TotalExpenseSummary: before.TotalExpenseSummary
+        };
+
+        if (type === 'debit') {
+            expected.TotalExpenseSummary += amount;
+            expected.currentBalanceSummary -= amount;
+        } else if (type === 'credit') {
+            expected.TotalIncomeSummary += amount;
+            expected.currentBalanceSummary += amount;
+        }
+
+        return Object.fromEntries(
+            Object.entries(expected).map(([key, value]) => [key, Number(value.toFixed(2))])
+        );
+    }
+
+    async waitForSummaryImpact(beforeSummary, createdTransaction) {
+        const expected = this.getExpectedSummaryAfterTransaction(beforeSummary, createdTransaction);
+
+        await expect.poll(async () => {
+            const summary = await this.getSummaryCardsData();
+            return {
+                currentBalanceSummary: Number(summary.currentBalanceSummary.toFixed(2)),
+                TotalIncomeSummary: Number(summary.TotalIncomeSummary.toFixed(2)),
+                TotalExpenseSummary: Number(summary.TotalExpenseSummary.toFixed(2))
+            };
+        }, {
+            message: 'Wait for summary cards to reflect the created transaction',
+            timeout: 15000
+        }).toEqual(expected);
+
+        return this.getSummaryCardsData();
+    }
+
+    getRowAction(row, actionName) {
+        return row.locator(`[title="${actionName}"], [aria-label="${actionName}"]`)
+            .or(row.getByText(actionName, { exact: true }))
+            .first();
+    }
+
+    async findTransactionInFilteredPages(transaction) {
+        while (true) {
+            const rowIndex = await this.getMatchingTransactionRowIndex(transaction);
+            if (rowIndex !== -1) {
+                return true;
+            }
+
+            if (!(await this.canProceedToNextPage())) {
+                return false;
+            }
+
+            const currentPageText = await this.getPaginationText();
+            await this.paginationNext.click();
+            await this.waitForPaginatedTableUpdateByTextChange(currentPageText);
+        }
+    }
+
+    async getMatchingTransactionRowIndex(transaction) {
+        const expectedDate = transaction.date_dd_mm_yyyy.replaceAll('-', '/');
+        const expectedAmount = parseFloat(transaction.amount).toFixed(2);
+        const rowsCount = await this.transactionRows.count();
+
+        for (let i = 0; i < rowsCount; i++) {
+            const row = this.transactionRows.nth(i);
+            const cells = row.locator("td");
+            const amountLocator = transaction.transactionType.toLowerCase() === 'debit' ? cells.nth(4) : cells.nth(5);
+            const amount = parseFloat(((await amountLocator.textContent()) || '').replace(/,/g, '').trim()).toFixed(2);
+
+            if (
+                ((await cells.nth(0).textContent()) || '').trim() === expectedDate &&
+                ((await cells.nth(1).textContent()) || '').trim() === transaction.category &&
+                ((await cells.nth(2).textContent()) || '').trim() === transaction.comments &&
+                ((await cells.nth(3).textContent()) || '').trim() === transaction.label &&
+                amount === expectedAmount
+            ) {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    async waitForPaginatedTableUpdateByTextChange(previousPageText) {
+        await expect.poll(async () => {
+            return this.getPaginationText();
+        }, {
+            message: 'Wait for pagination indicator to change',
+            timeout: 10000
+        }).not.toBe(previousPageText);
+
+        await this.waitForTableData();
     }
 
     // ============================

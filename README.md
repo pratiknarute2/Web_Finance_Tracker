@@ -1,95 +1,91 @@
-# Web Finance Tracker - Playwright JavaScript Automation
+# Web Finance Tracker - Playwright Automation
 
-This repository contains Playwright automation tests for the Web Finance Tracker application. The framework uses JavaScript, API testing, UI testing, and a Page Object Model structure to keep test logic readable and maintainable.
+This repository contains Playwright automation for the Web Finance Tracker application. It covers both API and UI flows, uses JavaScript, and follows a Page Object Model style for UI interactions.
 
 ## Tech Stack
 
 - JavaScript
-- Playwright Test
 - Node.js
+- Playwright Test
 - dotenv
-- Page Object Model
 - API and UI automation
+- Page Object Model
 
-## Project Setup
+## Setup
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/pratiknarute2/Web_Finance_Tracker.git
-cd Web_Finance_Tracker
-```
-
-### 2. Install Dependencies
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 3. Install Playwright Browsers
+### 2. Install Playwright browsers
 
 ```bash
 npx playwright install
 ```
 
-### 4. Configure Environment Variables
+### 3. Configure environment variables
 
-Create or update the `.env` file with the required URLs:
+Create or update `.env` with the required URLs:
 
 ```bash
 QA_UI_URL=https://expense-tracker-qa.netlify.app/login
 QA_API_URL=https://expense-tracker-backend-qa.onrender.com
 ```
 
-The test environment defaults to `qa` in `playwright.config.js`.
+The framework defaults to `qa`. You can switch environments with:
+
+```bash
+ENV=qa
+ENV=dev
+ENV=prod
+```
 
 ## Run Tests
 
-### Run All Tests
+### Run full suite
 
 ```bash
 npm test
 ```
 
-### Run API Tests
+### Run only API tests
 
 ```bash
-npx playwright test Tests/API.test.js
+npx playwright test Tests/API
 ```
 
-### Run UI Tests
+### Run only UI tests
 
 ```bash
-npx playwright test Tests/UI.test.js
+npx playwright test Tests/UI
 ```
 
-### Open HTML Report
+### Run a specific file
+
+```bash
+npx playwright test Tests/API/auth.test.js
+npx playwright test Tests/API/dashboard.test.js
+npx playwright test Tests/UI/Dashboard.test.js
+```
+
+### Run by grep
+
+```bash
+npx playwright test --grep "Dashboard"
+npx playwright test --grep "Create"
+```
+
+### Open the HTML report
 
 ```bash
 npx playwright show-report playwright-reports/html-report
 ```
 
-## Playwright Codegen
+## Current Test Organization
 
-Playwright Codegen can help record browser actions and generate locators.
-
-```bash
-npx playwright codegen
-```
-
-Open a specific site:
-
-```bash
-npx playwright codegen https://expense-tracker-qa.netlify.app/login
-```
-
-Save generated code to a file:
-
-```bash
-npx playwright codegen --output=login.spec.js
-```
-
-## Folder Structure
+The suite is organized by test type and feature so files are easier to find and maintain.
 
 ```text
 Web_Finance_Tracker/
@@ -102,6 +98,7 @@ Web_Finance_Tracker/
 ├── Base/
 │   └── Utility.js
 ├── Pages/
+│   ├── DashboardPage.js
 │   ├── HomePage.js
 │   ├── LoginPage.js
 │   └── TransactionPage.js
@@ -109,32 +106,71 @@ Web_Finance_Tracker/
 │   └── Excel/
 │       └── TC.XLSX
 ├── Tests/
-│   ├── API.test.js
-│   └── UI.test.js
-├── package.json
+│   ├── API/
+│   │   ├── auth.test.js
+│   │   ├── category.test.js
+│   │   ├── contact.test.js
+│   │   ├── dashboard.test.js
+│   │   ├── label.test.js
+│   │   ├── openingBalance.test.js
+│   │   └── transaction.test.js
+│   └── UI/
+│       ├── Dashboard.test.js
+│       ├── homePage.test.js
+│       └── login.test.js
 ├── playwright.config.js
+├── package.json
 └── README.md
 ```
 
+## Feature Coverage
+
+### API tests
+
+- `auth.test.js`: login and token setup
+- `label.test.js`: label CRUD
+- `openingBalance.test.js`: opening balance validation
+- `dashboard.test.js`: dashboard data and totals validation
+- `category.test.js`: debit, credit, given, and received category flows
+- `contact.test.js`: contact CRUD
+- `transaction.test.js`: debit, credit, and ledger transaction flows
+
+### UI tests
+
+- `login.test.js`: login scenarios (currently skipped in the suite)
+- `homePage.test.js`: home page calculations and transaction impact checks
+- `Dashboard.test.js`: dashboard chart, tab, update, and responsive validations
+
 ## Framework Notes
 
-- Locators and page actions are organized in page classes under `Pages/`.
-- Shared helper methods are kept in `Base/Utility.js`.
-- API endpoint helpers are organized under `API/`.
-- Test data and request payloads are stored separately from test scripts.
-- Reports are generated under `playwright-reports/`.
+- `playwright.config.js` runs tests only from the top-level `Tests/` folder.
+- The `Practice/` folder is intentionally ignored by the main Playwright config.
+- Shared API helpers live in `API/`.
+- Shared utilities live in `Base/Utility.js`.
+- UI page objects live in `Pages/`.
+- Reports are generated in `playwright-reports/` and raw artifacts in `test-results/`.
 
-## Best Practices Followed
+## Naming and Maintenance Notes
 
-- Keep locators inside page objects.
-- Use descriptive test and helper names.
-- Reuse utility methods instead of repeating Playwright actions.
-- Keep API helpers grouped by request type.
-- Use environment variables for configurable URLs.
+- Keep one feature per test file where possible.
+- Use descriptive names such as `auth.test.js` or `category.test.js`.
+- Add new API tests under `Tests/API/`.
+- Add new UI tests under `Tests/UI/`.
+- Reuse page objects and API helpers instead of duplicating logic.
+
+## Playwright Codegen
+
+```bash
+npx playwright codegen
+```
+
+Example:
+
+```bash
+npx playwright codegen https://expense-tracker-qa.netlify.app/login
+```
 
 ## Author
 
 Pratik Narute  
 QA Automation Engineer | Playwright | JavaScript | Selenium | REST Assured
-
-Email: pratiknarute2@gmail.com

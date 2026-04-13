@@ -47,7 +47,7 @@ module.exports = defineConfig({
     launchOptions: {
       args: ['--start-maximized'],
     },
-    video: 'on-first-retry', // Capture video only on first retry
+    video: 'on', // Capture video only on first retry
     screenshot: 'only-on-failure', // Capture screenshot only if the test fails
     trace: 'on', // ✅ Always collect trace for every test
     outputDir: 'test-results/artifacts', // Store raw artifacts

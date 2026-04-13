@@ -35,6 +35,31 @@ class Get extends Utility {
             item => item.type === 'debit' && item.category === 'Transport'
         );
         console.log("Transport Category:", transport.length);
+
+        return result;
+    }
+
+    async getAllTransactionsAPI() {
+        const firstPage = await this.getTransactionAPI();
+        const pageSize = firstPage?.size || firstPage?.pageable?.pageSize || 15;
+        const totalPages = firstPage?.totalPages || 1;
+        const allTransactions = Array.isArray(firstPage?.content) ? [...firstPage.content] : [];
+
+        for (let pageNumber = 1; pageNumber < totalPages; pageNumber++) {
+            const pageResponse = await this.getRequest(
+                this.request,
+                `${API_URL}/api/transactions?page=${pageNumber}&size=${pageSize}`,
+                `Get Transaction API - Page ${pageNumber + 1}`
+            );
+
+            const pageTransactions = Array.isArray(pageResponse?.content) ? pageResponse.content : [];
+            allTransactions.push(...pageTransactions);
+        }
+
+        return {
+            ...firstPage,
+            content: allTransactions
+        };
     }
 
     async getCategoryAPI() {
