@@ -1,9 +1,7 @@
 const { test, expect } = require('@playwright/test');
-const fs = require('fs/promises');
 const DashboardPage = require('../../Pages/DashboardPage');
 const HomePage = require('../../Pages/HomePage');
 const TransactionPage = require('../../Pages/TransactionPage');
-const { UI_URL, API_URL } = require('../../playwright.config');
 const LoginPage = require("../../Pages/LoginPage");
 
 
@@ -31,7 +29,7 @@ test.describe('Dashboard Insights Validation Suite', () => {
 
         // Validate table headers
         const headers = await dashboardPage.getBreakdownHeaders();
-        expect(headers).toEqual(['Category', 'Amount', 'Percentage', 'Progress']);
+        await dashboardPage.expectToEqual(headers, ['Category', 'Amount', 'Percentage', 'Progress'], 'Dashboard breakdown headers');
 
         // Fetch UI data
         const chartBars = await dashboardPage.getBarChartData();
@@ -40,36 +38,36 @@ test.describe('Dashboard Insights Validation Suite', () => {
         const itemCount = await dashboardPage.getBreakdownItemCount();
 
         // Basic validations
-        expect(chartBars.length).toBeGreaterThan(0);
-        expect(breakdownRows.length).toBe(chartBars.length);
-        expect(itemCount).toBe(breakdownRows.length);
+        await dashboardPage.expectToBeGreaterThan(chartBars.length, 0, 'Debit chart contains category slices');
+        await dashboardPage.expectToBe(breakdownRows.length, chartBars.length, 'Debit chart items match breakdown rows');
+        await dashboardPage.expectToBe(itemCount, breakdownRows.length, 'Debit item count matches breakdown rows');
 
         // Validate total row
-        expect(totalRow.label).toBe('Total');
-        expect(totalRow.percentage).toBe('100%');
-        expect(totalRow.progressWidth).toContain('100%');
+        await dashboardPage.expectToBe(totalRow.label, 'Total', 'Debit total row label');
+        await dashboardPage.expectToBe(totalRow.percentage, '100%', 'Debit total row percentage');
+        await dashboardPage.expectToContain(totalRow.progressWidth, '100%', 'Debit total row progress width');
 
         // Validate total amount
         const displayedTotal = await dashboardPage.getChartTotal();
-        expect(normalizeAmount(totalRow.amount)).toBe(displayedTotal.toFixed(2));
+        await dashboardPage.expectToBe(normalizeAmount(totalRow.amount), displayedTotal.toFixed(2), 'Debit total amount matches chart total');
 
         // Validate first item consistency (chart vs table)
         const firstBar = chartBars[0];
         const firstRow = breakdownRows[0];
 
-        expect(firstBar.label).toBe(firstRow.name);
-        expect(normalizeAmount(firstBar.amount)).toBe(normalizeAmount(firstRow.amount));
-        expect(firstBar.percentage).toBe(firstRow.percentage);
+        await dashboardPage.expectToBe(firstBar.label, firstRow.name, 'First debit chart label matches breakdown row');
+        await dashboardPage.expectToBe(normalizeAmount(firstBar.amount), normalizeAmount(firstRow.amount), 'First debit chart amount matches breakdown row');
+        await dashboardPage.expectToBe(firstBar.percentage, firstRow.percentage, 'First debit chart percentage matches breakdown row');
 
         // Tooltip validations
-        expect(firstBar.tooltip).toContain(firstBar.label);
-        expect(firstBar.tooltip).toContain(firstBar.amount);
-        expect(firstBar.tooltip).toContain(firstBar.percentage);
+        await dashboardPage.expectToContain(firstBar.tooltip, firstBar.label, 'First debit chart tooltip contains category');
+        await dashboardPage.expectToContain(firstBar.tooltip, firstBar.amount, 'First debit chart tooltip contains amount');
+        await dashboardPage.expectToContain(firstBar.tooltip, firstBar.percentage, 'First debit chart tooltip contains percentage');
 
         // Row tooltip validations
-        expect(firstRow.title).toContain(firstRow.name);
-        expect(firstRow.title).toContain(firstRow.amount);
-        expect(firstRow.title).toContain(firstRow.percentage);
+        await dashboardPage.expectToContain(firstRow.title, firstRow.name, 'First debit row tooltip contains category');
+        await dashboardPage.expectToContain(firstRow.title, firstRow.amount, 'First debit row tooltip contains amount');
+        await dashboardPage.expectToContain(firstRow.title, firstRow.percentage, 'First debit row tooltip contains percentage');
     });
 
     // ==================================================
@@ -82,7 +80,7 @@ test.describe('Dashboard Insights Validation Suite', () => {
 
         // Switch to Credit tab
         await dashboardPage.openTab('Credit');
-        expect(await dashboardPage.getActiveTabName()).toBe('Credit');
+        await dashboardPage.expectToBe(await dashboardPage.getActiveTabName(), 'Credit', 'Credit tab is active');
         await expect(dashboardPage.chartTitle).toContainText(/Credit/i);
         await expect(dashboardPage.chartTotalLabel).toContainText(/Credit total/i);
 
@@ -90,14 +88,14 @@ test.describe('Dashboard Insights Validation Suite', () => {
         const creditTotal = await dashboardPage.getBreakdownTotalRowData();
         const creditBars = await dashboardPage.getBarChartData();
 
-        expect(creditRows.length).toBeGreaterThan(0);
-        expect(creditRows.length).toBe(creditBars.length);
-        expect(creditTotal.percentage).toBe('100%');
-        expect(await dashboardPage.getFirstVisibleChartTooltip()).not.toBe('');
+        await dashboardPage.expectToBeGreaterThan(creditRows.length, 0, 'Credit breakdown contains rows');
+        await dashboardPage.expectToBe(creditRows.length, creditBars.length, 'Credit chart items match breakdown rows');
+        await dashboardPage.expectToBe(creditTotal.percentage, '100%', 'Credit total row percentage');
+        await dashboardPage.expectNotToBeEmpty(await dashboardPage.getFirstVisibleChartTooltip(), 'Credit chart tooltip is available');
 
         // Switch to Labels tab
         await dashboardPage.openTab('Labels');
-        expect(await dashboardPage.getActiveTabName()).toBe('Labels');
+        await dashboardPage.expectToBe(await dashboardPage.getActiveTabName(), 'Labels', 'Labels tab is active');
         await expect(dashboardPage.chartTitle).toContainText(/Label/i);
 
         const labelRows = await dashboardPage.getBreakdownRowsData();
@@ -105,11 +103,11 @@ test.describe('Dashboard Insights Validation Suite', () => {
         const visibleTitles = await dashboardPage.getVisibleChartTitleAttributes();
         const segmentsCount = await dashboardPage.getPieOrChartSegmentsCount();
 
-        expect(labelRows.length).toBeGreaterThan(0);
-        expect(labelTotal.percentage).toBe('100%');
-        expect(segmentsCount).toBeGreaterThan(0);
-        expect(visibleTitles.length).toBeGreaterThan(0);
-        expect(visibleTitles[0]).toMatch(/%/);
+        await dashboardPage.expectToBeGreaterThan(labelRows.length, 0, 'Labels breakdown contains rows');
+        await dashboardPage.expectToBe(labelTotal.percentage, '100%', 'Labels total row percentage');
+        await dashboardPage.expectToBeGreaterThan(segmentsCount, 0, 'Labels chart contains segments');
+        await dashboardPage.expectToBeGreaterThan(visibleTitles.length, 0, 'Labels chart exposes tooltips');
+        await dashboardPage.expectToMatch(visibleTitles[0], /%/, 'First labels chart tooltip includes percentage');
     });
 
     // ==================================================
@@ -134,11 +132,11 @@ test.describe('Dashboard Insights Validation Suite', () => {
         // Capture initial values
         const debitTotalBefore = await dashboardPage.getChartTotal();
         const foodBefore = await dashboardPage.getBreakdownRowByName('Food');
-        expect(foodBefore).not.toBeNull();
+        await dashboardPage.expectToBe(foodBefore !== null, true, 'Food row exists before transaction');
 
         await dashboardPage.openTab('Labels');
         const essentialsBefore = await dashboardPage.getBreakdownRowByName('Essentials');
-        expect(essentialsBefore).not.toBeNull();
+        await dashboardPage.expectToBe(essentialsBefore !== null, true, 'Essentials row exists before transaction');
 
         await dashboardPage.openTab('Debit');
 
@@ -164,22 +162,22 @@ test.describe('Dashboard Insights Validation Suite', () => {
             const foodAfter = await dashboardPage.getBreakdownRowByName('Food');
             const debitTotalRow = await dashboardPage.getBreakdownTotalRowData();
 
-            expect(foodAfter).not.toBeNull();
-            expect(normalizeAmount(foodAfter.amount)).toBe(
+            await dashboardPage.expectToBe(foodAfter !== null, true, 'Food row exists after transaction');
+            await dashboardPage.expectToBe(normalizeAmount(foodAfter.amount), (
                 (parseFloat(normalizeAmount(foodBefore.amount)) + parseFloat(newTransaction.amount)).toFixed(2)
-            );
+            ), 'Food amount is updated after transaction');
 
-            expect(normalizeAmount(debitTotalRow.amount)).toBe(expectedDebitTotal.toFixed(2));
-            expect(debitTotalRow.percentage).toBe('100%');
+            await dashboardPage.expectToBe(normalizeAmount(debitTotalRow.amount), expectedDebitTotal.toFixed(2), 'Debit total row amount is updated');
+            await dashboardPage.expectToBe(debitTotalRow.percentage, '100%', 'Debit total row remains at 100 percent');
 
             // Validate Labels tab updates
             await dashboardPage.openTab('Labels');
             const essentialsAfter = await dashboardPage.getBreakdownRowByName('Essentials');
 
-            expect(essentialsAfter).not.toBeNull();
-            expect(parseFloat(normalizeAmount(essentialsAfter.amount))).toBe(
+            await dashboardPage.expectToBe(essentialsAfter !== null, true, 'Essentials row exists after transaction');
+            await dashboardPage.expectToBe(parseFloat(normalizeAmount(essentialsAfter.amount)), (
                 parseFloat(normalizeAmount(essentialsBefore.amount)) + parseFloat(newTransaction.amount)
-            );
+            ), 'Essentials label amount is updated after transaction');
 
         } finally {
             // Cleanup: delete created transaction

@@ -39,17 +39,24 @@ class Get extends Utility {
         return result;
     }
 
-    async getAllTransactionsAPI() {
-        const firstPage = await this.getTransactionAPI();
-        const pageSize = firstPage?.size || firstPage?.pageable?.pageSize || 15;
+    async getAllTransactionsAPI(pageSize = 200) {
+        const firstPage = await this.getRequest(
+            this.request,
+            `${API_URL}/api/transactions?page=0&size=${pageSize}`,
+            'Get Transaction API - All Transactions Page 1',
+            { timeout: 60000, retries: 2 }
+        );
+
+        const effectivePageSize = firstPage?.size || firstPage?.pageable?.pageSize || pageSize;
         const totalPages = firstPage?.totalPages || 1;
         const allTransactions = Array.isArray(firstPage?.content) ? [...firstPage.content] : [];
 
         for (let pageNumber = 1; pageNumber < totalPages; pageNumber++) {
             const pageResponse = await this.getRequest(
                 this.request,
-                `${API_URL}/api/transactions?page=${pageNumber}&size=${pageSize}`,
-                `Get Transaction API - Page ${pageNumber + 1}`
+                `${API_URL}/api/transactions?page=${pageNumber}&size=${effectivePageSize}`,
+                `Get Transaction API - Page ${pageNumber + 1}`,
+                { timeout: 60000, retries: 2 }
             );
 
             const pageTransactions = Array.isArray(pageResponse?.content) ? pageResponse.content : [];

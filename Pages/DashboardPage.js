@@ -21,8 +21,6 @@ class DashboardPage extends Utility {
         this.breakdownTable = this.breakdownCard.locator('.insights-breakdown-table');
         this.breakdownRows = this.breakdownTable.locator('tbody tr');
         this.breakdownTotalRow = this.breakdownTable.locator('tfoot tr');
-        this.barColumns = this.chartCard.locator('.insights-bar-column');
-        this.barFills = this.chartCard.locator('.insights-bar-fill');
         this.tabButtons = this.insightsPanel.locator('[role="tab"]');
     }
 
@@ -30,6 +28,10 @@ class DashboardPage extends Utility {
         await this.insightsPanel.waitFor({ state: 'visible', timeout: 20000 });
         await expect(this.chartCard).toBeVisible();
         await expect(this.breakdownCard).toBeVisible();
+        await expect.poll(async () => await this.getBreakdownItemCount(), {
+            timeout: 15000,
+            message: 'Wait for dashboard breakdown items to load'
+        }).toBeGreaterThan(0);
         await expect(this.breakdownRows.first()).toBeVisible();
     }
 
@@ -41,7 +43,14 @@ class DashboardPage extends Utility {
         const tab = this.getTab(tabName);
         await this.clickElement(tab, `${tabName} dashboard tab`);
         await expect(tab).toHaveAttribute('aria-selected', 'true');
-        await this.breakdownRows.first().waitFor({ state: 'visible', timeout: 10000 });
+        await expect.poll(async () => await this.getActiveTabName(), {
+            timeout: 10000,
+            message: `Wait for ${tabName} tab to become active`
+        }).toBe(tabName);
+        await expect.poll(async () => await this.getBreakdownItemCount(), {
+            timeout: 10000,
+            message: `Wait for ${tabName} dashboard data to load`
+        }).toBeGreaterThan(0);
     }
 
     async getActiveTabName() {
@@ -100,56 +109,103 @@ class DashboardPage extends Utility {
     }
 
     async getBarChartData() {
-        return await this.barColumns.evaluateAll((columns) =>
-            columns.map((column) => {
-                const percentage = column.querySelector('.insights-bar-topline span')?.textContent.trim() || '';
-                const amount = column.querySelector('.insights-bar-topline strong')?.textContent.trim() || '';
-                const label = column.querySelector('.insights-bar-label')?.textContent.trim() || '';
-                const fill = column.querySelector('.insights-bar-fill');
+        return await this.chartCard.evaluate((chartCard) => {
+            const legendCandidates = new Set();
+            chartCard.querySelectorAll('strong').forEach((strong) => {
+                const container = strong.closest('button, [role="button"]')
+                    || strong.parentElement?.parentElement
+                    || strong.parentElement;
+                if (container) {
+                    legendCandidates.add(container);
+                }
+            });
+
+            const fallbackCandidates = new Set();
+            chartCard.querySelectorAll('button, [role="button"]').forEach((element) => fallbackCandidates.add(element));
+            chartCard.querySelectorAll('img *').forEach((element) => fallbackCandidates.add(element));
+
+            const candidates = legendCandidates.size > 0
+                ? [...legendCandidates]
+                : [...fallbackCandidates];
+            const seen = new Set();
+            const entries = [];
+
+            const normalize = (value) => (value || '').replace(/\s+/g, ' ').trim();
+
+            const parseEntry = (element) => {
+                const textContent = normalize(
+                    element.getAttribute('title') ||
+                    element.getAttribute('aria-label') ||
+                    element.innerText ||
+                    element.textContent
+                );
+                const strongLabel = normalize(element.querySelector('strong')?.textContent);
+                const currencyMatches = textContent.match(/₹[\d,]+(?:\.\d{2})?/g) || [];
+                const percentageMatches = textContent.match(/(\d+(?:\.\d+)?)%/g) || [];
+
+                if (currencyMatches.length !== 1 || percentageMatches.length !== 1) {
+                    return null;
+                }
+
+                const tooltip = normalize(
+                    element.getAttribute('title') ||
+                    element.getAttribute('aria-label') ||
+                    element.innerText ||
+                    element.textContent
+                );
+
+                const amountMatch = tooltip.match(/₹[\d,]+(?:\.\d{2})?/);
+                const percentageMatch = tooltip.match(/(\d+(?:\.\d+)?)%/);
+
+                let label = strongLabel;
+                if (!label && amountMatch) {
+                    label = normalize(
+                        tooltip
+                            .slice(0, amountMatch.index)
+                            .replace(/[(:•-]+$/, '')
+                    );
+                }
+
+                if (!label || !amountMatch || !percentageMatch || label.length > 50) {
+                    return null;
+                }
 
                 return {
                     label,
-                    amount,
-                    percentage,
-                    tooltip: fill?.getAttribute('title') || '',
-                    height: fill?.style.height || ''
+                    amount: amountMatch[0],
+                    percentage: `${percentageMatch[1]}%`,
+                    tooltip,
+                    height: ''
                 };
-            })
-        );
+            };
+
+            for (const element of candidates) {
+                const entry = parseEntry(element);
+                if (!entry) continue;
+
+                const key = `${entry.label.toLowerCase()}|${entry.amount}|${entry.percentage}`;
+                if (seen.has(key)) continue;
+                seen.add(key);
+                entries.push(entry);
+            }
+
+            return entries;
+        });
     }
 
     async getFirstVisibleChartTooltip() {
-        const tooltipSource = this.chartCard.locator('[title]').first();
-        await tooltipSource.waitFor({ state: 'visible', timeout: 10000 });
-        return (await tooltipSource.getAttribute('title')) || '';
+        const chartItems = await this.getBarChartData();
+        return chartItems[0]?.tooltip || '';
     }
 
     async getVisibleChartTitleAttributes() {
-        return await this.chartCard.locator('[title]').evaluateAll((elements) =>
-            elements
-                .map((element) => element.getAttribute('title') || '')
-                .filter(Boolean)
-        );
+        const chartItems = await this.getBarChartData();
+        return chartItems.map((item) => item.tooltip).filter(Boolean);
     }
 
     async getPieOrChartSegmentsCount() {
-        return await this.chartCard.evaluate((chartCard) => {
-            const selectors = [
-                'svg path',
-                'svg circle',
-                'svg [role="img"] path',
-                '[title]'
-            ];
-
-            for (const selector of selectors) {
-                const count = chartCard.querySelectorAll(selector).length;
-                if (count > 0) {
-                    return count;
-                }
-            }
-
-            return 0;
-        });
+        const chartItems = await this.getBarChartData();
+        return chartItems.length;
     }
 
     async waitForTotalToBe(expectedTotal) {

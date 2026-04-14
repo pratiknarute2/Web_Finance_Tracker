@@ -16,6 +16,7 @@ class TransactionPage extends Utility {
         this.creditButton = page.getByRole('button', { name: 'Credit' });
         this.debitButton = page.getByRole('button', { name: 'Debit' });
         this.categoryDropdown = page.getByLabel('Category');
+        this.contactDropdown = page.getByLabel('Contact');
         this.amountField = page.getByRole('spinbutton', { name: 'Amount (₹) *' });
         this.commentField = page.getByRole('textbox', { name: 'Comments' });
         this.essentialsCategory = page.getByText('Essentials', { exact: true });
@@ -24,24 +25,55 @@ class TransactionPage extends Utility {
         this.dateTab = page.locator("//input[@id='date']")
     }
 
+    async openAddTransactionForm() {
+        await this.clickElement(this.addEntryButton, 'Add Entry');
+        await expect(this.page.getByRole('heading', { name: /add new transaction/i })).toBeVisible();
+    }
+
+    async selectTransactionType(transactionType) {
+        if (transactionType.toLowerCase() === 'credit') {
+            await this.clickElement(this.creditButton, 'Credit');
+            return;
+        }
+
+        await this.clickElement(this.debitButton, 'Debit');
+    }
+
+    async selectCategory(category) {
+        await this.selectDropdown(this.categoryDropdown, category, 'Category Dropdown');
+    }
+
+    async getCategoryOptions() {
+        return this.categoryDropdown.locator('option').evaluateAll((options) =>
+            options.map((option) => option.textContent.trim()).filter(Boolean)
+        );
+    }
+
+    async isContactDropdownVisible() {
+        return this.contactDropdown.isVisible();
+    }
+
+    async getContactOptions() {
+        return this.contactDropdown.locator('option').evaluateAll((options) =>
+            options.map((option) => option.textContent.trim()).filter(Boolean)
+        );
+    }
+
     async createTransaction(date_dd_mm_yyyy, transactionType, category, amount, label, comments) {
         console.log(`🔹 Creating ${transactionType} transaction`);
 
         // ✅ Open Transaction Modal
-        await this.clickElement(this.addEntryButton, 'Add Entry');
+        await this.openAddTransactionForm();
         await console.log(`/Pages/TransactionPage.js:33:49: ${date_dd_mm_yyyy}`)
         await this.fillInputField(this.dateTab, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(date_dd_mm_yyyy), 'Select Date')
         // ✅ Choose Transaction Type
-        if (transactionType.toLowerCase() === 'credit') {
-            await this.clickElement(this.creditButton, 'Credit');
-        } else if (transactionType.toLowerCase() === 'debit') {
-            await this.clickElement(this.debitButton, 'Debit');
-        } else {
+        if (!['credit', 'debit'].includes(transactionType.toLowerCase())) {
             throw new Error('❌ Invalid transaction type! Use either "credit" or "debit".');
         }
+        await this.selectTransactionType(transactionType);
 
         // ✅ Fill transaction details
-        await this.selectDropdown(this.categoryDropdown, category, 'Categry Dropdown');
+        await this.selectCategory(category);
         await this.fillInputField(this.amountField, amount, 'Amount Field');
         await this.fillInputField(this.commentField, comments, "Comment Field");
 

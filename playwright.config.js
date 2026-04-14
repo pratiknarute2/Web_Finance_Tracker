@@ -47,7 +47,7 @@ module.exports = defineConfig({
     launchOptions: {
       args: ['--start-maximized'],
     },
-    video: 'on', // Capture video only on first retry
+    video: 'only-on-failure', // Capture video only on first retry
     screenshot: 'only-on-failure', // Capture screenshot only if the test fails
     trace: 'on', // ✅ Always collect trace for every test
     outputDir: 'test-results/artifacts', // Store raw artifacts
@@ -59,7 +59,7 @@ module.exports = defineConfig({
   // ],
 
   fullyParallel: true,
-  workers: 1, // Increase for parallel execution; set to 1 for debugging
+  workers: 2, // Increase for parallel execution; set to 1 for debugging
 
   reporter: [
     ['list'], // Console output

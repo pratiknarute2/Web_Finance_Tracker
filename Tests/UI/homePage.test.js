@@ -4,7 +4,7 @@ const HomePage = require('../../Pages/HomePage');
 const TransactionPage = require('../../Pages/TransactionPage');
 
 // 🏠 HOME PAGE FEATURE
-test.describe("Arithmetical Calculation", () => {
+test.describe.serial("Arithmetical Calculation", () => {
     test.beforeEach((async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request)

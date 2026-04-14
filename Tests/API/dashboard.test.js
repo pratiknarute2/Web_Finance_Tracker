@@ -40,6 +40,17 @@ function getUsageCount(usageResponse, labelId) {
     const usage = usageResponse.find((item) => `${item.id}` === `${labelId}`);
     return usage ? usage.count : 0;
 }
+function getSignedAmount(transaction) {
+    const amount = parseNumber(transaction.amount);
+    return transaction.type === 'credit' ? amount : amount * -1;
+}
+function sortTransactionsChronologically(transactions) {
+    return [...transactions].sort((left, right) => {
+        const leftDate = new Date(`${left.date}T${left.time || '00:00:00.000'}`).getTime();
+        const rightDate = new Date(`${right.date}T${right.time || '00:00:00.000'}`).getTime();
+        return leftDate - rightDate;
+    });
+}
 
 test.describe.serial('📊 Dashboard API Feature', () => {
     test.beforeAll(async ({ request }) => {
@@ -62,7 +73,7 @@ test.describe.serial('📊 Dashboard API Feature', () => {
         expect(Number.isFinite(parseNumber(latestTransaction.runningBalance))).toBeTruthy();
         expect(Array.isArray(latestTransaction.labelIds)).toBeTruthy();
     });
-    test('GET | Dashboard summary totals should be derivable from transactions and opening balance', async ({ request }) => {
+    test('GET | Dashboard balances should stay continuous across recent transactions', async ({ request }) => {
         const get = new Get(request);
         const transactionsResponse = await get.getAllTransactionsAPI();
         const transactions = transactionsResponse.content;
@@ -70,17 +81,23 @@ test.describe.serial('📊 Dashboard API Feature', () => {
         const totalDebit = sumTransactionAmounts(transactions, 'debit');
         const totalCredit = sumTransactionAmounts(transactions, 'credit');
         const calculatedCurrentBalance = openingBalance + totalCredit - totalDebit;
-        const latestTransaction = [...transactions].sort((left, right) => {
-            const leftDate = new Date(`${left.date}T${left.time || '00:00:00.000'}`).getTime();
-            const rightDate = new Date(`${right.date}T${right.time || '00:00:00.000'}`).getTime();
-            return rightDate - leftDate;
-        })[0];
-        const latestRunningBalance = parseNumber(latestTransaction.runningBalance);
+
+        const chronologicalTransactions = sortTransactionsChronologically(transactions);
+        const recentTransactions = chronologicalTransactions.slice(-10);
+
         expect(openingBalance).toBeGreaterThanOrEqual(0);
         expect(totalDebit).toBeGreaterThan(0);
         expect(totalCredit).toBeGreaterThan(0);
         expect(Number.isFinite(calculatedCurrentBalance)).toBeTruthy();
-        expect(latestRunningBalance).toBeCloseTo(calculatedCurrentBalance, 2);
+        expect(recentTransactions.length).toBeGreaterThan(2);
+
+        for (let index = 1; index < recentTransactions.length; index++) {
+            const previousTransaction = recentTransactions[index - 1];
+            const currentTransaction = recentTransactions[index];
+            const expectedRunningBalance = parseNumber(previousTransaction.runningBalance) + getSignedAmount(currentTransaction);
+
+            expect(parseNumber(currentTransaction.runningBalance)).toBeCloseTo(expectedRunningBalance, 2);
+        }
     });
     test('GET | Dashboard debit and credit category percentages should total 100 percent', async ({ request }) => {
         const transactionsResponse = await new Get(request).getAllTransactionsAPI();

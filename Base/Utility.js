@@ -85,6 +85,77 @@ class Utility {
         }
 
     }
+
+    async expectToEqual(actual, expected, errorMessage) {
+        console.log(`🔍 Verifying: ${errorMessage}`);
+        console.log(`Actual: ${JSON.stringify(actual)} | Expected: ${JSON.stringify(expected)}`);
+        try {
+            await expect(actual).toEqual(expected);
+        } catch (error) {
+            const formattedErrorMessage = `❌ ${errorMessage} Expected: ${JSON.stringify(expected)}, but got: ${JSON.stringify(actual)} ==> ${error.message}`;
+            process.stdout.write(`${formattedErrorMessage}\n`);
+            throw new Error(formattedErrorMessage);
+        } finally {
+            console.log('-'.repeat(100));
+        }
+    }
+
+    async expectToContain(actual, expected, errorMessage) {
+        console.log(`🔍 Verifying: ${errorMessage}`);
+        console.log(`Actual: ${actual} | Expected to contain: ${expected}`);
+        try {
+            await expect(actual).toContain(expected);
+        } catch (error) {
+            const formattedErrorMessage = `❌ ${errorMessage} Expected value to contain: ${expected}, but got: ${actual} ==> ${error.message}`;
+            process.stdout.write(`${formattedErrorMessage}\n`);
+            throw new Error(formattedErrorMessage);
+        } finally {
+            console.log('-'.repeat(100));
+        }
+    }
+
+    async expectToMatch(actual, expected, errorMessage) {
+        console.log(`🔍 Verifying: ${errorMessage}`);
+        console.log(`Actual: ${actual} | Expected to match: ${expected}`);
+        try {
+            await expect(actual).toMatch(expected);
+        } catch (error) {
+            const formattedErrorMessage = `❌ ${errorMessage} Expected value to match: ${expected}, but got: ${actual} ==> ${error.message}`;
+            process.stdout.write(`${formattedErrorMessage}\n`);
+            throw new Error(formattedErrorMessage);
+        } finally {
+            console.log('-'.repeat(100));
+        }
+    }
+
+    async expectToBeGreaterThan(actual, expected, errorMessage) {
+        console.log(`🔍 Verifying: ${errorMessage}`);
+        console.log(`Actual: ${actual} | Expected to be greater than: ${expected}`);
+        try {
+            await expect(actual).toBeGreaterThan(expected);
+        } catch (error) {
+            const formattedErrorMessage = `❌ ${errorMessage} Expected value greater than: ${expected}, but got: ${actual} ==> ${error.message}`;
+            process.stdout.write(`${formattedErrorMessage}\n`);
+            throw new Error(formattedErrorMessage);
+        } finally {
+            console.log('-'.repeat(100));
+        }
+    }
+
+    async expectNotToBeEmpty(actual, errorMessage) {
+        console.log(`🔍 Verifying: ${errorMessage}`);
+        console.log(`Actual: ${actual}`);
+        try {
+            await expect(actual).not.toBe('');
+        } catch (error) {
+            const formattedErrorMessage = `❌ ${errorMessage} Expected non-empty value, but got: ${actual} ==> ${error.message}`;
+            process.stdout.write(`${formattedErrorMessage}\n`);
+            throw new Error(formattedErrorMessage);
+        } finally {
+            console.log('-'.repeat(100));
+        }
+    }
+
     async navigateOnURL(page, url) {
         const startTime = performance.now(); // Start timer
         process.stdout.write(`🌐 Navigating to URL: [${url}]...\n`);
@@ -178,51 +249,67 @@ class Utility {
     }
 
 
-    async getRequest(request, URI, testName) {
+    async getRequest(request, URI, testName, options = {}) {
         process.stdout.write(`🔄 Verifying: ${testName}...\n`);
-        try {
-            console.log(`🌐 Sending GET request to: ${URI}`);
+        const maxAttempts = options.retries ? options.retries + 1 : 1;
+        const timeout = options.timeout || 60000;
+        const retryDelayMs = options.retryDelayMs || 1500;
 
-            // ✅ Create a new request context if old one is closed or undefined
-            let apiRequest = request;
-            if (!request || request._closed) {
-                const playwright = require('@playwright/test').playwright;
-                apiRequest = await playwright.request.newContext({
-                    baseURL: URI,
-                    extraHTTPHeaders: {
-                        ...this.getAuthHeaders()
-                    }
+        for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+            try {
+                console.log(`🌐 Sending GET request to: ${URI} (attempt ${attempt}/${maxAttempts})`);
+
+                let apiRequest = request;
+                if (!request || request._closed) {
+                    const playwright = require('@playwright/test').playwright;
+                    apiRequest = await playwright.request.newContext({
+                        baseURL: URI,
+                        extraHTTPHeaders: {
+                            ...this.getAuthHeaders()
+                        }
+                    });
+                    console.log('⚠️ Created new APIRequestContext because old one was closed');
+                }
+
+                const startTime = Date.now();
+                const response = await apiRequest.get(URI, {
+                    headers: this.getAuthHeaders(),
+                    timeout
                 });
-                console.log('⚠️ Created new APIRequestContext because old one was closed');
+                const endTime = Date.now();
+
+                const responseTime = endTime - startTime;
+                const rawText = await response.text();
+                const responseSizeKB = (Buffer.byteLength(rawText, 'utf8') / 1024).toFixed(2);
+
+                console.log("🔁 Status Code:", response.status());
+                console.log(`⏱️ Response Time: ${responseTime} ms`);
+                console.log(`📦 Response Size: ${responseSizeKB} KB`);
+
+                if (!response.ok()) {
+                    throw new Error(`❌ GET request failed with status ${response.status()}`);
+                }
+
+                const responseData = rawText ? JSON.parse(rawText) : {};
+                console.log("🧾 GET Response:", responseData);
+                console.log('-'.repeat(100));
+                return responseData;
+            } catch (error) {
+                const shouldRetry = attempt < maxAttempts && (
+                    error.name === 'TimeoutError'
+                    || /ECONNRESET|ENOTFOUND|ETIMEDOUT|socket hang up/i.test(error.message)
+                );
+
+                console.error(`❌ Error in getRequest(): ${error.message}`);
+
+                if (!shouldRetry) {
+                    console.log('-'.repeat(100));
+                    throw error;
+                }
+
+                console.log(`🔁 Retrying GET request after ${retryDelayMs} ms...`);
+                await new Promise((resolve) => setTimeout(resolve, retryDelayMs));
             }
-
-            const startTime = Date.now();
-            const response = await apiRequest.get(URI, {
-                headers: this.getAuthHeaders()
-            });
-            const endTime = Date.now();
-
-            const responseTime = endTime - startTime;
-            const responseBody = await response.body();
-            const responseSizeKB = (Buffer.byteLength(responseBody) / 1024).toFixed(2);
-
-            console.log("🔁 Status Code:", response.status());
-            console.log(`⏱️ Response Time: ${responseTime} ms`);
-            console.log(`📦 Response Size: ${responseSizeKB} KB`);
-
-            if (!response.ok()) {
-                throw new Error(`❌ GET request failed with status ${response.status()}`);
-            }
-
-            const responseData = JSON.parse(responseBody);
-            console.log("🧾 GET Response:", responseData);
-            console.log('-'.repeat(100));
-            return responseData;
-
-        } catch (error) {
-            console.error("❌ Error in getRequest():", error.message);
-            console.log('-'.repeat(100));
-            throw error; // RE-THROW to fail the test
         }
     }
 
