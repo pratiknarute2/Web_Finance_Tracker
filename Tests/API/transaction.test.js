@@ -4,32 +4,32 @@ const Get = require('../../API/Get.js');
 const Put = require('../../API/Put.js');
 const Delete = require('../../API/Delete.js');
 
-test.describe('💳 Transaction Feature', () => {
+test.describe('API transactions', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI();
     });
     test.describe.serial('Debit', () => {
-        test('POST | Debit Transaction', async ({ request }) => {
+        test('Create debit transaction', async ({ request }) => {
             await new Post(request).postTransactionAPI('debit');
         });
-        test('GET | Fetch Transaction', async ({ request }) => {
+        test('Fetch transactions', async ({ request }) => {
             await new Get(request).getTransactionAPI();
         });
-        test('PUT | Update Debit Transaction', async ({ request }) => {
+        test('Update debit transaction', async ({ request }) => {
             await new Put(request).updateTransactionAPI('debit');
         });
-        test('DELETE | Delete Debit Transaction', async ({ request }) => {
+        test('Delete debit transaction', async ({ request }) => {
             await new Delete(request).deleteTransactionAPI('debit');
         });
     });
     test.describe.serial('Credit', () => {
-        test('POST | Credit Transaction', async ({ request }) => {
+        test('Create credit transaction', async ({ request }) => {
             await new Post(request).postTransactionAPI('credit');
         });
-        test('PUT | Update Credit Transaction', async ({ request }) => {
+        test('Update credit transaction', async ({ request }) => {
             await new Put(request).updateTransactionAPI('credit');
         });
-        test('DELETE | Delete Credit Transaction', async ({ request }) => {
+        test('Delete credit transaction', async ({ request }) => {
             await new Delete(request).deleteTransactionAPI('credit');
         });
     });
@@ -40,16 +40,16 @@ test.describe('💳 Transaction Feature', () => {
             await new Post(request).postContactAPI();
             await new Post(request).postLabelAPI();
         });
-        test('POST | Given', async ({ request }) => {
+        test('Create given ledger transaction', async ({ request }) => {
             await new Post(request).postGivenContactLedgerTransactionAPI();
         });
-        test('POST | Received', async ({ request }) => {
+        test('Create received ledger transaction', async ({ request }) => {
             await new Post(request).postReceivedContactLedgerTransactionAPI();
         });
-        test('DELETE | Given', async ({ request }) => {
+        test('Delete given ledger transaction', async ({ request }) => {
             await new Delete(request).deleteGivenContactLedgerTransactionAPI();
         });
-        test('DELETE | Received', async ({ request }) => {
+        test('Delete received ledger transaction', async ({ request }) => {
             await new Delete(request).deleteReceivedContactLedgerTransactionAPI();
         });
         test.afterAll(async ({ request }) => {

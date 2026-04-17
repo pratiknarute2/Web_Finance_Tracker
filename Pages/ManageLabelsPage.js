@@ -19,7 +19,12 @@ class ManageLabelsPage extends AppShellPage {
     }
 
     async expectLabelVisible(labelName) {
-        await expect(this.page.getByText(labelName, { exact: true })).toBeVisible();
+        const label = this.page.getByText(labelName, { exact: true });
+        await expect.poll(async () => label.count(), {
+            timeout: 10000,
+            message: `Wait for label ${labelName} to appear in the list`
+        }).toBeGreaterThan(0);
+        await expect(label.first()).toBeVisible();
     }
 }
 

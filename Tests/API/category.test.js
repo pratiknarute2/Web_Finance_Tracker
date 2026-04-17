@@ -5,7 +5,7 @@ const Put = require('../../API/Put.js');
 const Delete = require('../../API/Delete.js');
 const fs = require("fs/promises");
 
-test.describe.serial('💰 Category Feature', () => {
+test.describe.serial('API categories', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI();
         const data = JSON.parse(await fs.readFile('API/Payloads.json', 'utf-8'));
@@ -20,62 +20,65 @@ test.describe.serial('💰 Category Feature', () => {
     });
 
     test.describe('Debit', () => {
-        test('POST | Create Debit Category', async ({ request }) => {
+        test('Create debit category', async ({ request }) => {
             await new Post(request).postCategoriesAPI('debit');
         });
-        test('GET | Fetch Categories', async ({ request }) => {
+        test('Fetch categories', async ({ request }) => {
             const get = new Get(request);
             await get.getCategoryAPI();
         });
-        test('PUT | Update Debit Category', async ({ request }) => {
+        test('Update debit category', async ({ request }) => {
             await new Put(request).updateCategoriesAPI('debit');
+        });
+        test('Delete debit category', async ({ request }) => {
+            await new Delete(request).deleteCategoriesAPI('debit');
         });
     });
 
     test.describe('Credit', () => {
-        test('POST | Create Credit Category', async ({ request }) => {
+        test('Create credit category', async ({ request }) => {
             await new Post(request).postCategoriesAPI('credit');
         });
-        test('PUT | Update Credit Category', async ({ request }) => {
+        test('Update credit category', async ({ request }) => {
             await new Put(request).updateCategoriesAPI('credit');
         });
-        test('DELETE | Delete Credit Category', async ({ request }) => {
+        test('Delete credit category', async ({ request }) => {
             await new Delete(request).deleteCategoriesAPI('credit');
         });
     });
 
     test.describe('Given', () => {
-        test('POST | Create', async ({ request }) => {
+        test('Create given category', async ({ request }) => {
             await new Post(request).postGivenCategoryAPI();
         });
-        test('GET | Fetch', async ({ request }) => {
+        test('Fetch given category', async ({ request }) => {
             const response = await new Get(request).getCategoryAPI();
             const givenCategory = await response.find(category => category.id === global.givenCategoryId);
             expect.soft(givenCategory).toBeDefined();
             expect.soft(givenCategory.id).toBe(global.givenCategoryId);
         });
-        test('PUT | Update', async ({ request }) => {
+        test('Update given category', async ({ request }) => {
             await new Put(request).updateGivenCategoryAPI();
         });
-        test('DELETE | Delete', async ({ request }) => {
+        test('Delete given category', async ({ request }) => {
             await new Delete(request).deleteGivenCategoryAPI();
         });
     });
 
     test.describe('Received', () => {
-        test('POST | Create', async ({ request }) => {
+        test('Create received category', async ({ request }) => {
             await new Post(request).postReceivedCategoryAPI();
         });
-        test('GET | Fetch', async ({ request }) => {
+        test('Fetch received category', async ({ request }) => {
             const response = await new Get(request).getCategoryAPI();
             const receivedCategory = await response.find(category => category.id === global.receivedCategoryId);
             expect.soft(receivedCategory).toBeDefined();
             expect.soft(receivedCategory.id).toBe(global.receivedCategoryId);
         });
-        test('PUT | Update', async ({ request }) => {
+        test('Update received category', async ({ request }) => {
             await new Put(request).updateReceivedCategoryAPI();
         });
-        test('DELETE | Delete', async ({ request }) => {
+        test('Delete received category', async ({ request }) => {
             await new Delete(request).deleteReceivedCategoryAPI();
         });
     });

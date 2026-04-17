@@ -52,12 +52,12 @@ function sortTransactionsChronologically(transactions) {
     });
 }
 
-test.describe.serial('📊 Dashboard API Feature', () => {
+test.describe.serial('API dashboard', () => {
     test.beforeAll(async ({ request }) => {
         await new Post(request).postLoginAPI();
         utility = new Utility();
     });
-    test('GET | Dashboard source transactions should expose chart-ready fields', async ({ request }) => {
+    test('Validate dashboard transaction payloads', async ({ request }) => {
         const transactionsResponse = await new Get(request).getTransactionAPI();
         const transactions = transactionsResponse.content;
         expect(Array.isArray(transactions)).toBeTruthy();
@@ -73,7 +73,7 @@ test.describe.serial('📊 Dashboard API Feature', () => {
         expect(Number.isFinite(parseNumber(latestTransaction.runningBalance))).toBeTruthy();
         expect(Array.isArray(latestTransaction.labelIds)).toBeTruthy();
     });
-    test('GET | Dashboard balances should stay continuous across recent transactions', async ({ request }) => {
+    test('Validate running balances', async ({ request }) => {
         const get = new Get(request);
         const transactionsResponse = await get.getAllTransactionsAPI();
         const transactions = transactionsResponse.content;
@@ -99,7 +99,7 @@ test.describe.serial('📊 Dashboard API Feature', () => {
             expect(parseNumber(currentTransaction.runningBalance)).toBeCloseTo(expectedRunningBalance, 2);
         }
     });
-    test('GET | Dashboard debit and credit category percentages should total 100 percent', async ({ request }) => {
+    test('Validate category percentages', async ({ request }) => {
         const transactionsResponse = await new Get(request).getAllTransactionsAPI();
         const transactions = transactionsResponse.content;
         for (const transactionType of ['debit', 'credit']) {
@@ -116,7 +116,7 @@ test.describe.serial('📊 Dashboard API Feature', () => {
             }
         }
     });
-    test('GET | Dashboard label usage should map to labels and percentage totals', async ({ request }) => {
+    test('Validate label usage data', async ({ request }) => {
         const get = new Get(request);
         const labels = await get.getLabelAPI();
         const labelUsage = await get.getLabelUsageAPI();
@@ -143,7 +143,7 @@ test.describe.serial('📊 Dashboard API Feature', () => {
             expect(usagePercentageSum).toBeCloseTo(100, 5);
         }
     });
-    test('POST/DELETE | Dashboard source data should update for a new essentials debit transaction', async ({ request }) => {
+    test('Validate dashboard after new debit', async ({ request }) => {
         const get = new Get(request);
         const del = new Delete(request);
         const labels = await get.getLabelAPI();

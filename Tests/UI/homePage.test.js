@@ -3,17 +3,16 @@ const LoginPage = require('../../Pages/LoginPage');
 const HomePage = require('../../Pages/HomePage');
 const TransactionPage = require('../../Pages/TransactionPage');
 
-// 🏠 HOME PAGE FEATURE
-test.describe.serial("Arithmetical Calculation", () => {
+test.describe.serial('UI calculations', () => {
     test.beforeEach((async ({ request, page }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request)
     }))
-    test("Table calculations", async ({ request, page }) => {
+    test('Validate table totals', async ({ request, page }) => {
         const homePage = new HomePage(page);
         await homePage.arthmaticalTableCalculation(request)
     })
-    test("Impact Calculation of Created transaction", async ({ request, page }) => {
+    test('Validate transaction impact', async ({ request, page }) => {
         const homePage = new HomePage(page);
         const transactionPage = new TransactionPage(page);
         const uniqueComment = `Automation Testing ${Date.now()}`;

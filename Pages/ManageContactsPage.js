@@ -25,7 +25,12 @@ class ManageContactsPage extends AppShellPage {
     }
 
     async expectContactVisible(contactName) {
-        await expect(this.page.getByText(contactName, { exact: true })).toBeVisible();
+        const contact = this.page.getByText(contactName, { exact: true });
+        await expect.poll(async () => contact.count(), {
+            timeout: 10000,
+            message: `Wait for contact ${contactName} to appear in the list`
+        }).toBeGreaterThan(0);
+        await expect(contact.first()).toBeVisible();
     }
 }
 

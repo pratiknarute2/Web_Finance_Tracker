@@ -25,7 +25,12 @@ class ManageCategoriesPage extends AppShellPage {
     }
 
     async expectCategoryVisible(categoryName) {
-        await expect(this.page.getByText(categoryName, { exact: true }).first()).toBeVisible();
+        const category = this.page.getByText(categoryName, { exact: true });
+        await expect.poll(async () => category.count(), {
+            timeout: 10000,
+            message: `Wait for category ${categoryName} to appear in the list`
+        }).toBeGreaterThan(0);
+        await expect(category.first()).toBeVisible();
     }
 }
 

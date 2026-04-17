@@ -5,19 +5,13 @@ const TransactionPage = require('../../Pages/TransactionPage');
 const LoginPage = require("../../Pages/LoginPage");
 
 
-// ===================== TEST SUITE =====================
-test.describe('Dashboard Insights Validation Suite', () => {
-
-    // ✅ Login before each test
+test.describe('UI dashboard', () => {
     test.beforeEach(async ({ page, request }) => {
         const loginPage = new LoginPage(page);
         await loginPage.login_through_post_API(request)
     });
 
-    // ==================================================
-    // ✅ TEST 1: Debit Dashboard Validation
-    // ==================================================
-    test('Verify Debit Dashboard - Chart, Tooltip, and Breakdown Data Consistency', async ({ page }) => {
+    test('Validate debit dashboard breakdown', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
 
         await dashboardPage.waitForDashboardToLoad();
@@ -70,10 +64,7 @@ test.describe('Dashboard Insights Validation Suite', () => {
         await dashboardPage.expectToContain(firstRow.title, firstRow.percentage, 'First debit row tooltip contains percentage');
     });
 
-    // ==================================================
-    // ✅ TEST 2: Tab Switching Validation
-    // ==================================================
-    test('Verify Tab Switching (Credit & Labels) and Ensure Data Integrity', async ({ page }) => {
+    test('Validate dashboard tabs', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
 
         await dashboardPage.waitForDashboardToLoad();
@@ -110,10 +101,7 @@ test.describe('Dashboard Insights Validation Suite', () => {
         await dashboardPage.expectToMatch(visibleTitles[0], /%/, 'First labels chart tooltip includes percentage');
     });
 
-    // ==================================================
-    // ✅ TEST 3: Dashboard Update After Transaction
-    // ==================================================
-    test('Verify Dashboard Updates After Adding New Transaction', async ({ page }) => {
+    test('Validate dashboard after new transaction', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
         const homePage = new HomePage(page);
         const transactionPage = new TransactionPage(page);
@@ -185,10 +173,7 @@ test.describe('Dashboard Insights Validation Suite', () => {
         }
     });
 
-    // ==================================================
-    // ✅ TEST 4: Responsive UI Validation
-    // ==================================================
-    test('Verify Dashboard Responsiveness Across Multiple Viewports', async ({ page }) => {
+    test('Validate dashboard layout on viewports', async ({ page }) => {
         const dashboardPage = new DashboardPage(page);
 
         const viewports = [
@@ -221,7 +206,6 @@ test.describe('Dashboard Insights Validation Suite', () => {
 
 });
 
-// ✅ Utility to normalize currency values for comparison
 function normalizeAmount(value) {
     return (parseFloat((value || '').replace(/[^\d.-]/g, '')) || 0).toFixed(2);
 }
