@@ -3,7 +3,7 @@ require('dotenv').config();
 
 
 // 🧠 Choose environment
-const ENV = process.env.ENV || 'prod'
+const ENV = process.env.ENV || 'qa'
 
 // 🌍 Environment URLs
 const ENV_CONFIG = {
@@ -58,8 +58,10 @@ module.exports = defineConfig({
   //   { name: 'firefox', use: { browserName: 'firefox' }, testMatch: ['Tests/Lyca.test.js'] },
   // ],
 
-  fullyParallel: true,
-  workers: 3, // Increase for parallel execution; set to 1 for debugging
+  // The QA environment is shared and these tests create/update/delete the same
+  // records, so parallel workers can make one spec invalidate another mid-run.
+  fullyParallel: false,
+  workers: 1,
 
   reporter: [
     ['list'], // Console output

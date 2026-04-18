@@ -15,6 +15,10 @@ class HomePage extends Utility {
     // 🔹 Locator Initialization
     // ============================
     initLocators() {
+        this.profileMenuButton = this.page.getByRole('button', { name: /profile menu/i });
+        this.transactionsMenuButton = this.page.getByRole('button', { name: /transactions/i }).first();
+        this.openTransactionsButton = this.page.getByRole('button', { name: /open transactions/i });
+
         // Pagination buttons
         this.paginationNext = this.page.locator("//button[normalize-space()='Next' or normalize-space()='›']").last();
         this.paginationPrevious = this.page.locator("//button[normalize-space()='Previous' or normalize-space()='‹']").last();
@@ -45,6 +49,7 @@ class HomePage extends Utility {
         this.startDateFilter = this.page.getByLabel('Start Date:');
         this.endDateFilter = this.page.getByLabel('End Date:');
         this.labelFilter = this.page.getByLabel('Label:');
+        this.updatingResultsStatus = this.page.getByText('Updating results...');
 
         // First row table locators
         const firstTransactionRow = this.transactionRows.first();
@@ -64,6 +69,9 @@ class HomePage extends Utility {
     // 🔹 Main Table Calculation
     // ============================
     async arthmaticalTableCalculation(request) {
+        await this.ensureTransactionsWorkspaceOpen();
+        await this.resetToFirstTransactionPage();
+
         let pageCount = 1;
         let debitAmount = 0;
         let creditAmount = 0;
@@ -167,6 +175,33 @@ class HomePage extends Utility {
         await rows.first().waitFor({ state: 'visible', timeout: 40000 });
     }
 
+    async waitForTransactionResultsToSettle() {
+        await this.page.waitForLoadState('networkidle');
+
+        if (await this.updatingResultsStatus.isVisible().catch(() => false)) {
+            await this.updatingResultsStatus.waitFor({ state: 'hidden', timeout: 15000 });
+        }
+
+        await this.waitForTableData();
+    }
+
+    async ensureTransactionsWorkspaceOpen() {
+        if (await this.transactionsTable.isVisible().catch(() => false)) {
+            await this.waitForTableData();
+            return;
+        }
+
+        if (await this.openTransactionsButton.isVisible().catch(() => false)) {
+            await this.clickElement(this.openTransactionsButton, 'Open Transactions');
+        } else {
+            await this.clickElement(this.profileMenuButton, 'Profile Menu');
+            await this.clickElement(this.transactionsMenuButton, 'Transactions Menu');
+        }
+
+        await this.transactionsTable.waitFor({ state: 'visible', timeout: 20000 });
+        await this.waitForTableData();
+    }
+
 
     async canProceedToNextPage() {
         try {
@@ -198,15 +233,17 @@ class HomePage extends Utility {
     }
 
     async navigateToNextPage(pageCount) {
+        const previousPageText = await this.getPaginationText();
         const previousFirstRowText = await this.getFirstTableRowText();
         await this.paginationNext.click();
-        await this.waitForPaginatedTableUpdate(pageCount, previousFirstRowText);
+        await this.waitForPaginatedTableUpdate(previousPageText, previousFirstRowText);
     }
 
     async navigateToPreviousPage(pageCount) {
+        const previousPageText = await this.getPaginationText();
         const previousFirstRowText = await this.getFirstTableRowText();
         await this.paginationPrevious.click();
-        await this.waitForPaginatedTableUpdate(pageCount, previousFirstRowText);
+        await this.waitForPaginatedTableUpdate(previousPageText, previousFirstRowText);
     }
 
     async getFirstTableRowText() {
@@ -214,32 +251,22 @@ class HomePage extends Utility {
         return ((await firstRow.textContent()) || "").trim();
     }
 
-    async waitForPaginatedTableUpdate(expectedPage, previousFirstRowText) {
-        const expectedPageText = new RegExp(`(?:Page\\s+)?${expectedPage}\\s*(?:/|of)\\s*\\d+`, 'i');
-        try {
-            await expect(this.pageIndicator).toContainText(expectedPageText, { timeout: 5000 });
-        } catch (e) {
-            console.warn(`⚠️ Pagination indicator did not match page ${expectedPage}: ${e.message}`);
-        }
+    async waitForPaginatedTableUpdate(previousPageText, previousFirstRowText) {
+        const previousSnapshot = JSON.stringify({
+            pageText: previousPageText,
+            firstRowText: previousFirstRowText
+        });
 
-        await this.page.waitForFunction((previousText) => {
-            const transactionHeading = [...document.querySelectorAll('h2')]
-                .find((heading) => heading.textContent.trim() === 'Transactions');
-            const table = transactionHeading?.nextElementSibling?.matches('table')
-                ? transactionHeading.nextElementSibling
-                : transactionHeading?.parentElement?.querySelector('table');
-            const rows = [...(table?.querySelectorAll('tbody tr') || [])];
-            if (rows.length === 0) return false;
-
-            const firstRowText = rows[0].textContent.trim();
-            const hasAmount = rows.some((row) => {
-                const debitText = row.querySelector('td:nth-child(5)')?.textContent.trim() || '';
-                const creditText = row.querySelector('td:nth-child(6)')?.textContent.trim() || '';
-                return /\d/.test(debitText) || /\d/.test(creditText);
+        await expect.poll(async () => {
+            await this.waitForTransactionResultsToSettle();
+            return JSON.stringify({
+                pageText: await this.getPaginationText(),
+                firstRowText: await this.getFirstTableRowText()
             });
-
-            return firstRowText !== previousText && hasAmount;
-        }, previousFirstRowText, { timeout: 10000 });
+        }, {
+            message: 'Wait for paginated table content to change',
+            timeout: 10000
+        }).not.toBe(previousSnapshot);
     }
 
     async getPaginationText() {
@@ -283,7 +310,7 @@ class HomePage extends Utility {
 
     async getSummaryCardsData() {
         await this.staticWait(3)
-        await this.currentBalancesElement.first().waitFor({
+        await this.currentBalanceSummary.first().waitFor({
             state: 'visible',
             timeout: 10000
         });
@@ -312,7 +339,7 @@ class HomePage extends Utility {
             const amount = parseFloat(createdTransactionDetails.amount);
 
             console.log("\n🧩 Validating Summary Impact of Transaction...");
-            await this.currentBalancesElement.first().waitFor({
+            await this.currentBalanceSummary.first().waitFor({
                 state: 'visible',
                 timeout: 10000
             });
@@ -370,11 +397,18 @@ class HomePage extends Utility {
     }
 
     async applyTransactionFilters(transaction) {
-        await this.clickElement(this.showFilterButton, 'Show Filter');
+        await this.ensureTransactionsWorkspaceOpen();
+        await this.resetToFirstTransactionPage();
+
+        if (await this.showFilterButton.isVisible().catch(() => false)) {
+            await this.clickElement(this.showFilterButton, 'Show Filter');
+        }
         await this.selectDropdown(this.categoryFilter, transaction.category, 'Category Filter');
         await this.fillInputField(this.startDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'Start Date');
         await this.fillInputField(this.endDateFilter, this.formatDate_FromDDMMYYYY_To_YYYYMMDD(transaction.date_dd_mm_yyyy), 'End Date');
         await this.selectDropdown(this.labelFilter, transaction.label, 'Label Filter');
+        await this.waitForTransactionResultsToSettle();
+        await this.resetToFirstTransactionPage();
         await this.waitForFilteredTransaction(transaction);
     }
 
@@ -398,12 +432,16 @@ class HomePage extends Utility {
     }
 
     async waitForFilteredTransaction(transaction) {
-        await expect.poll(async () => {
-            return this.findTransactionInFilteredPages(transaction);
-        }, {
-            message: 'Wait for filtered transaction row',
-            timeout: 20000
-        }).toBe(true);
+        for (let attempt = 1; attempt <= 5; attempt++) {
+            await this.resetToFirstTransactionPage();
+            if (await this.findTransactionInFilteredPages(transaction)) {
+                return;
+            }
+
+            await this.staticWait(1);
+        }
+
+        throw new Error(`Wait for filtered transaction row: ${transaction.date_dd_mm_yyyy} | ${transaction.category} | ${transaction.comments}`);
     }
 
     async getTransactionRow(transaction) {
@@ -483,20 +521,25 @@ class HomePage extends Utility {
     }
 
     async findTransactionInFilteredPages(transaction) {
-        while (true) {
+        const { totalPages } = await this.getPaginationState();
+
+        for (let currentPage = 1; currentPage <= totalPages; currentPage++) {
             const rowIndex = await this.getMatchingTransactionRowIndex(transaction);
             if (rowIndex !== -1) {
                 return true;
             }
 
-            if (!(await this.canProceedToNextPage())) {
+            if (currentPage === totalPages) {
                 return false;
             }
 
-            const currentPageText = await this.getPaginationText();
+            const previousPageText = await this.getPaginationText();
+            const previousFirstRowText = await this.getFirstTableRowText();
             await this.paginationNext.click();
-            await this.waitForPaginatedTableUpdateByTextChange(currentPageText);
+            await this.waitForPaginatedTableUpdate(previousPageText, previousFirstRowText);
         }
+
+        return false;
     }
 
     async getMatchingTransactionRowIndex(transaction) {
@@ -533,6 +576,36 @@ class HomePage extends Utility {
         }).not.toBe(previousPageText);
 
         await this.waitForTableData();
+    }
+
+    async getPaginationState() {
+        const paginationText = await this.getPaginationText();
+        const match = paginationText.match(/(\d+)\s*\/\s*(\d+)/);
+
+        if (!match) {
+            return { currentPage: 1, totalPages: 1 };
+        }
+
+        return {
+            currentPage: Number(match[1]),
+            totalPages: Number(match[2])
+        };
+    }
+
+    async resetToFirstTransactionPage() {
+        let safetyCounter = 0;
+
+        while (await this.canProceedToPreviousPage()) {
+            if (safetyCounter >= 25) {
+                throw new Error('Unable to reset transaction pagination to the first page');
+            }
+
+            const previousPageText = await this.getPaginationText();
+            const previousFirstRowText = await this.getFirstTableRowText();
+            await this.paginationPrevious.click();
+            await this.waitForPaginatedTableUpdate(previousPageText, previousFirstRowText);
+            safetyCounter++;
+        }
     }
 
     // ============================

@@ -5,6 +5,7 @@ class ContactLedgerPage extends AppShellPage {
     constructor(page) {
         super(page);
         this.searchInput = page.getByPlaceholder('Search contacts...');
+        this.transactionsTable = page.locator('table');
     }
 
     async open() {
@@ -17,11 +18,11 @@ class ContactLedgerPage extends AppShellPage {
     }
 
     async expectContactVisible(contactName) {
-        await expect(this.page.getByText(contactName, { exact: true })).toBeVisible();
+        await expect(this.transactionsTable.getByRole('cell', { name: contactName, exact: true }).first()).toBeVisible();
     }
 
     async expectTransactionDetailsVisible(textValue) {
-        await expect(this.page.getByText(textValue, { exact: true })).toBeVisible();
+        await expect(this.transactionsTable.getByRole('cell', { name: textValue, exact: true }).first()).toBeVisible();
     }
 }
 

@@ -7,16 +7,56 @@ class FinanceApiHelper extends Utility {
         this.request = request;
     }
 
+    async ensureAuthenticated() {
+        if (global.token) {
+            return global.token;
+        }
+
+        const response = await this.request.post(`${API_URL}/api/auth/login`, {
+            data: {
+                email: 'testingnotes011@gmail.com',
+                password: 'Testing@123'
+            },
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            timeout: 60000
+        });
+
+        if (!response.ok()) {
+            const body = await response.text();
+            throw new Error(`API login failed with ${response.status()}: ${body}`);
+        }
+
+        const payload = await response.json();
+        global.token = payload.token;
+        return global.token;
+    }
+
+    async sendWithAuth(executeRequest) {
+        await this.ensureAuthenticated();
+
+        let response = await executeRequest();
+        if (response.status() === 401) {
+            global.token = undefined;
+            await this.ensureAuthenticated();
+            response = await executeRequest();
+        }
+
+        return response;
+    }
+
     async getJson(path, testName, options) {
+        await this.ensureAuthenticated();
         return this.getRequest(this.request, `${API_URL}${path}`, testName, options);
     }
 
     async postJson(path, payload, testName, options = {}) {
-        const response = await this.request.post(`${API_URL}${path}`, {
+        const response = await this.sendWithAuth(() => this.request.post(`${API_URL}${path}`, {
             data: payload,
             headers: this.getAuthHeaders(),
             timeout: options.timeout || 60000
-        });
+        }));
 
         if (!response.ok()) {
             const body = await response.text();
@@ -28,11 +68,11 @@ class FinanceApiHelper extends Utility {
     }
 
     async tryPostJson(path, payload, testName, options = {}) {
-        const response = await this.request.post(`${API_URL}${path}`, {
+        const response = await this.sendWithAuth(() => this.request.post(`${API_URL}${path}`, {
             data: payload,
             headers: this.getAuthHeaders(),
             timeout: options.timeout || 60000
-        });
+        }));
 
         const rawText = await response.text();
         let body = rawText || {};
@@ -57,10 +97,10 @@ class FinanceApiHelper extends Utility {
             return;
         }
 
-        const response = await this.request.delete(`${API_URL}/api/${resource}/${id}`, {
+        const response = await this.sendWithAuth(() => this.request.delete(`${API_URL}/api/${resource}/${id}`, {
             headers: this.getAuthHeaders(),
             timeout: 60000
-        });
+        }));
 
         if (!response.ok() && ![401, 404].includes(response.status())) {
             const body = await response.text();
